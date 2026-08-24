@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fisioterapia Avanzada Sara Vivanco Hurtado | Fisioterapia deportiva y musculoesquelética</title>
+<meta name="description" content="Fisioterapia especializada en lesiones musculoesqueléticas y deportivas, readaptación al esfuerzo, ecografía funcional y fisioterapia invasiva. Colaborador de la SD Eibar.">
+
+<link rel="icon" href="assets/images/FAVICON.png" sizes="any">
+
+<!-- Google Fonts: sustitutos tipográficos más cercanos a la referencia (ver README, punto "Tipografías") -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   Fisioterapia Avanzada Sara Vivanco Hurtado
+   Sistema de diseño inspirado en la estructura de temas premium de clínica/
+   fisioterapia (VamTam Flexora). Ver README.md para notas de fidelidad.
+   ========================================================================== */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root{
+  /* Marca — verde azulado extraído del logo proporcionado */
+  --color-primary: #1f7d6f;
+  --color-primary-dark: #14564c;
+  --color-primary-light: #e6f2ef;
+  --color-accent: #d98b4f;
+
+  --color-ink: #16231f;
+  --color-ink-soft: #4a5a56;
+  --color-bg: #faf8f4;
+  --color-bg-alt: #f2efe7;
+  --color-surface: #ffffff;
+  --color-border: #e3e0d6;
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-w: 1240px;
+  --radius-sm: 10px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(22,35,31,.06);
+  --shadow-md: 0 12px 32px rgba(22,35,31,.10);
+  --shadow-lg: 0 24px 60px rgba(22,35,31,.16);
+
+  --ease-out: cubic-bezier(.16,.84,.44,1);
+  --header-h: 92px;
+  --header-h-scrolled: 68px;
+}
+
+/* ---------- 2. RESET ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  color:var(--color-ink);
+  background:var(--color-bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+input,textarea{font:inherit;}
+.container{max-width:var(--container-w);margin:0 auto;padding:0 28px;}
+
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--color-ink);}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+}
+
+/* ---------- 3. TYPOGRAPHY UTILITIES ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);font-weight:700;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary);
+  margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--color-primary);border-radius:2px;}
+.eyebrow--light{color:#bfe3da;}
+.eyebrow--light::before{background:#bfe3da;}
+
+.section-title{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px;}
+.section-title--light{color:#fff;}
+.section-lead{font-size:clamp(16px,1.6vw,18px);color:var(--color-ink-soft);max-width:620px;}
+.section-lead--light{color:#d7e6e2;}
+.section-head{max-width:680px;margin:0 auto 56px;text-align:center;}
+.section-head .section-lead{margin:0 auto;}
+
+/* ---------- 4. BUTTONS ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:700;font-size:15px;letter-spacing:.01em;
+  padding:15px 28px;border-radius:var(--radius-pill);
+  transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-out), background .3s, color .3s, border-color .3s;
+  white-space:nowrap;
+}
+.btn svg{transition:transform .3s var(--ease-out);}
+.btn--primary{background:var(--color-primary);color:#fff;box-shadow:0 10px 24px rgba(31,125,111,.28);}
+.btn--primary:hover{background:var(--color-primary-dark);transform:translateY(-3px);box-shadow:0 16px 30px rgba(31,125,111,.34);}
+.btn--primary:hover svg{transform:translateX(3px);}
+.btn--ghost{background:transparent;color:var(--color-ink);border:1.5px solid var(--color-border);}
+.btn--ghost:hover{border-color:var(--color-primary);color:var(--color-primary);transform:translateY(-3px);}
+.btn--light{background:#fff;color:var(--color-primary-dark);}
+.btn--light:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.btn--outline-light{border:1.5px solid rgba(255,255,255,.5);color:#fff;}
+.btn--outline-light:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.btn--sm{padding:11px 22px;font-size:14px;}
+.btn--lg{padding:17px 32px;font-size:16px;}
+.btn--block{width:100%;}
+
+.tag{
+  display:inline-flex;align-items:center;background:var(--color-primary-light);
+  color:var(--color-primary-dark);font-size:13px;font-weight:600;
+  padding:7px 14px;border-radius:var(--radius-pill);
+}
+
+/* ==========================================================================
+   TOP BAR
+   ========================================================================== */
+.topbar{background:var(--color-primary-dark);color:#dcece8;font-size:13px;}
+.topbar__inner{display:flex;align-items:center;justify-content:space-between;height:40px;}
+.topbar__info{display:flex;align-items:center;gap:26px;}
+.topbar__link{display:flex;align-items:center;gap:7px;opacity:.9;transition:opacity .25s;}
+.topbar__link:hover{opacity:1;color:#fff;}
+.topbar__link--static{cursor:default;}
+.topbar__social{display:flex;align-items:center;gap:14px;}
+.topbar__social-link{opacity:.85;transition:opacity .25s, transform .25s;}
+.topbar__social-link:hover{opacity:1;transform:translateY(-1px);}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,248,244,.86);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:transform .45s var(--ease-out), box-shadow .35s, border-color .35s, background .35s;
+}
+.site-header.is-scrolled{
+  background:rgba(250,248,244,.97);
+  border-bottom-color:var(--color-border);
+  box-shadow:var(--shadow-sm);
+}
+.site-header.is-hidden{transform:translateY(-100%);}
+
+.site-header__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--header-h);
+  transition:height .35s var(--ease-out);
+}
+.site-header.is-scrolled .site-header__inner{height:var(--header-h-scrolled);}
+
+.site-header__logo-img{height:52px;width:auto;transition:height .35s var(--ease-out);}
+.site-header.is-scrolled .site-header__logo-img{height:40px;}
+
+.main-nav__list{display:flex;align-items:center;gap:38px;}
+.main-nav__link{
+  position:relative;font-size:15px;font-weight:600;color:var(--color-ink);
+  padding:8px 0;transition:color .25s;
+}
+.main-nav__link::after{
+  content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;
+  background:var(--color-primary);border-radius:2px;transform:translateX(-50%);
+  transition:width .3s var(--ease-out);
+}
+.main-nav__link:hover,.main-nav__link.is-active{color:var(--color-primary);}
+.main-nav__link:hover::after,.main-nav__link.is-active::after{width:100%;}
+
+.site-header__actions{display:flex;align-items:center;gap:20px;}
+.site-header__phone{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;transition:color .25s;}
+.site-header__phone:hover{color:var(--color-primary);}
+
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--color-ink);border-radius:2px;transition:transform .35s var(--ease-out), opacity .25s;}
+
+/* ==========================================================================
+   MOBILE MENU (off-canvas)
+   ========================================================================== */
+.mobile-menu{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none;}
+.mobile-menu.is-open{visibility:visible;pointer-events:auto;}
+.mobile-menu__backdrop{
+  position:absolute;inset:0;background:rgba(20,30,27,.5);
+  opacity:0;transition:opacity .4s var(--ease-out);
+}
+.mobile-menu.is-open .mobile-menu__backdrop{opacity:1;}
+.mobile-menu__panel{
+  position:absolute;top:0;right:0;bottom:0;width:min(88vw,400px);
+  background:#fff;display:flex;flex-direction:column;
+  padding:24px 28px 32px;
+  transform:translateX(100%);
+  transition:transform .5s var(--ease-out);
+  box-shadow:-20px 0 60px rgba(0,0,0,.2);
+}
+.mobile-menu.is-open .mobile-menu__panel{transform:translateX(0);}
+.mobile-menu__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;}
+.mobile-menu__logo{height:38px;}
+.mobile-menu__close{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .25s;}
+.mobile-menu__close:hover{background:var(--color-bg-alt);}
+.mobile-menu__list{display:flex;flex-direction:column;gap:4px;margin-bottom:auto;}
+.mobile-menu__list li a{
+  display:block;font-family:var(--font-display);font-size:25px;padding:12px 0;
+  border-bottom:1px solid var(--color-border);
+  opacity:0;transform:translateX(24px);
+  transition:opacity .5s var(--ease-out), transform .5s var(--ease-out), color .25s;
+}
+.mobile-menu.is-open .mobile-menu__list li a{opacity:1;transform:translateX(0);}
+.mobile-menu__list li a:hover{color:var(--color-primary);}
+.mobile-menu__footer{display:flex;flex-direction:column;gap:16px;margin-top:32px;}
+.mobile-menu__phone{text-align:center;font-weight:700;}
+body.menu-open{overflow:hidden;}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{position:relative;padding:96px 0 80px;overflow:hidden;}
+.hero__blob{
+  position:absolute;top:-20%;right:-12%;width:60vw;height:60vw;max-width:900px;max-height:900px;
+  background:radial-gradient(circle at 30% 30%, var(--color-primary-light), transparent 70%);
+  border-radius:50%;
+  animation:heroBlobFloat 22s ease-in-out infinite;
+  z-index:0;
+}
+@keyframes heroBlobFloat{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-3%,4%) scale(1.06);}
+}
+.hero__inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;
+}
+.hero__title{font-size:clamp(38px,5.6vw,64px);margin:14px 0 20px;}
+.hero__title-line{display:block;overflow:hidden;}
+.hero__slogan{font-family:var(--font-display);font-style:italic;font-size:19px;color:var(--color-primary-dark);margin-bottom:16px;}
+.hero__lead{font-size:17px;color:var(--color-ink-soft);max-width:520px;margin-bottom:34px;}
+.hero__actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:44px;}
+.hero__trust-label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-ink-soft);margin-bottom:12px;}
+.hero__trust-tags{display:flex;flex-wrap:wrap;gap:10px;}
+
+.hero__media{position:relative;}
+.hero__media-frame{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  aspect-ratio:4/5;
+}
+.hero__image-placeholder{width:100%;height:100%;}
+.hero__floating-card{
+  position:absolute;left:-40px;bottom:44px;
+  display:flex;align-items:center;gap:14px;
+  background:#fff;padding:16px 20px;border-radius:var(--radius-md);
+  box-shadow:var(--shadow-md);max-width:230px;
+}
+.hero__floating-icon{
+  width:44px;height:44px;flex:none;border-radius:50%;
+  background:var(--color-primary-light);color:var(--color-primary);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero__floating-card strong{display:block;font-size:14px;}
+.hero__floating-card span{font-size:12px;color:var(--color-ink-soft);}
+
+.hero__scroll-cue{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  width:26px;height:42px;border:2px solid var(--color-border);border-radius:var(--radius-pill);
+  display:flex;justify-content:center;padding-top:8px;z-index:1;
+}
+.hero__scroll-cue span{width:4px;height:8px;border-radius:2px;background:var(--color-primary);animation:scrollCue 1.8s ease-in-out infinite;}
+@keyframes scrollCue{0%{opacity:1;transform:translateY(0);}70%{opacity:0;transform:translateY(10px);}100%{opacity:0;transform:translateY(0);}}
+
+/* Placeholder image blocks (swap for real <img> in WordPress/Elementor) */
+[data-placeholder]{
+  width:100%;height:100%;min-height:160px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:
+    repeating-linear-gradient(45deg, rgba(31,125,111,.06) 0 12px, rgba(31,125,111,.1) 12px 24px),
+    var(--color-primary-light);
+  color:var(--color-primary-dark);font-size:13px;font-weight:600;
+  border:1.5px dashed rgba(31,125,111,.35);
+}
+[data-placeholder] small{display:block;font-weight:400;opacity:.75;margin-top:4px;font-size:11px;}
+
+/* ==========================================================================
+   TRUST BAR
+   ========================================================================== */
+.trustbar{padding:36px 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);}
+.trustbar__inner{display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:space-between;}
+.trustbar__label{font-size:13px;font-weight:700;color:var(--color-ink-soft);white-space:nowrap;}
+.trustbar__logos{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+.trustbar__logo{
+  font-family:var(--font-display);font-size:15px;color:var(--color-ink-soft);
+  opacity:.55;filter:grayscale(1);transition:opacity .3s, filter .3s, transform .3s;
+  padding:8px 4px;
+}
+.trustbar__logo:hover{opacity:1;filter:none;transform:translateY(-2px);}
+/* Los logotipos de la barra de confianza son placeholders de texto, no
+   bloques de imagen: se excluyen del estilo genérico de [data-placeholder]. */
+.trustbar__logo[data-placeholder]{min-height:0;background:none;border:none;display:inline-flex;}
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+.about{padding:120px 0;}
+.about__inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center;}
+.about__media{position:relative;}
+.about__image-wrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/5;}
+.about__badge{
+  position:absolute;right:-24px;bottom:-24px;background:var(--color-primary);color:#fff;
+  padding:18px 22px;border-radius:var(--radius-md);box-shadow:var(--shadow-md);max-width:220px;
+}
+.about__badge strong{display:block;font-size:14px;margin-bottom:2px;}
+.about__badge span{font-size:12px;opacity:.85;}
+.about__paragraph{color:var(--color-ink-soft);margin-bottom:18px;max-width:600px;}
+.about__paragraph strong{color:var(--color-ink);}
+
+.stats{display:flex;gap:44px;margin-top:36px;flex-wrap:wrap;}
+.stat__number{display:block;font-family:var(--font-display);font-size:40px;color:var(--color-primary);line-height:1;}
+.stat__label{display:block;font-size:13px;color:var(--color-ink-soft);margin-top:6px;max-width:130px;}
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+.services{padding:120px 0;background:var(--color-bg-alt);}
+.services__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.service-card{
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-md);padding:36px 30px;
+  transition:transform .4s var(--ease-out), box-shadow .4s var(--ease-out), border-color .4s;
+}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);border-color:transparent;}
+.service-card__icon{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--color-primary-light);color:var(--color-primary);
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+  transition:background .4s, color .4s, transform .4s var(--ease-out);
+}
+.service-card:hover .service-card__icon{background:var(--color-primary);color:#fff;transform:rotate(-8deg) scale(1.06);}
+.service-card h3{font-size:20px;margin-bottom:10px;}
+.service-card p{font-size:14.5px;color:var(--color-ink-soft);}
+
+/* ==========================================================================
+   PROCESS (dark contrast band)
+   ========================================================================== */
+.process{padding:120px 0;background:var(--color-primary-dark);position:relative;overflow:hidden;}
+.process::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 85% 20%, rgba(255,255,255,.06), transparent 60%);
+}
+.process__grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.process__step{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-md);padding:32px 26px;
+  transition:transform .4s var(--ease-out), background .4s;
+}
+.process__step:hover{transform:translateY(-6px);background:rgba(255,255,255,.09);}
+.process__number{font-family:var(--font-display);font-size:34px;color:#7fd0bd;display:block;margin-bottom:14px;}
+.process__step h3{color:#fff;font-size:18px;margin-bottom:10px;}
+.process__step p{color:#c9dbd6;font-size:14px;}
+
+/* ==========================================================================
+   SPLIT FEATURE (SD Eibar)
+   ========================================================================== */
+.split-feature{padding:120px 0;}
+.split-feature__inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.split-feature__media{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;}
+.split-feature__content p{color:var(--color-ink-soft);max-width:520px;margin-bottom:22px;}
+.check-list li{position:relative;padding-left:30px;margin-bottom:12px;font-weight:600;font-size:15px;}
+.check-list li::before{
+  content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;
+  background:var(--color-primary-light);
+}
+.check-list li::after{
+  content:"";position:absolute;left:5px;top:7px;width:8px;height:4px;
+  border-left:2px solid var(--color-primary);border-bottom:2px solid var(--color-primary);
+  transform:rotate(-45deg);
+}
+
+/* ==========================================================================
+   TESTIMONIALS
+   ========================================================================== */
+.testimonials{padding:120px 0;background:var(--color-bg-alt);}
+.testimonial-slider{max-width:720px;margin:0 auto;}
+.testimonial-slider__track{display:flex;transition:transform .55s var(--ease-out);}
+.testimonial-card{
+  flex:0 0 100%;background:var(--color-surface);border-radius:var(--radius-lg);
+  padding:48px;text-align:center;box-shadow:var(--shadow-sm);
+}
+.testimonial-card__stars{color:#e0a848;font-size:18px;letter-spacing:3px;margin-bottom:20px;}
+.testimonial-card p{font-family:var(--font-display);font-size:20px;font-style:italic;color:var(--color-ink);margin-bottom:28px;line-height:1.5;}
+.testimonial-card__author{display:flex;align-items:center;justify-content:center;gap:14px;}
+.testimonial-card__avatar{width:48px;height:48px;min-height:0;border-radius:50%;background:var(--color-primary-light);border:1.5px dashed rgba(31,125,111,.4);flex:none;}
+.testimonial-card__author strong{display:block;font-size:14px;}
+.testimonial-card__author span{font-size:12px;color:var(--color-ink-soft);}
+
+.testimonial-slider__controls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:34px;}
+.testimonial-slider__btn{
+  width:44px;height:44px;border-radius:50%;border:1.5px solid var(--color-border);
+  display:flex;align-items:center;justify-content:center;transition:all .3s;
+}
+.testimonial-slider__btn:hover{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.testimonial-slider__dots{display:flex;gap:9px;}
+.testimonial-slider__dots button{width:8px;height:8px;border-radius:50%;background:var(--color-border);transition:all .3s;}
+.testimonial-slider__dots button.is-active{background:var(--color-primary);width:24px;border-radius:4px;}
+
+/* ==========================================================================
+   CTA BANNER
+   ========================================================================== */
+.cta-banner{position:relative;padding:100px 0;background:var(--color-primary);overflow:hidden;text-align:center;color:#fff;}
+.cta-banner__blob{
+  position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);
+  width:80vw;height:80vw;max-width:1000px;max-height:1000px;
+  background:radial-gradient(circle, rgba(255,255,255,.08), transparent 65%);
+  border-radius:50%;
+}
+.cta-banner__inner{position:relative;}
+.cta-banner h2{color:#fff;font-size:clamp(28px,4vw,42px);margin-bottom:16px;}
+.cta-banner p{max-width:520px;margin:0 auto 34px;opacity:.9;}
+.cta-banner__actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact{padding:120px 0;}
+.contact__inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;}
+.contact-list{margin:32px 0;display:flex;flex-direction:column;gap:20px;}
+.contact-list li{display:flex;align-items:center;gap:16px;}
+.contact-list__icon{
+  width:44px;height:44px;flex:none;border-radius:12px;background:var(--color-primary-light);
+  color:var(--color-primary);display:flex;align-items:center;justify-content:center;
+}
+.contact-list strong{display:block;font-size:14px;}
+.contact-list span{font-size:14px;color:var(--color-ink-soft);}
+.contact__map-placeholder{border-radius:var(--radius-md);overflow:hidden;height:220px;}
+
+.contact-form{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:44px;box-shadow:var(--shadow-sm);}
+.contact-form h3{margin-bottom:24px;font-size:22px;}
+.contact-form__row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.contact-form__field{margin-bottom:18px;position:relative;}
+.contact-form__field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;}
+.contact-form__field input,.contact-form__field textarea{
+  width:100%;padding:13px 16px;border:1.5px solid var(--color-border);border-radius:var(--radius-sm);
+  background:var(--color-bg);transition:border-color .25s, box-shadow .25s;resize:vertical;
+}
+.contact-form__field input:focus,.contact-form__field textarea:focus{
+  outline:none;border-color:var(--color-primary);box-shadow:0 0 0 4px var(--color-primary-light);
+}
+.contact-form__error{display:none;color:#c0392b;font-size:12px;margin-top:6px;}
+.contact-form__field.has-error input,.contact-form__field.has-error textarea{border-color:#c0392b;}
+.contact-form__field.has-error .contact-form__error{display:block;}
+.contact-form__checkbox{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--color-ink-soft);margin-bottom:22px;}
+.contact-form__checkbox input{margin-top:3px;}
+.contact-form__checkbox a{color:var(--color-primary);font-weight:600;}
+.contact-form__success{
+  display:none;margin-top:16px;font-size:13px;color:var(--color-primary-dark);
+  background:var(--color-primary-light);padding:12px 16px;border-radius:var(--radius-sm);
+}
+.contact-form__success.is-visible{display:block;}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer{background:var(--color-ink);color:#c5d1cd;padding-top:80px;}
+.site-footer__top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;}
+.site-footer__logo{height:44px;margin-bottom:18px;filter:brightness(0) invert(1);}
+.site-footer__brand p{font-size:14px;color:#93a29d;margin-bottom:20px;max-width:280px;}
+.site-footer__social{display:flex;gap:12px;}
+.site-footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid #2f3f3a;display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.site-footer__social a:hover{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.site-footer__col h4{color:#fff;font-size:15px;font-family:var(--font-body);font-weight:700;margin-bottom:20px;}
+.site-footer__col ul{display:flex;flex-direction:column;gap:12px;}
+.site-footer__col a{font-size:14px;color:#93a29d;transition:color .25s;}
+.site-footer__col a:hover{color:#fff;}
+.site-footer__col li{font-size:14px;color:#93a29d;}
+.site-footer__bottom{
+  border-top:1px solid #2a3733;padding:24px 0;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#7d8d88;
+}
+.site-footer__legal{display:flex;gap:22px;}
+.site-footer__legal a{color:#7d8d88;transition:color .25s;}
+.site-footer__legal a:hover{color:#fff;}
+
+/* ==========================================================================
+   BACK TO TOP
+   ========================================================================== */
+.back-to-top{
+  position:fixed;right:26px;bottom:26px;width:48px;height:48px;border-radius:50%;
+  background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:all .35s var(--ease-out);z-index:90;
+}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
+.back-to-top:hover{background:var(--color-primary-dark);transform:translateY(-4px);}
+
+/* ==========================================================================
+   SCROLL-REVEAL BASE STATES (animated via GSAP in main.js)
+   ========================================================================== */
+.js-reveal,.js-reveal-stagger{opacity:0;}
+
+/* ==========================================================================
+   RESPONSIVE — TABLET
+   ========================================================================== */
+@media (max-width: 1024px){
+  .hero__inner{grid-template-columns:1fr;gap:48px;}
+  .hero__media{max-width:480px;margin:0 auto;}
+  .hero{padding-top:56px;}
+  .about__inner{grid-template-columns:1fr;gap:48px;}
+  .about__media{max-width:420px;margin:0 auto;}
+  .services__grid{grid-template-columns:repeat(2,1fr);}
+  .process__grid{grid-template-columns:repeat(2,1fr);}
+  .split-feature__inner{grid-template-columns:1fr;gap:40px;}
+  .split-feature__media{order:-1;max-width:520px;margin:0 auto;}
+  .contact__inner{grid-template-columns:1fr;gap:48px;}
+  .site-footer__top{grid-template-columns:1fr 1fr;}
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px){
+  .container{padding:0 20px;}
+  .topbar__info{gap:16px;}
+  .topbar__link--static{display:none;}
+  .main-nav{display:none;}
+  .site-header__phone{display:none;}
+  .hamburger{display:flex;}
+  :root{--header-h:76px;--header-h-scrolled:64px;}
+
+  .hero{padding-top:36px;padding-bottom:56px;}
+  .hero__title{font-size:clamp(32px,9vw,42px);}
+  .hero__lead{font-size:15.5px;}
+  .hero__actions{flex-direction:column;align-items:stretch;}
+  .hero__actions .btn{width:100%;}
+  .hero__floating-card{left:12px;bottom:16px;padding:12px 16px;}
+  .hero__trust{margin-top:8px;}
+
+  .trustbar__inner{flex-direction:column;align-items:flex-start;gap:16px;}
+
+  .about{padding:72px 0;}
+  .about__badge{right:0;bottom:-18px;}
+  .stats{gap:28px;}
+  .stat__number{font-size:32px;}
+
+  .services{padding:72px 0;}
+  .services__grid{grid-template-columns:1fr;}
+
+  .process{padding:72px 0;}
+  .process__grid{grid-template-columns:1fr;}
+
+  .split-feature{padding:72px 0;}
+
+  .testimonials{padding:72px 0;}
+  .testimonial-card{padding:32px 24px;}
+  .testimonial-card p{font-size:17px;}
+
+  .cta-banner{padding:64px 0;}
+
+  .contact{padding:72px 0;}
+  .contact-form{padding:28px;}
+  .contact-form__row{grid-template-columns:1fr;}
+
+  .site-footer__top{grid-template-columns:1fr;gap:36px;}
+  .site-footer__bottom{flex-direction:column;text-align:center;}
+
+  .back-to-top{right:16px;bottom:16px;width:44px;height:44px;}
+}
+
+@media (max-width: 400px){
+  .hero__floating-card{position:static;margin-top:20px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- =============== TOP INFO BAR =============== -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__info">
+      <a href="tel:+34000000000" class="topbar__link">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        [MI TELÉFONO]
+      </a>
+      <a href="mailto:info@tudominio.com" class="topbar__link">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        [MI EMAIL]
+      </a>
+      <span class="topbar__link topbar__link--static">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        [MI DIRECCIÓN]
+      </span>
+    </div>
+    <div class="topbar__social" aria-label="Redes sociales">
+      <a href="#" aria-label="Instagram" class="topbar__social-link">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook" class="topbar__social-link">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" class="topbar__social-link">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A5.98 5.98 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- =============== HEADER =============== -->
+<header class="site-header" id="siteHeader">
+  <div class="container site-header__inner">
+    <a href="#inicio" class="site-header__logo" aria-label="Fisioterapia Avanzada Sara Vivanco Hurtado — Inicio">
+      <img src="assets/images/LOGO.png" alt="Fisioterapia Avanzada Sara Vivanco Hurtado" class="site-header__logo-img">
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <ul class="main-nav__list">
+        <li><a href="#inicio" class="main-nav__link is-active">Inicio</a></li>
+        <li><a href="#sobre-mi" class="main-nav__link">Sobre mí</a></li>
+        <li><a href="#servicios" class="main-nav__link">Servicios</a></li>
+        <li><a href="#enfoque" class="main-nav__link">Enfoque</a></li>
+        <li><a href="#testimonios" class="main-nav__link">Testimonios</a></li>
+        <li><a href="#contacto" class="main-nav__link">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="tel:+34000000000" class="site-header__phone">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>[MI TELÉFONO]</span>
+      </a>
+      <a href="#contacto" class="btn btn--primary btn--sm">Reservar cita</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- =============== MOBILE OFF-CANVAS MENU =============== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__backdrop" id="mobileMenuBackdrop"></div>
+  <div class="mobile-menu__panel">
+    <div class="mobile-menu__top">
+      <img src="assets/images/LOGO.png" alt="Fisioterapia Avanzada Sara Vivanco Hurtado" class="mobile-menu__logo">
+      <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#enfoque">Enfoque</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="mobile-menu__footer">
+      <a href="#contacto" class="btn btn--primary btn--block">Reservar cita</a>
+      <a href="tel:+34000000000" class="mobile-menu__phone">[MI TELÉFONO]</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- =============== HERO =============== -->
+<section class="hero" id="inicio">
+  <div class="hero__blob" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow js-hero-anim" data-anim="eyebrow">Fisioterapia deportiva y musculoesquelética</span>
+      <h1 class="hero__title">
+        <span class="hero__title-line js-hero-line">Recupera el movimiento,</span>
+        <span class="hero__title-line js-hero-line">recupera tu vida.</span>
+      </h1>
+      <p class="hero__slogan js-hero-anim" data-anim="slogan">[ESLOGAN — completa aquí tu frase de marca]</p>
+      <p class="hero__lead js-hero-anim" data-anim="lead">
+        Fisioterapeuta especializado en el tratamiento de lesiones musculoesqueléticas y deportivas,
+        con una marcada orientación hacia la recuperación funcional y la readaptación al esfuerzo.
+        Colaboro además con la <strong>SD Eibar</strong>, donde participo en la prevención, valoración,
+        tratamiento y readaptación de lesiones en deportistas de alto nivel.
+      </p>
+      <div class="hero__actions js-hero-anim" data-anim="actions">
+        <a href="#contacto" class="btn btn--primary btn--lg">
+          Reservar cita
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#servicios" class="btn btn--ghost btn--lg">Ver servicios</a>
+      </div>
+
+      <div class="hero__trust js-hero-anim" data-anim="trust">
+        <span class="hero__trust-label">Formación acreditada en</span>
+        <div class="hero__trust-tags">
+          <span class="tag">Ecografía funcional</span>
+          <span class="tag">Fisioterapia invasiva</span>
+          <span class="tag">Readaptación deportiva</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <!-- Recomendado: retrato profesional de la fisio (aún pendiente de recibir). Sustituye este div por:
+           <img src="assets/images/hero.jpg" alt="Sara Vivanco Hurtado, fisioterapeuta" class="hero__image-placeholder" loading="eager" style="object-fit:cover"> -->
+      <div class="hero__media-frame js-hero-media">
+        <div class="hero__image-placeholder" data-placeholder="HERO_IMAGE">
+          <span>HERO_IMAGE<br><small>1000×1200px · foto profesional (retrato)</small></span>
+        </div>
+      </div>
+      <div class="hero__floating-card js-hero-anim" data-anim="card">
+        <div class="hero__floating-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+        </div>
+        <div>
+          <strong>SD Eibar</strong>
+          <span>Fisioterapeuta de club</span>
+        </div>
+      </div>
+      <div class="hero__dots" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <a href="#sobre-mi" class="hero__scroll-cue" aria-label="Bajar a la siguiente sección">
+    <span></span>
+  </a>
+</section>
+
+<!-- =============== TRUST / COLABORACIONES =============== -->
+<section class="trustbar">
+  <div class="container trustbar__inner">
+    <p class="trustbar__label">Colaboro y me formo con</p>
+    <div class="trustbar__logos">
+      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_SD_EIBAR">SD Eibar</div>
+      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_01">Ecografía Funcional</div>
+      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_02">Readaptación Deportiva</div>
+      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_03">Punción Seca</div>
+      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_04">Blood Flow Restriction</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SOBRE MÍ =============== -->
+<section class="about" id="sobre-mi">
+  <div class="container about__inner">
+    <div class="about__media">
+      <!-- Aquí encaja tu foto de terapia manual (manos aplicando masaje sobre la espalda).
+           Sustituye este div por:
+           <img src="assets/images/terapia-manual.jpg" alt="Sesión de terapia manual" class="about__image-placeholder" loading="lazy" style="object-fit:cover"> -->
+      <div class="about__image-wrap js-parallax">
+        <div class="about__image-placeholder" data-placeholder="ABOUT_IMAGE">
+          <span>ABOUT_IMAGE<br><small>800×1000px · foto de terapia manual</small></span>
+        </div>
+      </div>
+      <div class="about__badge">
+        <strong>Formación continua</strong>
+        <span>Posgrado · Máster · Cursos de especialización</span>
+      </div>
+    </div>
+
+    <div class="about__content">
+      <span class="eyebrow js-reveal">Sobre mí</span>
+      <h2 class="section-title js-reveal">Un enfoque activo,<br>individualizado y basado en la evidencia</h2>
+
+      <p class="about__paragraph js-reveal">
+        A lo largo de mi trayectoria he apostado por una formación continua, destacando mi
+        <strong>Posgrado en Ecografía Funcional y Fisioterapia Invasiva</strong>, el
+        <strong>Máster en Prevención y Readaptación de Lesiones Deportivas</strong>, así como diversas
+        formaciones específicas en punción seca, electropunción y <strong>Blood Flow Restriction (BFR)</strong>.
+      </p>
+      <p class="about__paragraph js-reveal">
+        Mi forma de trabajar se basa en una valoración individualizada de cada paciente, buscando siempre
+        comprender el origen del problema para ofrecer un tratamiento adaptado a sus necesidades. Para ello
+        combino herramientas como el ejercicio terapéutico, la terapia manual, la ecografía funcional y
+        diferentes técnicas invasivas, con el objetivo de aliviar el dolor, mejorar la función y reducir el
+        riesgo de recaídas.
+      </p>
+      <p class="about__paragraph js-reveal">
+        Entiendo la fisioterapia como un proceso activo y colaborativo, en el que el paciente desempeña un
+        papel fundamental en su recuperación. Mi objetivo no es únicamente tratar la lesión, sino
+        proporcionar las herramientas necesarias para mantener los resultados a largo plazo.
+      </p>
+
+      <div class="stats js-reveal">
+        <div class="stat" data-count-target="0">
+          <span class="stat__number" data-count="0">0</span>
+          <span class="stat__label">[Años de experiencia]</span>
+        </div>
+        <div class="stat" data-count-target="0">
+          <span class="stat__number" data-count="0">0</span>
+          <span class="stat__label">[Pacientes tratados]</span>
+        </div>
+        <div class="stat" data-count-target="0">
+          <span class="stat__number" data-count="0">0</span>
+          <span class="stat__label">[Deportistas asistidos]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SERVICIOS =============== -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow js-reveal">Servicios</span>
+      <h2 class="section-title js-reveal">Tratamientos pensados para tu recuperación</h2>
+      <p class="section-lead js-reveal">
+        Desde lesiones deportivas de alto rendimiento hasta dolor de espalda del día a día:
+        cada plan se adapta a tu diagnóstico, tu actividad y tus objetivos.
+      </p>
+    </div>
+
+    <div class="services__grid">
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <h3>Lesiones deportivas</h3>
+        <p>Valoración, tratamiento y readaptación de lesiones en deportistas, desde la fase aguda hasta la vuelta a la competición.</p>
+      </article>
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+        </div>
+        <h3>Fisioterapia musculoesquelética</h3>
+        <p>Dolor de espalda, lesiones articulares y tendinopatías, abordados desde la causa y no solo el síntoma.</p>
+      </article>
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 1 1 8 8"/><path d="M4 12v6h6"/></svg>
+        </div>
+        <h3>Readaptación al esfuerzo</h3>
+        <p>Programas progresivos para volver a entrenar y competir con seguridad, reduciendo el riesgo de recaída.</p>
+      </article>
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <h3>Ecografía funcional</h3>
+        <p>Diagnóstico por imagen en consulta para valorar tejidos y guiar técnicas invasivas con precisión.</p>
+      </article>
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        </div>
+        <h3>Fisioterapia invasiva</h3>
+        <p>Punción seca y electropunción para el tratamiento del dolor y la disfunción muscular.</p>
+      </article>
+
+      <article class="service-card js-reveal-stagger">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h3>Blood Flow Restriction (BFR)</h3>
+        <p>Entrenamiento con restricción de flujo sanguíneo para ganar fuerza con cargas bajas, ideal en fases iniciales.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== ENFOQUE / PROCESO =============== -->
+<section class="process" id="enfoque">
+  <div class="container">
+    <div class="section-head section-head--light">
+      <span class="eyebrow eyebrow--light js-reveal">Mi enfoque</span>
+      <h2 class="section-title section-title--light js-reveal">Cómo trabajo contigo</h2>
+      <p class="section-lead section-lead--light js-reveal">
+        Un proceso activo y colaborativo en el que entiendes qué te pasa, por qué te pasa
+        y qué vas a hacer para resolverlo.
+      </p>
+    </div>
+
+    <div class="process__grid">
+      <div class="process__step js-reveal-stagger">
+        <span class="process__number">01</span>
+        <h3>Valoración individualizada</h3>
+        <p>Escucho tu historia, exploro y busco el origen real del problema, no solo el síntoma.</p>
+      </div>
+      <div class="process__step js-reveal-stagger">
+        <span class="process__number">02</span>
+        <h3>Diagnóstico funcional</h3>
+        <p>Apoyo la valoración clínica con ecografía funcional cuando es necesario, para mayor precisión.</p>
+      </div>
+      <div class="process__step js-reveal-stagger">
+        <span class="process__number">03</span>
+        <h3>Tratamiento activo</h3>
+        <p>Combino terapia manual, ejercicio terapéutico y técnicas invasivas según lo que necesites.</p>
+      </div>
+      <div class="process__step js-reveal-stagger">
+        <span class="process__number">04</span>
+        <h3>Seguimiento y prevención</h3>
+        <p>Te doy las herramientas para mantener los resultados y reducir el riesgo de recaída a largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== BANDA SD EIBAR =============== -->
+<section class="split-feature">
+  <div class="container split-feature__inner">
+    <!-- Aquí encaja tu ilustración/render 3D de la figura anatómica en carrera (readaptación al esfuerzo).
+         Sustituye este div por:
+         <img src="assets/images/readaptacion-esfuerzo.png" alt="Readaptación al esfuerzo y vuelta a la actividad deportiva" class="split-feature__image-placeholder" loading="lazy" style="object-fit:contain"> -->
+    <div class="split-feature__media js-parallax">
+      <div class="split-feature__image-placeholder" data-placeholder="SPORT_IMAGE">
+        <span>SPORT_IMAGE<br><small>Fisioterapia deportiva de alto rendimiento</small></span>
+      </div>
+    </div>
+    <div class="split-feature__content">
+      <span class="eyebrow js-reveal">Ámbito deportivo</span>
+      <h2 class="section-title js-reveal">Fisioterapeuta en la SD Eibar</h2>
+      <p class="js-reveal">
+        Compagino mi actividad clínica con mi labor en la SD Eibar, donde participo en la prevención,
+        valoración, tratamiento y readaptación de lesiones en deportistas de alto nivel. Esta experiencia
+        en el ámbito de la alta competición se traslada también a cada paciente que atiendo en consulta,
+        sea deportista o no.
+      </p>
+      <ul class="check-list js-reveal">
+        <li>Prevención de lesiones en deportistas</li>
+        <li>Valoración y tratamiento en competición</li>
+        <li>Readaptación al esfuerzo y vuelta al juego</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============== TESTIMONIOS =============== -->
+<section class="testimonials" id="testimonios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow js-reveal">Testimonios</span>
+      <h2 class="section-title js-reveal">Lo que dicen mis pacientes</h2>
+    </div>
+
+    <div class="testimonial-slider js-reveal" id="testimonialSlider">
+      <div class="testimonial-slider__track" id="testimonialTrack">
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>"[Testimonio de paciente — sustituir por una reseña real]"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" data-placeholder="TESTIMONIAL_IMAGE_01"></div>
+            <div>
+              <strong>[Nombre del paciente]</strong>
+              <span>[Motivo de consulta]</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>"[Testimonio de paciente — sustituir por una reseña real]"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" data-placeholder="TESTIMONIAL_IMAGE_02"></div>
+            <div>
+              <strong>[Nombre del paciente]</strong>
+              <span>[Motivo de consulta]</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p>"[Testimonio de paciente — sustituir por una reseña real]"</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" data-placeholder="TESTIMONIAL_IMAGE_03"></div>
+            <div>
+              <strong>[Nombre del paciente]</strong>
+              <span>[Motivo de consulta]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slider__controls">
+        <button class="testimonial-slider__btn" id="testimonialPrev" aria-label="Testimonio anterior">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="testimonial-slider__dots" id="testimonialDots"></div>
+        <button class="testimonial-slider__btn" id="testimonialNext" aria-label="Siguiente testimonio">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CTA BANNER =============== -->
+<section class="cta-banner">
+  <div class="cta-banner__blob" aria-hidden="true"></div>
+  <div class="container cta-banner__inner js-reveal">
+    <h2>¿Listo para empezar tu recuperación?</h2>
+    <p>Cuéntame qué te pasa y diseñamos juntos un plan de tratamiento adaptado a ti.</p>
+    <div class="cta-banner__actions">
+      <a href="#contacto" class="btn btn--light btn--lg">Reservar cita</a>
+      <a href="tel:+34000000000" class="btn btn--outline-light btn--lg">Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACTO =============== -->
+<section class="contact" id="contacto">
+  <div class="container contact__inner">
+    <div class="contact__info js-reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2 class="section-title">Hablemos de tu recuperación</h2>
+      <p class="section-lead">
+        Escríbeme, llámame o pasa por la consulta. Resolveré tus dudas y, si es necesario,
+        concretamos tu primera cita.
+      </p>
+
+      <ul class="contact-list">
+        <li>
+          <span class="contact-list__icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <div><strong>Teléfono</strong><span>[MI TELÉFONO]</span></div>
+        </li>
+        <li>
+          <span class="contact-list__icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6 12 13 2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          </span>
+          <div><strong>Email</strong><span>[MI EMAIL]</span></div>
+        </li>
+        <li>
+          <span class="contact-list__icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div><strong>Dirección</strong><span>[MI DIRECCIÓN]</span></div>
+        </li>
+        <li>
+          <span class="contact-list__icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </span>
+          <div><strong>Horario</strong><span>[MI HORARIO]</span></div>
+        </li>
+      </ul>
+
+      <div class="contact__map-placeholder" data-placeholder="MAP_EMBED">
+        <span>MAP_EMBED<br><small>Sustituir por iframe de Google Maps</small></span>
+      </div>
+    </div>
+
+    <form class="contact-form js-reveal" id="contactForm" novalidate>
+      <h3>Escríbeme</h3>
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" name="name" required>
+          <span class="contact-form__error">Por favor, indica tu nombre.</span>
+        </div>
+        <div class="contact-form__field">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+      </div>
+      <div class="contact-form__field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <span class="contact-form__error">Indica un email válido.</span>
+      </div>
+      <div class="contact-form__field">
+        <label for="message">Cuéntame qué te pasa</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span class="contact-form__error">Este campo es obligatorio.</span>
+      </div>
+      <label class="contact-form__checkbox">
+        <input type="checkbox" id="privacy" name="privacy" required>
+        <span>He leído y acepto la <a href="#">política de privacidad</a>.</span>
+      </label>
+      <button type="submit" class="btn btn--primary btn--lg btn--block">Enviar mensaje</button>
+      <p class="contact-form__success" id="formSuccess" role="status">
+        ¡Gracias! Tu mensaje se ha preparado correctamente. En un entorno WordPress este formulario
+        debe conectarse a Elementor Pro Forms o a tu proveedor de email (ver README).
+      </p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- =============== FOOTER =============== -->
+<footer class="site-footer">
+  <div class="container site-footer__top">
+    <div class="site-footer__brand">
+      <img src="assets/images/LOGO_LIGHT.png" alt="Fisioterapia Avanzada Sara Vivanco Hurtado" class="site-footer__logo">
+      <p>Fisioterapia especializada en lesiones musculoesqueléticas y deportivas, readaptación al
+      esfuerzo y recuperación funcional.</p>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A5.98 5.98 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#enfoque">Enfoque</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Lesiones deportivas</a></li>
+        <li><a href="#servicios">Fisioterapia musculoesquelética</a></li>
+        <li><a href="#servicios">Ecografía funcional</a></li>
+        <li><a href="#servicios">Fisioterapia invasiva</a></li>
+        <li><a href="#servicios">Blood Flow Restriction</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>[MI TELÉFONO]</li>
+        <li>[MI EMAIL]</li>
+        <li>[MI DIRECCIÓN]</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; <span id="year"></span> Fisioterapia Avanzada Sara Vivanco Hurtado. Todos los derechos reservados.</p>
+    <div class="site-footer__legal">
+      <a href="#">Aviso legal</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Política de cookies</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ==========================================================================
+   Fisioterapia Avanzada Sara Vivanco Hurtado — main.js
+   GSAP + ScrollTrigger: entradas del hero, revelado en scroll, contadores,
+   header sticky con hide/show, menú móvil off-canvas, slider de testimonios,
+   formulario de contacto con validación, scroll suave y "volver arriba".
+   Sin dependencias además de GSAP/ScrollTrigger (cargadas por CDN en index.html).
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setYear();
+    initHeaderScroll();
+    initMobileMenu();
+    initHeroAnimation();
+    initScrollReveals();
+    initCounters();
+    initTestimonialSlider();
+    initContactForm();
+    initSmoothAnchors();
+    initBackToTop();
+  });
+
+  /* ---------------------------------------------------------------------- */
+  function setYear() {
+    var el = document.getElementById('year');
+    if (el) el.textContent = new Date().getFullYear();
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * HEADER: sombra + reduce altura tras 40px; se oculta al bajar y
+   * reaparece al subir (a partir de 220px de scroll), como en temas
+   * premium de una sola página.
+   * ---------------------------------------------------------------------- */
+  function initHeaderScroll() {
+    var header = document.getElementById('siteHeader');
+    if (!header) return;
+    var lastY = window.scrollY;
+    var ticking = false;
+
+    function onScroll() {
+      var y = window.scrollY;
+      header.classList.toggle('is-scrolled', y > 40);
+
+      if (y > 220 && y > lastY) {
+        header.classList.add('is-hidden');
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    onScroll();
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * MENÚ MÓVIL off-canvas
+   * ---------------------------------------------------------------------- */
+  function initMobileMenu() {
+    var btn = document.getElementById('hamburgerBtn');
+    var menu = document.getElementById('mobileMenu');
+    var closeBtn = document.getElementById('mobileMenuClose');
+    var backdrop = document.getElementById('mobileMenuBackdrop');
+    if (!btn || !menu) return;
+
+    function open() {
+      menu.classList.add('is-open');
+      menu.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+    }
+    function close() {
+      menu.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+
+    btn.addEventListener('click', open);
+    closeBtn && closeBtn.addEventListener('click', close);
+    backdrop && backdrop.addEventListener('click', close);
+
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * HERO: timeline de entrada.
+   * eyebrow -> líneas del título (clip + translateY, stagger) -> slogan ->
+   * lead -> botones -> imagen (scale+fade) -> tarjeta flotante -> trust row.
+   * ---------------------------------------------------------------------- */
+  function initHeroAnimation() {
+    if (!window.gsap) return;
+
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.from('.js-hero-anim[data-anim="eyebrow"]', {
+      y: 18, opacity: 0, duration: 0.6
+    })
+    .from('.js-hero-line', {
+      yPercent: 110, opacity: 0, duration: 0.85, stagger: 0.1
+    }, '-=0.35')
+    .from('.js-hero-anim[data-anim="slogan"]', {
+      y: 16, opacity: 0, duration: 0.6
+    }, '-=0.45')
+    .from('.js-hero-anim[data-anim="lead"]', {
+      y: 16, opacity: 0, duration: 0.6
+    }, '-=0.4')
+    .from('.js-hero-anim[data-anim="actions"] .btn', {
+      y: 16, opacity: 0, duration: 0.55, stagger: 0.1
+    }, '-=0.35')
+    .from('.js-hero-anim[data-anim="trust"]', {
+      y: 14, opacity: 0, duration: 0.5
+    }, '-=0.3')
+    .from('.js-hero-media', {
+      scale: 1.08, opacity: 0, duration: 1.1, ease: 'power2.out'
+    }, 0.25)
+    .from('.js-hero-anim[data-anim="card"]', {
+      x: 30, opacity: 0, duration: 0.7
+    }, '-=0.5');
+
+    /* Parallax sutil de la imagen del hero y de about al hacer scroll */
+    if (window.ScrollTrigger && !reduceMotion) {
+      gsap.utils.toArray('.js-parallax').forEach(function (el) {
+        gsap.to(el, {
+          yPercent: -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.6
+          }
+        });
+      });
+    }
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * SCROLL REVEALS: elementos .js-reveal entran individualmente;
+   * .js-reveal-stagger entra en grupo (tarjetas de servicios / proceso).
+   * ---------------------------------------------------------------------- */
+  function initScrollReveals() {
+    if (!window.gsap || !window.ScrollTrigger) {
+      document.querySelectorAll('.js-reveal,.js-reveal-stagger').forEach(function (el) {
+        el.style.opacity = 1;
+      });
+      return;
+    }
+
+    gsap.utils.toArray('.js-reveal').forEach(function (el) {
+      gsap.fromTo(el,
+        { y: 32, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        }
+      );
+    });
+
+    var groups = new Map();
+    gsap.utils.toArray('.js-reveal-stagger').forEach(function (el) {
+      var parent = el.parentElement;
+      if (!groups.has(parent)) groups.set(parent, []);
+      groups.get(parent).push(el);
+    });
+    groups.forEach(function (items) {
+      gsap.fromTo(items,
+        { y: 36, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.12,
+          scrollTrigger: { trigger: items[0], start: 'top 88%' }
+        }
+      );
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * CONTADORES ANIMADOS (stats de la sección "Sobre mí")
+   * Lee data-count de cada .stat__number. Con 0 no anima (placeholder);
+   * al rellenar el valor real, cuenta desde 0 hasta el target al entrar
+   * en el viewport.
+   * ---------------------------------------------------------------------- */
+  function initCounters() {
+    var counters = document.querySelectorAll('.stat__number');
+    if (!counters.length) return;
+
+    counters.forEach(function (counter) {
+      var target = parseFloat(counter.getAttribute('data-count')) || 0;
+      if (target <= 0) return;
+
+      var played = false;
+      var run = function () {
+        if (played) return;
+        played = true;
+        if (window.gsap) {
+          var obj = { val: 0 };
+          gsap.to(obj, {
+            val: target, duration: 1.6, ease: 'power2.out',
+            onUpdate: function () { counter.textContent = Math.round(obj.val); }
+          });
+        } else {
+          counter.textContent = target;
+        }
+      };
+
+      if (window.ScrollTrigger) {
+        ScrollTrigger.create({ trigger: counter, start: 'top 90%', onEnter: run });
+      } else {
+        run();
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * SLIDER DE TESTIMONIOS: carrusel simple por transform translateX,
+   * puntos de navegación generados dinámicamente, autoplay con pausa
+   * al pasar el ratón por encima.
+   * ---------------------------------------------------------------------- */
+  function initTestimonialSlider() {
+    var track = document.getElementById('testimonialTrack');
+    var dotsWrap = document.getElementById('testimonialDots');
+    var prevBtn = document.getElementById('testimonialPrev');
+    var nextBtn = document.getElementById('testimonialNext');
+    var slider = document.getElementById('testimonialSlider');
+    if (!track || !dotsWrap) return;
+
+    var slides = Array.prototype.slice.call(track.children);
+    var index = 0;
+    var autoplayId = null;
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Ir al testimonio ' + (i + 1));
+      if (i === 0) dot.classList.add('is-active');
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function (d, di) { d.classList.toggle('is-active', di === index); });
+    }
+
+    prevBtn && prevBtn.addEventListener('click', function () { goTo(index - 1); resetAutoplay(); });
+    nextBtn && nextBtn.addEventListener('click', function () { goTo(index + 1); resetAutoplay(); });
+
+    function startAutoplay() {
+      autoplayId = setInterval(function () { goTo(index + 1); }, 6000);
+    }
+    function resetAutoplay() {
+      clearInterval(autoplayId);
+      startAutoplay();
+    }
+    if (slider) {
+      slider.addEventListener('mouseenter', function () { clearInterval(autoplayId); });
+      slider.addEventListener('mouseleave', startAutoplay);
+    }
+    if (slides.length > 1) startAutoplay();
+
+    /* Swipe táctil */
+    var startX = null;
+    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
+      startX = null;
+      resetAutoplay();
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * FORMULARIO DE CONTACTO: validación básica en cliente. Sin backend
+   * propio: muestra confirmación visual. En WordPress, sustituir por
+   * Elementor Pro Forms o conectar a un endpoint real (ver README).
+   * ---------------------------------------------------------------------- */
+  function initContactForm() {
+    var form = document.getElementById('contactForm');
+    var success = document.getElementById('formSuccess');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      form.querySelectorAll('[required]').forEach(function (field) {
+        var wrapper = field.closest('.contact-form__field') || field.parentElement;
+        var isEmail = field.type === 'email';
+        var value = field.type === 'checkbox' ? field.checked : field.value.trim();
+        var ok = field.type === 'checkbox' ? value === true : value.length > 0;
+        if (ok && isEmail) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+        if (wrapper && wrapper.classList.contains('contact-form__field')) {
+          wrapper.classList.toggle('has-error', !ok);
+        }
+        if (!ok) valid = false;
+      });
+
+      if (!valid) {
+        success.classList.remove('is-visible');
+        return;
+      }
+
+      success.classList.add('is-visible');
+      form.reset();
+      setTimeout(function () { success.classList.remove('is-visible'); }, 7000);
+    });
+
+    form.querySelectorAll('input,textarea').forEach(function (field) {
+      field.addEventListener('input', function () {
+        var wrapper = field.closest('.contact-form__field');
+        if (wrapper) wrapper.classList.remove('has-error');
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------- */
+  function initSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var id = link.getAttribute('href');
+        if (id.length < 2) return;
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        var headerH = document.getElementById('siteHeader').offsetHeight + 40;
+        var top = target.getBoundingClientRect().top + window.scrollY - headerH;
+        window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+
+        document.querySelectorAll('.main-nav__link').forEach(function (a) { a.classList.remove('is-active'); });
+        if (link.classList.contains('main-nav__link')) link.classList.add('is-active');
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------- */
+  function initBackToTop() {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function () {
+      btn.classList.toggle('is-visible', window.scrollY > 600);
+    }, { passive: true });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>

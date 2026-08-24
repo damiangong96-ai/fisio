@@ -3,6 +3,58 @@
 Reconstrucción del sistema visual/interactivo de una demo de clínica de fisioterapia
 de tipo VamTam, adaptada al contenido real del negocio.
 
+## Archivo único para WordPress: `wordpress-embed.html`
+
+Además de la versión modular (`index.html` + `css/style.css` + `js/main.js`),
+el repositorio incluye **`wordpress-embed.html`**: el mismo sitio con el CSS y
+el JS ya incrustados dentro del propio archivo (solo quedan como recursos
+externos Google Fonts y GSAP/ScrollTrigger por CDN, que WordPress sí puede
+cargar sin problema — a diferencia de este entorno de desarrollo, que tiene
+bloqueada la salida a internet). Es la forma más rápida de subirlo:
+
+1. Abre `wordpress-embed.html` y copia **todo el contenido del archivo**.
+2. En WordPress, crea una página nueva → edítala con Elementor → añade un
+   widget **HTML** que ocupe toda la página (o usa la plantilla "Elementor
+   Canvas / En blanco" para que el tema no añada su propio header/footer) →
+   pega el contenido completo.
+   - Alternativa sin Elementor: usa el bloque nativo **"HTML personalizado"**
+     del editor de bloques de WordPress y pega el mismo contenido.
+3. Publica la página.
+
+Si prefieres mantener CSS/JS en archivos separados (mejor para cachear y
+para reutilizar los estilos en más páginas), usa la Opción A/B con
+`index.html` que se explica más abajo, en vez de `wordpress-embed.html`.
+
+## Sobre las fotos que me has pasado en el chat
+
+Me has mostrado dos imágenes (la figura anatómica 3D en carrera, y la foto
+de manos aplicando terapia manual sobre una espalda) y el logo/foto de la
+primera petición. **Puedo verlas en la conversación, pero esta sesión de
+Claude Code no tiene ningún buzón de subida de archivos conectado** — no
+hay forma técnica de que yo guarde esos píxeles como un archivo real en el
+proyecto. Por eso los huecos de imagen siguen siendo placeholders, aunque
+ya están **anotados en el código** (justo encima de cada placeholder en
+`wordpress-embed.html` e `index.html`) con el `<img>` exacto a pegar y a
+qué imagen tuya corresponde cada uno:
+
+| Placeholder | Corresponde a | Nota |
+|---|---|---|
+| `ABOUT_IMAGE` (sección "Sobre mí") | Foto de manos haciendo terapia manual sobre la espalda | Encaja perfecto: transmite trato cercano y técnica manual real. |
+| `SPORT_IMAGE` (banda "SD Eibar") | Figura 3D anatómica en carrera | Al tener fondo transparente, considera cambiar `object-fit:cover` por `object-fit:contain` (ya indicado en el comentario del código) para que no se recorte la silueta. |
+| `HERO_IMAGE` | — (pendiente) | Aún no tengo una foto de retrato profesional tuya/de Sara; sigue como placeholder hasta que la subas. |
+
+**Para que yo mismo pueda dejarlas ya colocadas en el HTML**, la vía más
+directa es que subas los dos archivos de imagen (los `.png`/`.jpg`
+originales, no una captura del chat) a la carpeta `assets/images/` de este
+mismo repositorio de GitHub — puedes hacerlo desde la web de GitHub con
+"Add file → Upload files" — y me dices los nombres que les has puesto; en
+el siguiente turno los conecto a los placeholders correspondientes.
+
+Si prefieres no tocar GitHub, la otra vía (más simple si ya vas a currar en
+WordPress de todas formas) es subirlas directamente a la **Biblioteca de
+medios de WordPress** y sustituir tú mismo cada `<div data-placeholder="...">`
+por el `<img>` que aparece comentado justo encima en el código.
+
 ## ⚠️ Nota importante sobre fidelidad con la referencia
 
 El entorno en el que se generó este proyecto **no tiene acceso de red saliente a
