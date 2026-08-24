@@ -118,7 +118,7 @@ categoría de tema.
 | Aspecto | Lo que se ha hecho |
 |---|---|
 | Colores | Extraídos del logo real proporcionado (verde azulado `#1f7d6f`), no de la demo. |
-| Tipografía | `Fraunces` (display serif editorial) + `Plus Jakarta Sans` (texto), como sustituto tipográfico más cercano al estilo "clínica premium". Si tienes las fuentes originales de Flexora (`.woff2`), colócalas en `assets/fonts/` y actualiza el `@font-face` en `css/style.css` — instrucciones abajo. |
+| Tipografía | `Instrument Serif` (títulos/acento cursiva) + `Inter` (texto), ver nota al principio de este README. Si tienes las fuentes originales de Flexora (`.woff2`), colócalas en `assets/fonts/` y actualiza el `@font-face` en `css/style.css` — instrucciones abajo. |
 | Copys y estructura exacta de secciones | Reconstruidos con contenido real del negocio, no copiados de Flexora. |
 | Timings de animación | Valores razonables de la industria (power2/power3 easing, 0.5–1.1s) en vez de los exactos de la demo, que no se pudieron medir. |
 
@@ -151,8 +151,13 @@ sombra y animación de scroll):
 | `ABOUT_IMAGE` | Sección "Sobre mí" | 800×1000px (4:5) |
 | `SPORT_IMAGE` | Banda "SD Eibar" | 4:3, foto de contexto deportivo/clínico |
 | `TESTIMONIAL_IMAGE_01/02/03` | Slider de testimonios | Foto de perfil circular, o elimínala y deja el círculo de color |
-| `MAP_EMBED` | Sección Contacto | Sustituir el `div` por un `<iframe>` de Google Maps |
-| `LOGO_SD_EIBAR`, `LOGO_CERT_0X` | Barra de confianza | Logos reales en PNG/SVG con fondo transparente |
+| `LOGO_SD_EIBAR`, `LOGO_CERT_0X` | Barra de confianza | Logos reales en PNG/SVG con fondo transparente (opcional; ahora mismo son texto, no imagen, y ya se ven bien así) |
+
+`MAP_EMBED` ya no es un placeholder: la sección Contacto tiene un `<iframe>`
+real de Google Maps apuntando a `Calle Eladio Bustamante, 8, Villasana de
+Mena (Burgos)` (no requiere API key). Si el negocio se traslada, actualiza
+la URL `https://www.google.com/maps?q=...&output=embed` en `index.html` y
+`wordpress-embed.html`.
 
 Para reemplazar un placeholder, por ejemplo el hero:
 
@@ -168,21 +173,28 @@ Para reemplazar un placeholder, por ejemplo el hero:
 `<img>` añade `style="width:100%;height:100%;object-fit:cover"` o esa regla
 en el CSS (`.hero__image-placeholder{object-fit:cover}`).
 
+## Estado del contenido
+
+Ya están puestos con datos reales (extraídos de la "Guía de atención al
+usuario" que me pasaste y de tu mensaje sobre tu trayectoria):
+dirección, horario, tarifas completas (nueva sección **Tarifas**,
+`#tarifas`), equipamiento técnico y del gimnasio terapéutico (nueva sección
+**Equipamiento**), colegiada nº 4986, biografía completa, eslogan y aviso
+de normas de cita en el bloque de Contacto.
+
 ## Datos de contacto pendientes
 
-Busca y sustituye en `index.html` (aparecen varias veces cada uno):
+Solo falta esto porque no venía en la guía ni en tu mensaje — dímelo y lo
+cambio en el momento (busca y sustituye en `index.html` y
+`wordpress-embed.html`, aparecen varias veces cada uno):
 
 - `[MI TELÉFONO]` y `tel:+34000000000`
 - `[MI EMAIL]` y `mailto:info@tudominio.com`
-- `[MI DIRECCIÓN]`
-- `[MI HORARIO]`
-- `[ESLOGAN — completa aquí tu frase de marca]`
-- Enlaces `href="#"` de redes sociales (Instagram, Facebook, LinkedIn)
-- Los tres contadores de la sección "Sobre mí" (`data-count="0"`): cambia el
-  `0` por tu cifra real (p. ej. `data-count="8"`) y el texto entre corchetes
-  del `<span class="stat__label">`. Con `0` el contador no se anima (queda
-  en placeholder a propósito, para no inventar cifras).
-- Los tres testimonios (texto y nombre entre corchetes).
+- Enlaces `href="#"` de redes sociales (Instagram, Facebook, LinkedIn), si
+  el centro tiene perfiles activos.
+- Los tres testimonios (texto y nombre entre corchetes) — son un ejemplo de
+  maquetación, sustitúyelos por reseñas reales de pacientes cuando las
+  tengas (no se han inventado citas para no publicar opiniones falsas).
 
 ## Tipografías: sustituir por archivos propios
 
@@ -295,8 +307,9 @@ Esto es opcional — la Opción A/B de arriba funciona sin tocar `functions.php`
   tarjetas de servicios/proceso).
 - [x] Parallax sutil en imagen de hero/about/split-feature vía
   `ScrollTrigger` con `scrub`.
-- [x] Contadores animados (placeholder en `0`, listos para activarse al
-  introducir cifras reales).
+- [x] Bloque de credenciales en "Sobre mí" (colegiada nº 4986, SD Eibar,
+  ecografía/invasiva/BFR) en vez de contadores numéricos, para no inventar
+  cifras de años de experiencia o pacientes que no me has dado.
 - [x] Slider de testimonios: flechas, puntos, autoplay con pausa en hover,
   swipe táctil.
 - [x] Hover en tarjetas de servicio (elevación + icono invertido), en

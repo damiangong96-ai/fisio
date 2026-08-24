@@ -497,6 +497,57 @@ body.menu-open{overflow:hidden;}
    ========================================================================== */
 .js-reveal,.js-reveal-stagger{opacity:0;}
 
+
+/* Variante texto para credenciales (en vez de contador animado) */
+.stat__number--text{font-size:22px;letter-spacing:-.01em;}
+
+/* ==========================================================================
+   PRICING / TARIFAS
+   ========================================================================== */
+.pricing{padding:120px 0;}
+.pricing__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.pricing-card{
+  position:relative;background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-md);padding:32px 26px;
+  transition:transform .4s var(--ease-out), box-shadow .4s var(--ease-out), border-color .4s;
+}
+.pricing-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);border-color:transparent;}
+.pricing-card--featured{background:var(--color-primary-dark);border-color:var(--color-primary-dark);}
+.pricing-card--featured h3,.pricing-card--featured .pricing-card__desc{color:#fff;}
+.pricing-card--featured .pricing-card__desc{opacity:.85;}
+.pricing-card--featured .pricing-card__list li{border-color:rgba(255,255,255,.18);color:#fff;}
+.pricing-card__badge{
+  display:inline-block;background:rgba(255,255,255,.14);color:#bfe3da;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 12px;border-radius:var(--radius-pill);margin-bottom:14px;
+}
+.pricing-card h3{font-size:19px;margin-bottom:10px;}
+.pricing-card__desc{font-size:13.5px;color:var(--color-ink-soft);margin-bottom:22px;min-height:52px;}
+.pricing-card__list li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  padding:10px 0;border-top:1px dashed var(--color-border);font-size:14px;
+}
+.pricing-card__list li:first-child{border-top:none;}
+.pricing-card__list li strong{font-family:var(--font-display);font-size:18px;color:var(--color-primary);}
+.pricing-card--featured .pricing-card__list li strong{color:#fff;}
+
+/* ==========================================================================
+   EQUIPMENT / EQUIPAMIENTO
+   ========================================================================== */
+.equipment{padding:120px 0;background:var(--color-bg-alt);}
+.equipment__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:880px;margin:0 auto;}
+.equipment__col h3{font-family:var(--font-display);font-size:22px;margin-bottom:20px;}
+.equipment__col .check-list li{font-weight:500;}
+
+/* Nota de normas de cita, en la sección de contacto */
+.contact__policy{margin-top:28px;padding:20px 22px;background:var(--color-primary-light);border-radius:var(--radius-md);}
+.contact__policy strong{display:block;margin-bottom:10px;font-size:14px;}
+.contact__policy ul{display:flex;flex-direction:column;gap:8px;}
+.contact__policy li{font-size:13px;color:var(--color-ink-soft);position:relative;padding-left:18px;}
+.contact__policy li::before{content:"•";position:absolute;left:0;color:var(--color-primary);}
+
+.site-footer__reg{font-size:12px;color:#7d8d88;margin-top:-8px;margin-bottom:20px;}
+
 /* ==========================================================================
    RESPONSIVE — TABLET
    ========================================================================== */
@@ -507,6 +558,7 @@ body.menu-open{overflow:hidden;}
   .about__inner{grid-template-columns:1fr;gap:48px;}
   .about__media{max-width:420px;margin:0 auto;}
   .services__grid{grid-template-columns:repeat(2,1fr);}
+  .pricing__grid{grid-template-columns:repeat(2,1fr);}
   .process__grid{grid-template-columns:repeat(2,1fr);}
   .split-feature__inner{grid-template-columns:1fr;gap:40px;}
   .split-feature__media{order:-1;max-width:520px;margin:0 auto;}
@@ -541,6 +593,12 @@ body.menu-open{overflow:hidden;}
 
   .services{padding:72px 0;}
   .services__grid{grid-template-columns:1fr;}
+
+  .pricing{padding:72px 0;}
+  .pricing__grid{grid-template-columns:1fr;}
+
+  .equipment{padding:72px 0;}
+  .equipment__grid{grid-template-columns:1fr;gap:36px;}
 
   .process{padding:72px 0;}
   .process__grid{grid-template-columns:1fr;}
