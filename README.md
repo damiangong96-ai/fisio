@@ -182,14 +182,18 @@ dirección, horario, tarifas completas (nueva sección **Tarifas**,
 **Equipamiento**), colegiada nº 4986, biografía completa, eslogan y aviso
 de normas de cita en el bloque de Contacto.
 
-## Datos de contacto pendientes
+## Datos de contacto
 
-Solo falta esto porque no venía en la guía ni en tu mensaje — dímelo y lo
-cambio en el momento (busca y sustituye en `index.html` y
-`wordpress-embed.html`, aparecen varias veces cada uno):
+Teléfono real: `634 68 90 03` (`tel:+34634689003`), ya puesto en cabecera,
+barra superior, menú móvil, contacto y pie de página.
 
-- `[MI TELÉFONO]` y `tel:+34000000000`
-- `[MI EMAIL]` y `mailto:info@tudominio.com`
+Email: **`info@fisioterapiasaravivanco.com` es un ejemplo/placeholder** (me
+pediste uno de muestra) — no es una cuenta real, así que sustitúyelo por tu
+dirección de verdad en cuanto la tengas (busca y reemplaza en `index.html`
+y `wordpress-embed.html`, aparece 3 veces cada uno más el `mailto:`).
+
+Pendiente:
+
 - Enlaces `href="#"` de redes sociales (Instagram, Facebook, LinkedIn), si
   el centro tiene perfiles activos.
 - Los tres testimonios (texto y nombre entre corchetes) — son un ejemplo de
