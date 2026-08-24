@@ -27,33 +27,52 @@ para reutilizar los estilos en más páginas), usa la Opción A/B con
 
 ## Sobre las fotos que me has pasado en el chat
 
-Me has mostrado dos imágenes (la figura anatómica 3D en carrera, y la foto
-de manos aplicando terapia manual sobre una espalda) y el logo/foto de la
-primera petición. **Puedo verlas en la conversación, pero esta sesión de
-Claude Code no tiene ningún buzón de subida de archivos conectado** — no
-hay forma técnica de que yo guarde esos píxeles como un archivo real en el
-proyecto. Por eso los huecos de imagen siguen siendo placeholders, aunque
-ya están **anotados en el código** (justo encima de cada placeholder en
-`wordpress-embed.html` e `index.html`) con el `<img>` exacto a pegar y a
-qué imagen tuya corresponde cada uno:
+Me has mostrado cinco imágenes en total, en dos mensajes: el icono/monograma
+del logo (solo el símbolo S+H, sin texto), tu foto de retrato con la
+equipación de la SD Eibar, el logotipo completo con el texto "Fisioterapia
+Avanzada · Sara Vivanco Hurtado", una figura 3D anatómica en carrera, y una
+foto de manos aplicando terapia manual sobre una espalda.
 
-| Placeholder | Corresponde a | Nota |
+**Puedo verlas en la conversación, pero esta sesión de Claude Code no tiene
+ningún buzón de subida de archivos conectado** — lo he comprobado
+buscando en todo el sistema de archivos del entorno y no aparece ningún
+archivo nuevo cuando las pegas en el chat. No hay forma técnica de que yo
+guarde esos píxeles como un archivo real en el proyecto, así que
+reenviarlas en el chat no cambia nada — necesito que lleguen como
+**archivo** por otra vía (ver más abajo).
+
+Mientras tanto, ya dejé el código preparado para que encajen en cuanto
+subas los archivos, con el `<img>` exacto comentado justo encima de cada
+placeholder en `wordpress-embed.html` e `index.html`:
+
+| Placeholder | Nombre de archivo esperado | Corresponde a |
 |---|---|---|
-| `ABOUT_IMAGE` (sección "Sobre mí") | Foto de manos haciendo terapia manual sobre la espalda | Encaja perfecto: transmite trato cercano y técnica manual real. |
-| `SPORT_IMAGE` (banda "SD Eibar") | Figura 3D anatómica en carrera | Al tener fondo transparente, considera cambiar `object-fit:cover` por `object-fit:contain` (ya indicado en el comentario del código) para que no se recorte la silueta. |
-| `HERO_IMAGE` | — (pendiente) | Aún no tengo una foto de retrato profesional tuya/de Sara; sigue como placeholder hasta que la subas. |
+| Logo del header/footer | `assets/images/LOGO.png` | El logotipo completo (icono + "Fisioterapia Avanzada · Sara Vivanco Hurtado"), en PNG con fondo transparente. Se usa tal cual en el footer también (el CSS ya lo pone en blanco con un filtro). |
+| Favicon | `assets/images/FAVICON.png` | El icono/monograma S+H solo, sin texto — recórtalo cuadrado. |
+| `HERO_IMAGE` | `assets/images/hero.jpg` | Tu foto de retrato con la equipación de la SD Eibar. |
+| `ABOUT_IMAGE` (sección "Sobre mí") | `assets/images/terapia-manual.jpg` | Foto de manos haciendo terapia manual sobre la espalda. |
+| `SPORT_IMAGE` (banda "SD Eibar") | `assets/images/readaptacion-esfuerzo.png` | Figura 3D anatómica en carrera. Al tener fondo transparente, el comentario del código ya usa `object-fit:contain` en vez de `cover` para no recortar la silueta. |
 
-**Para que yo mismo pueda dejarlas ya colocadas en el HTML**, la vía más
-directa es que subas los dos archivos de imagen (los `.png`/`.jpg`
-originales, no una captura del chat) a la carpeta `assets/images/` de este
-mismo repositorio de GitHub — puedes hacerlo desde la web de GitHub con
-"Add file → Upload files" — y me dices los nombres que les has puesto; en
-el siguiente turno los conecto a los placeholders correspondientes.
+**Para que yo mismo las conecte**, la vía más directa (2 minutos, sin
+instalar nada) es subir los archivos directamente en GitHub:
+
+1. Entra en `https://github.com/damiangong96-ai/fisio`, cambia a la rama
+   `claude/rebuild-flexora-vamtam-ow3aq8` (selector de ramas arriba a la
+   izquierda del listado de archivos).
+2. Entra en la carpeta `assets/images/`.
+3. Botón **"Add file" → "Upload files"**, arrastra los 5 archivos y
+   renómbralos exactamente como en la tabla de arriba (`LOGO.png`,
+   `FAVICON.png`, `hero.jpg`, `terapia-manual.jpg`,
+   `readaptacion-esfuerzo.png`).
+4. Confirma el commit directamente sobre esa rama.
+5. Dime aquí "ya están subidas" y en el siguiente turno cambio los `<div
+   data-placeholder>` por los `<img>` reales.
 
 Si prefieres no tocar GitHub, la otra vía (más simple si ya vas a currar en
-WordPress de todas formas) es subirlas directamente a la **Biblioteca de
-medios de WordPress** y sustituir tú mismo cada `<div data-placeholder="...">`
-por el `<img>` que aparece comentado justo encima en el código.
+WordPress de todas formas) es subir cada imagen directamente a la
+**Biblioteca de medios de WordPress** y sustituir tú mismo cada `<div
+data-placeholder="...">` por el `<img>` que aparece comentado justo encima
+en el código, apuntando al `src` que te dé WordPress.
 
 ## ⚠️ Nota importante sobre fidelidad con la referencia
 
