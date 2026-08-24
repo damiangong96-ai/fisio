@@ -22,6 +22,7 @@
     initScrollReveals();
     initCounters();
     initTestimonialSlider();
+    initCollabAccordion();
     initContactForm();
     initSmoothAnchors();
     initBackToTop();
@@ -288,6 +289,21 @@
       if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
       startX = null;
       resetAutoplay();
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * ACORDEÓN "Colaboraciones / formación": cada fila se abre/cierra al
+   * pulsarla, mostrando una descripción breve. Sin dependencia de GSAP.
+   * ---------------------------------------------------------------------- */
+  function initCollabAccordion() {
+    document.querySelectorAll('.collab__item-header').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.collab__item');
+        var isOpen = item.classList.contains('is-open');
+        item.classList.toggle('is-open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
     });
   }
 

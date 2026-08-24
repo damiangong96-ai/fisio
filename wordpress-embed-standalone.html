@@ -299,21 +299,35 @@ body.menu-open{overflow:hidden;}
 [data-placeholder] small{display:block;font-weight:400;opacity:.75;margin-top:4px;font-size:11px;}
 
 /* ==========================================================================
-   TRUST BAR
+   COLABORACIONES / FORMACIÓN (acordeón de dos columnas)
    ========================================================================== */
-.trustbar{padding:36px 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);}
-.trustbar__inner{display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:space-between;}
-.trustbar__label{font-size:13px;font-weight:700;color:var(--color-ink-soft);white-space:nowrap;}
-.trustbar__logos{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
-.trustbar__logo{
-  font-family:var(--font-display);font-size:15px;color:var(--color-ink-soft);
-  opacity:.55;filter:grayscale(1);transition:opacity .3s, filter .3s, transform .3s;
-  padding:8px 4px;
+.collab{padding:120px 0;}
+.collab__inner{display:grid;grid-template-columns:.62fr 1fr;gap:64px;align-items:start;}
+.collab__icon{color:var(--color-primary);margin-bottom:24px;}
+.collab__title{font-size:clamp(30px,3.4vw,42px);margin-bottom:18px;}
+.collab__lead{color:var(--color-ink-soft);margin-bottom:32px;max-width:400px;}
+
+.collab__list{display:flex;flex-direction:column;gap:14px;}
+.collab__item{
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  transition:border-color .3s, box-shadow .3s;
 }
-.trustbar__logo:hover{opacity:1;filter:none;transform:translateY(-2px);}
-/* Los logotipos de la barra de confianza son placeholders de texto, no
-   bloques de imagen: se excluyen del estilo genérico de [data-placeholder]. */
-.trustbar__logo[data-placeholder]{min-height:0;background:none;border:none;display:inline-flex;}
+.collab__item:hover{border-color:transparent;box-shadow:var(--shadow-sm);}
+.collab__item-header{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 30px;text-align:left;font-family:var(--font-display);font-size:19px;
+}
+.collab__toggle{
+  flex:none;width:40px;height:40px;border-radius:50%;background:var(--color-primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;
+  transition:transform .35s var(--ease-out), background .3s;
+}
+.collab__item.is-open .collab__toggle{transform:rotate(45deg);background:var(--color-primary-dark);}
+.collab__item-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out);}
+.collab__item-body > p{overflow:hidden;min-height:0;color:var(--color-ink-soft);font-size:14.5px;padding:0 30px;}
+.collab__item.is-open .collab__item-body{grid-template-rows:1fr;}
+.collab__item.is-open .collab__item-body > p{padding:0 30px 26px;}
 
 /* ==========================================================================
    ABOUT
@@ -580,6 +594,7 @@ body.menu-open{overflow:hidden;}
   .pricing__grid{grid-template-columns:repeat(2,1fr);}
   .process__grid{grid-template-columns:repeat(2,1fr);}
   .split-feature__inner{grid-template-columns:1fr;gap:40px;}
+  .collab__inner{grid-template-columns:1fr;gap:40px;}
   .split-feature__media{order:-1;max-width:520px;margin:0 auto;}
   .contact__inner{grid-template-columns:1fr;gap:48px;}
   .site-footer__top{grid-template-columns:1fr 1fr;}
@@ -603,7 +618,11 @@ body.menu-open{overflow:hidden;}
   .hero__floating-card{left:12px;bottom:16px;padding:12px 16px;}
   .hero__trust{margin-top:8px;}
 
-  .trustbar__inner{flex-direction:column;align-items:flex-start;gap:16px;}
+  .collab{padding:72px 0;}
+  .collab__item-header{padding:20px 22px;font-size:16px;}
+  .collab__toggle{width:34px;height:34px;font-size:17px;}
+  .collab__item-body > p{padding:0 22px;}
+  .collab__item.is-open .collab__item-body > p{padding:0 22px 20px;}
 
   .about{padding:72px 0;}
   .about__badge{right:0;bottom:-18px;}
@@ -796,16 +815,73 @@ body.menu-open{overflow:hidden;}
   </a>
 </section>
 
-<!-- =============== TRUST / COLABORACIONES =============== -->
-<section class="trustbar">
-  <div class="container trustbar__inner">
-    <p class="trustbar__label">Colaboro y me formo con</p>
-    <div class="trustbar__logos">
-      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_SD_EIBAR">SD Eibar</div>
-      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_01">Ecografía Funcional</div>
-      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_02">Readaptación Deportiva</div>
-      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_03">Punción Seca</div>
-      <div class="trustbar__logo js-reveal" data-placeholder="LOGO_CERT_04">Blood Flow Restriction</div>
+<!-- =============== COLABORACIONES / FORMACIÓN =============== -->
+<section class="collab" id="colaboraciones">
+  <div class="container collab__inner">
+    <div class="collab__intro js-reveal">
+      <div class="collab__icon">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-2.5-7-6-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4-3 7.5-7 10-1.5.9-2.5 1.5-4 1.5s-2.5-.6-4-1.5z"/></svg>
+      </div>
+      <h2 class="collab__title">Con quién colaboro<br><span class="title-accent">y en qué me formo.</span></h2>
+      <p class="collab__lead">
+        Mi trabajo en consulta se apoya en mi experiencia en el deporte de alto nivel y en
+        formación continua específica. Toca cada punto para saber más.
+      </p>
+      <a href="#contacto" class="btn btn--primary">Contacto</a>
+    </div>
+
+    <div class="collab__list">
+
+      <div class="collab__item js-reveal-stagger">
+        <button class="collab__item-header" aria-expanded="false">
+          <span>SD Eibar</span>
+          <span class="collab__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="collab__item-body">
+          <p>Fisioterapeuta de los servicios médicos de fútbol base: prevención, valoración y readaptación de lesiones en deportistas de alto nivel.</p>
+        </div>
+      </div>
+
+      <div class="collab__item js-reveal-stagger">
+        <button class="collab__item-header" aria-expanded="false">
+          <span>Ecografía funcional</span>
+          <span class="collab__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="collab__item-body">
+          <p>Posgrado en Ecografía Funcional y Fisioterapia Invasiva, para un diagnóstico más preciso y técnicas guiadas con precisión.</p>
+        </div>
+      </div>
+
+      <div class="collab__item js-reveal-stagger">
+        <button class="collab__item-header" aria-expanded="false">
+          <span>Readaptación deportiva</span>
+          <span class="collab__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="collab__item-body">
+          <p>Máster en Prevención y Readaptación de Lesiones Deportivas, aplicado a una vuelta segura y progresiva a la actividad.</p>
+        </div>
+      </div>
+
+      <div class="collab__item js-reveal-stagger">
+        <button class="collab__item-header" aria-expanded="false">
+          <span>Punción seca</span>
+          <span class="collab__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="collab__item-body">
+          <p>Formación específica en punción seca y electropunción para el tratamiento del dolor y la disfunción muscular.</p>
+        </div>
+      </div>
+
+      <div class="collab__item js-reveal-stagger">
+        <button class="collab__item-header" aria-expanded="false">
+          <span>Blood Flow Restriction</span>
+          <span class="collab__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="collab__item-body">
+          <p>Formación en BFR: entrenamiento con restricción de flujo sanguíneo para ganar fuerza con cargas bajas, ideal en fases iniciales.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1349,6 +1425,7 @@ body.menu-open{overflow:hidden;}
     initScrollReveals();
     initCounters();
     initTestimonialSlider();
+    initCollabAccordion();
     initContactForm();
     initSmoothAnchors();
     initBackToTop();
@@ -1615,6 +1692,21 @@ body.menu-open{overflow:hidden;}
       if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
       startX = null;
       resetAutoplay();
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * ACORDEÓN "Colaboraciones / formación": cada fila se abre/cierra al
+   * pulsarla, mostrando una descripción breve. Sin dependencia de GSAP.
+   * ---------------------------------------------------------------------- */
+  function initCollabAccordion() {
+    document.querySelectorAll('.collab__item-header').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.collab__item');
+        var isOpen = item.classList.contains('is-open');
+        item.classList.toggle('is-open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
     });
   }
 
