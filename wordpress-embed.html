@@ -538,6 +538,8 @@ body.menu-open{overflow:hidden;}
   font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   padding:5px 12px;border-radius:var(--radius-pill);margin-bottom:14px;
 }
+.pricing-card__thumb{margin:-32px -26px 20px;border-radius:var(--radius-md) var(--radius-md) 0 0;overflow:hidden;height:150px;}
+.pricing-card__thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .pricing-card h3{font-size:19px;margin-bottom:10px;}
 .pricing-card__desc{font-size:13.5px;color:var(--color-ink-soft);margin-bottom:22px;min-height:52px;}
 .pricing-card__list li{
@@ -773,12 +775,8 @@ body.menu-open{overflow:hidden;}
     </div>
 
     <div class="hero__media">
-      <!-- Aquí encaja tu foto de retrato (con la equipación de la SD Eibar). Sustituye este div por:
-           <img src="assets/images/hero.jpg" alt="Sara Vivanco Hurtado, fisioterapeuta" class="hero__image-placeholder" loading="eager" style="object-fit:cover"> -->
       <div class="hero__media-frame js-hero-media">
-        <div class="hero__image-placeholder" data-placeholder="HERO_IMAGE">
-          <span>HERO_IMAGE<br><small>1000×1200px · foto profesional (retrato)</small></span>
-        </div>
+        <img src="assets/images/hero.jpg" alt="Sara Vivanco Hurtado, fisioterapeuta, con la equipación de la SD Eibar" class="hero__image-placeholder" loading="eager" style="object-fit:cover;width:100%;height:100%">
       </div>
       <div class="hero__floating-card js-hero-anim" data-anim="card">
         <div class="hero__floating-icon">
@@ -816,13 +814,8 @@ body.menu-open{overflow:hidden;}
 <section class="about" id="sobre-mi">
   <div class="container about__inner">
     <div class="about__media">
-      <!-- Aquí encaja tu foto de terapia manual (manos aplicando masaje sobre la espalda).
-           Sustituye este div por:
-           <img src="assets/images/terapia-manual.jpg" alt="Sesión de terapia manual" class="about__image-placeholder" loading="lazy" style="object-fit:cover"> -->
       <div class="about__image-wrap js-parallax">
-        <div class="about__image-placeholder" data-placeholder="ABOUT_IMAGE">
-          <span>ABOUT_IMAGE<br><small>800×1000px · foto de terapia manual</small></span>
-        </div>
+        <img src="assets/images/terapia-manual.jpg" alt="Sesión de terapia manual sobre la espalda" class="about__image-placeholder" loading="lazy" style="object-fit:cover;width:100%;height:100%">
       </div>
       <div class="about__badge">
         <strong>Formación continua</strong>
@@ -1005,6 +998,7 @@ body.menu-open{overflow:hidden;}
       </article>
 
       <article class="pricing-card pricing-card--featured js-reveal-stagger">
+        <div class="pricing-card__thumb"><img src="assets/images/categoria-deportiva.jpg" alt="Fisioterapia deportiva" loading="lazy"></div>
         <span class="pricing-card__badge">Ámbito deportivo</span>
         <h3>Fisioterapia deportiva</h3>
         <p class="pricing-card__desc">Prevención, tratamiento y recuperación de lesiones y sobrecargas musculares.</p>
@@ -1015,6 +1009,7 @@ body.menu-open{overflow:hidden;}
       </article>
 
       <article class="pricing-card js-reveal-stagger">
+        <div class="pricing-card__thumb"><img src="assets/images/categoria-rehabilitacion.jpg" alt="Rehabilitación y readaptación" loading="lazy"></div>
         <h3>Rehabilitación y readaptación</h3>
         <p class="pricing-card__desc">Recuperación tras lesión, cirugía o dolor persistente con ejercicio terapéutico.</p>
         <ul class="pricing-card__list">
@@ -1025,6 +1020,7 @@ body.menu-open{overflow:hidden;}
       </article>
 
       <article class="pricing-card js-reveal-stagger">
+        <div class="pricing-card__thumb"><img src="assets/images/categoria-presoterapia.jpg" alt="Presoterapia" loading="lazy"></div>
         <h3>Presoterapia</h3>
         <p class="pricing-card__desc">Drenaje neumático para mejorar la circulación y la recuperación muscular.</p>
         <ul class="pricing-card__list">
@@ -1041,13 +1037,8 @@ body.menu-open{overflow:hidden;}
 <!-- =============== BANDA SD EIBAR =============== -->
 <section class="split-feature">
   <div class="container split-feature__inner">
-    <!-- Aquí encaja tu ilustración/render 3D de la figura anatómica en carrera (readaptación al esfuerzo).
-         Sustituye este div por:
-         <img src="assets/images/readaptacion-esfuerzo.png" alt="Readaptación al esfuerzo y vuelta a la actividad deportiva" class="split-feature__image-placeholder" loading="lazy" style="object-fit:contain"> -->
-    <div class="split-feature__media js-parallax">
-      <div class="split-feature__image-placeholder" data-placeholder="SPORT_IMAGE">
-        <span>SPORT_IMAGE<br><small>Fisioterapia deportiva de alto rendimiento</small></span>
-      </div>
+    <div class="split-feature__media js-parallax" style="background:var(--color-primary-light)">
+      <img src="assets/images/readaptacion-esfuerzo.png" alt="Figura anatómica en carrera, readaptación al esfuerzo" class="split-feature__image-placeholder" loading="lazy" style="object-fit:contain;width:100%;height:100%">
     </div>
     <div class="split-feature__content">
       <span class="eyebrow js-reveal">Ámbito deportivo</span>

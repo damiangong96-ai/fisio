@@ -47,54 +47,28 @@ Si prefieres mantener CSS/JS en archivos separados (mejor para cachear y
 para reutilizar los estilos en más páginas), usa la Opción A/B con
 `index.html` que se explica más abajo, en vez de `wordpress-embed.html`.
 
-## Sobre las fotos que me has pasado en el chat
+## Fotos reales, ya conectadas
 
-Me has mostrado cinco imágenes en total, en dos mensajes: el icono/monograma
-del logo (solo el símbolo S+H, sin texto), tu foto de retrato con la
-equipación de la SD Eibar, el logotipo completo con el texto "Fisioterapia
-Avanzada · Sara Vivanco Hurtado", una figura 3D anatómica en carrera, y una
-foto de manos aplicando terapia manual sobre una espalda.
+Subiste las imágenes a la carpeta raíz de la otra rama del repo
+(`claude/rebuild-flexora-vamtam-ow3aq8`) en vez de a `assets/images/` en
+esta rama; las he traído desde ahí, procesado y conectado en el sitio:
 
-**Puedo verlas en la conversación, pero esta sesión de Claude Code no tiene
-ningún buzón de subida de archivos conectado** — lo he comprobado
-buscando en todo el sistema de archivos del entorno y no aparece ningún
-archivo nuevo cuando las pegas en el chat. No hay forma técnica de que yo
-guarde esos píxeles como un archivo real en el proyecto, así que
-reenviarlas en el chat no cambia nada — necesito que lleguen como
-**archivo** por otra vía (ver más abajo).
-
-Mientras tanto, ya dejé el código preparado para que encajen en cuanto
-subas los archivos, con el `<img>` exacto comentado justo encima de cada
-placeholder en `wordpress-embed.html` e `index.html`:
-
-| Placeholder | Nombre de archivo esperado | Corresponde a |
+| Archivo | Origen (nombre subido) | Uso |
 |---|---|---|
-| Logo del header/footer | `assets/images/LOGO.png` | El logotipo completo (icono + "Fisioterapia Avanzada · Sara Vivanco Hurtado"), en PNG con fondo transparente. Se usa tal cual en el footer también (el CSS ya lo pone en blanco con un filtro). |
-| Favicon | `assets/images/FAVICON.png` | El icono/monograma S+H solo, sin texto — recórtalo cuadrado. |
-| `HERO_IMAGE` | `assets/images/hero.jpg` | Tu foto de retrato con la equipación de la SD Eibar. |
-| `ABOUT_IMAGE` (sección "Sobre mí") | `assets/images/terapia-manual.jpg` | Foto de manos haciendo terapia manual sobre la espalda. |
-| `SPORT_IMAGE` (banda "SD Eibar") | `assets/images/readaptacion-esfuerzo.png` | Figura 3D anatómica en carrera. Al tener fondo transparente, el comentario del código ya usa `object-fit:contain` en vez de `cover` para no recortar la silueta. |
+| `assets/images/LOGO.png` | `7754f7d3-...jpeg` | Logotipo completo. Era JPEG con fondo blanco sólido — le he quitado el fondo por software (blanco → transparente) para que funcione también en el footer oscuro con el filtro de inversión. |
+| `assets/images/FAVICON.png` | `IMG_5909.png` | Icono/monograma S+H, ya venía con transparencia real; solo lo he reescalado. |
+| `assets/images/hero.jpg` | `8684ed32-...jpeg` | Tu retrato con la equipación de la SD Eibar — hero. |
+| `assets/images/terapia-manual.jpg` | `8e4606a2...jpg` | Manos en terapia manual sobre la espalda — sección "Sobre mí". |
+| `assets/images/readaptacion-esfuerzo.png` | `Man.png` | Figura 3D anatómica en carrera (transparente) — banda "SD Eibar", con `object-fit:contain`. |
 
-**Para que yo mismo las conecte**, la vía más directa (2 minutos, sin
-instalar nada) es subir los archivos directamente en GitHub:
-
-1. Entra en `https://github.com/damiangong96-ai/fisio`, cambia a la rama
-   `claude/rebuild-flexora-vamtam-ow3aq8` (selector de ramas arriba a la
-   izquierda del listado de archivos).
-2. Entra en la carpeta `assets/images/`.
-3. Botón **"Add file" → "Upload files"**, arrastra los 5 archivos y
-   renómbralos exactamente como en la tabla de arriba (`LOGO.png`,
-   `FAVICON.png`, `hero.jpg`, `terapia-manual.jpg`,
-   `readaptacion-esfuerzo.png`).
-4. Confirma el commit directamente sobre esa rama.
-5. Dime aquí "ya están subidas" y en el siguiente turno cambio los `<div
-   data-placeholder>` por los `<img>` reales.
-
-Si prefieres no tocar GitHub, la otra vía (más simple si ya vas a currar en
-WordPress de todas formas) es subir cada imagen directamente a la
-**Biblioteca de medios de WordPress** y sustituir tú mismo cada `<div
-data-placeholder="...">` por el `<img>` que aparece comentado justo encima
-en el código, apuntando al `src` que te dé WordPress.
+Además subiste otras tres fotos de manos/fisioterapia
+(`448e8db3...jpg`, `56fc2f93...jpg`, `c78d3f11...jpg`) que no estaban en la
+lista original de 5. Siguiendo tu instrucción de usar las fotos "para
+banners o categorías como en la web de ejemplo", las he puesto como foto de
+cabecera de 3 de las 4 tarjetas de la nueva sección **Tarifas**
+(`assets/images/categoria-deportiva.jpg`, `categoria-rehabilitacion.jpg`,
+`categoria-presoterapia.jpg`), a modo de banner de categoría estilo
+Flexora. Si prefieres otro criterio de asignación o quitarlas, dímelo.
 
 ## ⚠️ Nota importante sobre fidelidad con la referencia
 
@@ -136,42 +110,21 @@ puedo afinar cualquiera de estos puntos para acercarlos aún más.
 /assets/icons/        → Espacio reservado para iconos propios si los necesitas
 ```
 
-## Imágenes a sustituir
+## Placeholders de imagen que quedan
 
-Cada bloque `[data-placeholder="NOMBRE"]` en el HTML es un rectángulo con
-rayado verde y una etiqueta de texto. Sustitúyelo por una `<img>` real
-manteniendo la clase contenedora (así conservas proporción, `border-radius`,
-sombra y animación de scroll):
+Logo, favicon, hero, "Sobre mí", banda "SD Eibar" y el mapa de Contacto ya
+son imágenes/`<iframe>` reales (ver sección anterior). Solo quedan estos
+bloques `[data-placeholder="NOMBRE"]` (rectángulo con rayado verde) por si
+algún día tienes ese material:
 
-| Placeholder | Ubicación | Proporción recomendada |
+| Placeholder | Ubicación | Notas |
 |---|---|---|
-| `LOGO.png` / `LOGO_LIGHT.png` | Header y footer | Logo actual (ya en tu material); coloca el PNG del logo (fondo transparente) en `assets/images/`. `LOGO_LIGHT.png` es la versión para el footer oscuro — el CSS ya aplica `filter: invert` si usas el logo normal en PNG con transparencia. |
-| `FAVICON.png` | `<head>` | 512×512px, fondo transparente |
-| `HERO_IMAGE` | Hero, columna derecha | 1000×1200px (retrato 4:5) |
-| `ABOUT_IMAGE` | Sección "Sobre mí" | 800×1000px (4:5) |
-| `SPORT_IMAGE` | Banda "SD Eibar" | 4:3, foto de contexto deportivo/clínico |
-| `TESTIMONIAL_IMAGE_01/02/03` | Slider de testimonios | Foto de perfil circular, o elimínala y deja el círculo de color |
-| `LOGO_SD_EIBAR`, `LOGO_CERT_0X` | Barra de confianza | Logos reales en PNG/SVG con fondo transparente (opcional; ahora mismo son texto, no imagen, y ya se ven bien así) |
+| `TESTIMONIAL_IMAGE_01/02/03` | Slider de testimonios | Foto de perfil circular, o elimínala y deja el círculo de color — de momento son testimonios de ejemplo, no reseñas reales. |
+| `LOGO_SD_EIBAR`, `LOGO_CERT_0X` | Barra de confianza | Opcional: ahora mismo son texto, no imagen, y ya se ven bien así. |
 
-`MAP_EMBED` ya no es un placeholder: la sección Contacto tiene un `<iframe>`
-real de Google Maps apuntando a `Calle Eladio Bustamante, 8, Villasana de
-Mena (Burgos)` (no requiere API key). Si el negocio se traslada, actualiza
-la URL `https://www.google.com/maps?q=...&output=embed` en `index.html` y
-`wordpress-embed.html`.
-
-Para reemplazar un placeholder, por ejemplo el hero:
-
-```html
-<!-- Antes -->
-<div class="hero__image-placeholder" data-placeholder="HERO_IMAGE">...</div>
-
-<!-- Después -->
-<img src="assets/images/hero.jpg" alt="Sara Vivanco Hurtado, fisioterapeuta" class="hero__image-placeholder" loading="eager">
-```
-
-`object-fit: cover` no está en el placeholder porque es un `div`; al pasar a
-`<img>` añade `style="width:100%;height:100%;object-fit:cover"` o esa regla
-en el CSS (`.hero__image-placeholder{object-fit:cover}`).
+Para sustituir uno, cambia el `<div data-placeholder="...">` por un `<img>`
+manteniendo la misma clase contenedora (conserva proporción, `border-radius`
+y sombra) y añade `style="width:100%;height:100%;object-fit:cover"`.
 
 ## Estado del contenido
 
