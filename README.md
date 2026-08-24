@@ -3,6 +3,28 @@
 Reconstrucción del sistema visual/interactivo de una demo de clínica de fisioterapia
 de tipo VamTam, adaptada al contenido real del negocio.
 
+## Tipografía actual: Instrument Serif + Inter
+
+A partir de una captura que me pasó el cliente de una web de referencia
+("Barre Studio · Collado Villalba" — titular serif con línea de acento en
+cursiva, etiquetas y botones en mayúsculas con tracking amplio), se sustituyó
+la pareja tipográfica original (Fraunces + Plus Jakarta Sans) por:
+
+- **`Instrument Serif`** (títulos, cifras destacadas, cita de testimonios) —
+  solo existe en peso 400 normal/cursiva, por eso `h1–h4` usan
+  `font-weight:400` (evita la negrita sintética del navegador).
+- **`Inter`** (texto de cuerpo, navegación, formularios).
+- Los botones y la etiqueta "eyebrow" pasan a mayúsculas con letter-spacing
+  amplio (`.btn`, `.eyebrow`), y la última línea del titular del hero usa la
+  clase `.title-accent` (cursiva, peso normal) para imitar el contraste
+  "texto recto + cursiva de acento" de la referencia.
+
+Se cambia editando `--font-display` / `--font-body` en `:root` (arriba del
+todo de `css/style.css`) y el `<link>` de Google Fonts en el `<head>`. Si
+identificas el nombre exacto de la fuente de otra referencia (inspector del
+navegador → `font-family` calculada, o el `<link>` a Google/Adobe Fonts en su
+`<head>`), dímelo y la cambio directamente.
+
 ## Archivo único para WordPress: `wordpress-embed.html`
 
 Además de la versión modular (`index.html` + `css/style.css` + `js/main.js`),
