@@ -18,6 +18,14 @@
 </head>
 <body>
 
+<!-- Wrapper con id="fa-site": todo el CSS de este sitio vive bajo el
+     selector #fa-site (ver css/style.css), para que al pegar este HTML
+     dentro de una página de WordPress no choque con el CSS del tema ni
+     quede encajonado por su contenedor de ancho — ver README, sección
+     "Integración en WordPress + Elementor Pro". No lo quites ni le
+     cambies el id. -->
+<div id="fa-site">
+
 <!-- =============== TOP INFO BAR =============== -->
 <div class="topbar">
   <div class="container topbar__inner">
@@ -748,6 +756,9 @@
 <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
+
+</div>
+<!-- /#fa-site -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

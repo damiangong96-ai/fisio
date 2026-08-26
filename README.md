@@ -175,7 +175,34 @@ y actualiza `--font-display` / `--font-body` en `:root` (arriba del todo de
 ## Integración en WordPress + Elementor Pro
 
 Esta web es HTML/CSS/JS puro, sin build step, pensada para poder trocearse
-en Elementor:
+en Elementor.
+
+### Ancho completo y sin choques de estilo con el tema: `#fa-site`
+
+Todo el contenido va envuelto en `<div id="fa-site">…</div>` y **todo** el
+CSS de `css/style.css` está anclado a ese selector (`#fa-site .lo-que-sea`
+en vez de `.lo-que-sea` a secas). Esto soluciona dos problemas típicos al
+pegar una página HTML completa dentro de una página normal de WordPress
+(sin plantilla en blanco):
+
+1. **El sitio no ocupa el ancho completo** — el tema mete el contenido en un
+   contenedor centrado y más estrecho (p. ej. 900–1200px). `#fa-site` se
+   "rompe" fuera de ese contenedor con un margen negativo calculado
+   (`calc(-50vw + 50%)`), así que siempre ocupa el ancho completo del
+   navegador aunque esté anidado dentro del contenedor del tema.
+2. **Textos que se parten raro (el teléfono en varias líneas, el menú
+   partido en dos líneas...)** — pasaba porque el CSS del propio tema
+   (tamaños de letra, `a`, `ul`, `button`, etc.) pisaba al nuestro. Al
+   anclar cada regla a `#fa-site`, nuestro CSS gana casi siempre esa pugna
+   de especificidad frente al del tema.
+
+**No borres el `<div id="fa-site">` ni le cambies el `id`** al pegar el
+código — es lo que hace que funcione igual de bien dentro de una página
+normal de WordPress que si lo cuelgas como archivo suelto. Esto ya viene
+así en `wordpress-embed.html` / `wordpress-embed-standalone.html`; no hace
+falta tocar nada al pegarlo, ni usar obligatoriamente la plantilla en
+blanco de Elementor (aunque si la usas, mejor: evitas también el
+header/footer duplicado del tema).
 
 ### Opción A — Página HTML completa (más simple)
 
