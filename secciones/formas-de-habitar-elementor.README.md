@@ -47,6 +47,37 @@ Si al importar esta v2 algo sigue sin coincidir (por ejemplo, si tu tema
 tiene reglas CSS con `!important` que ganan a los controles de Elementor),
 dime exactamente qué elemento y lo afino.
 
+## v3 — subrayado persistente en la insignia 01/02 y en "Explorar este universo"
+
+Tras probarlo en tu WordPress real, la insignia y el enlace del pie seguían
+saliendo subrayados aunque el widget *Botón* ya tenía "Decoración de texto:
+Ninguna". Causa casi segura: muchos temas de WordPress fijan
+`a { text-decoration: underline !important; }` de forma global (por
+accesibilidad), y ese `!important` gana siempre a la CSS que genera
+Elementor a partir de los controles del panel — no importa qué pongas ahí,
+el navegador aplica la regla del tema por encima.
+
+Esta versión añade una clase CSS a cada uno de los dos elementos afectados
+(`_css_classes`: `fdh-badge` en la insignia, `fdh-explore` en el enlace del
+pie) para poder apuntarles directamente con más especificidad. **Si tras
+importar esta v3 el subrayado sigue apareciendo**, pega esto en
+**Apariencia → Personalizar → CSS adicional** (o en Elementor Pro →
+Configuración del sitio → CSS personalizado):
+
+```css
+.fdh-badge a,
+.fdh-explore a{
+  text-decoration: none !important;
+}
+```
+
+Esto anula la regla del tema solo para estos dos elementos, sin tocar el
+resto de enlaces/botones del sitio.
+
+También se ha afinado la insignia 01/02 para que quede más aplanada (menos
+relleno vertical, texto más pequeño) y se acerque más al óvalo fino de la
+referencia.
+
 ## Qué contiene y cómo editarlo
 
 Estructura (todo dentro de una Sección exterior con el marco de líneas):
