@@ -14,6 +14,39 @@ Columnas y widgets nativos (Heading, Texto, Imagen, Botón) que se editan
 3. Insértala en la página donde quieras la sección (arrástrala o pulsa
    "Insertar").
 
+**Si ya habías insertado una versión anterior de esta sección**: bórrala de
+la página (Elementor no actualiza en sitio una sección ya insertada al
+volver a importar la plantilla) y vuelve a insertar la nueva importación,
+para que se apliquen las correcciones de la v2 descritas abajo.
+
+## v2 — correcciones tras la primera prueba
+
+La primera versión, al importarla, perdía el marco (faltaban los bordes
+izquierdo/derecho/inferior) y el tema de WordPress sobrescribía la
+tipografía de los botones y algunos títulos (los ponía en mayúsculas y con
+subrayado por defecto). Esta versión corrige:
+
+- **Marco completo**: el borde de las 4 caras ahora está en la Columna
+  exterior (100% ancho) en vez de en la Sección — la Sección, con
+  `layout: boxed`, puede pintar su fondo a todo el ancho del navegador y
+  dejar el borde "perdido" fuera de la vista; la Columna, en cambio,
+  siempre queda encajada dentro del ancho de caja (1100px), así que su
+  borde envuelve exactamente el marco visible en la referencia.
+- **Sin mayúsculas/subrayado impuestos por el tema**: cada Heading, Texto y
+  Botón fija ahora explícitamente `text-transform: none` y
+  `text-decoration: none` (excepto el título principal, que sí lleva
+  mayúsculas a propósito), para que no hereden el estilo por defecto de
+  encabezados/botones de tu tema.
+- **Insignias ovaladas 01/02**: menos relleno vertical y color de fondo/borde
+  explícitos también en estado "hover", para que se vean como un óvalo fino
+  y no como un botón con subrayado.
+- Más aire lateral en el texto de cada tarjeta (padding horizontal mayor)
+  para que el párrafo no ocupe todo el ancho de la columna.
+
+Si al importar esta v2 algo sigue sin coincidir (por ejemplo, si tu tema
+tiene reglas CSS con `!important` que ganan a los controles de Elementor),
+dime exactamente qué elemento y lo afino.
+
 ## Qué contiene y cómo editarlo
 
 Estructura (todo dentro de una Sección exterior con el marco de líneas):
