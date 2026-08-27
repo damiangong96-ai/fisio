@@ -56,6 +56,33 @@ ningún CSS adicional en Personalizar.
   (`--fdh-bg`, `--fdh-ink`, `--fdh-border`, las tres `--fdh-font-*`).
   Cambia solo esas líneas, no hace falta tocar el resto del CSS.
 
+## v5 — estructura real: franja de título a todo lo ancho + marco de tarjetas más estrecho
+
+A partir de las capturas de la referencia real (Figma), la estructura no es
+una única caja cerrada por las 4 caras como monté en v1-v4. Es en realidad
+**dos bloques separados**:
+
+1. **Franja del título** ("Formas de habitar [Marca]"): ocupa **todo el
+   ancho de la ventana**, de borde a borde, con línea horizontal arriba y
+   abajo — sin bordes laterales. Esta franja usa una técnica CSS de
+   "ruptura de contenedor" (`width:100vw` + margen negativo) para salirse
+   del ancho del widget aunque la sección de Elementor esté en modo
+   "boxed" — lo verifiqué renderizando el bloque dentro de un contenedor
+   más estrecho simulado y confirmando que la franja sí llega a los bordes
+   reales de la ventana.
+2. **Marco de tarjetas** (01/02 + pie "Explorar este universo"): un bloque
+   más estrecho y centrado (~1024px, la misma medida que me diste desde el
+   panel de Inspeccionar de Figma), con bordes izquierdo, derecho e
+   inferior — pero **sin borde superior propio**, porque esa línea ya la
+   pone el borde inferior de la franja del título justo encima, y así no
+   queda una línea doblada.
+
+La sección de Elementor pasa a modo **"Ancho completo" (`full_width`)**
+para que la franja del título tenga sitio de sobra donde estirarse; el
+marco de tarjetas se autolimita a los ~1024px por su propio CSS
+(`max-width`), así que no se ve afectado por el cambio de modo de la
+sección.
+
 ## Nota sobre Google Fonts
 
 El diseño usa `Cormorant Garamond`, `Playfair Display` e `Inter`. Si tu
