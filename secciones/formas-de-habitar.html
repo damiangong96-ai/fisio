@@ -1,0 +1,233 @@
+<!--
+  ============================================================================
+  SECCIÓN "FORMAS DE HABITAR [MARCA]" — bloque de catálogo a 2 columnas
+  ============================================================================
+  Reproduce el diseño de la captura de referencia (título superior + 2
+  tarjetas numeradas con badge ovalado, logotipo serif/script, imagen,
+  párrafo y enlace "Explorar este universo →"), en una cuadrícula con
+  líneas finas al estilo "ficha editorial".
+
+  CÓMO PEGARLO EN WORDPRESS
+  --------------------------
+  1. Copia TODO el contenido de este archivo (desde <section hasta </section>,
+     incluido el <style> de arriba).
+  2. En WordPress:
+     - Editor de bloques: añade un bloque "HTML personalizado" y pega esto.
+     - Elementor: añade un widget "HTML" y pega esto.
+  3. Publica. No necesita CSS ni JS externos aparte de Google Fonts (con
+     salida a internet; si tu WordPress bloquea Google Fonts, sustituye el
+     <link> por fuentes del sistema quitando el @import).
+
+  QUÉ PUEDES EDITAR SIN TOCAR CSS
+  --------------------------------
+  - Todo el texto: está directamente en el HTML, edítalo donde lo veas.
+  - Las imágenes: busca los dos bloques `data-placeholder="..."` y sustituye
+    el <div> completo por un <img src="..." alt="..." class="fdh-card__img">
+    (mismo patrón que el resto del proyecto — ver README.md).
+  - Colores/tipografía: cambia las variables dentro de `.fdh-section{ ... }`
+    en el bloque <style> (--fdh-bg, --fdh-ink, --fdh-border, --fdh-font-serif,
+    --fdh-font-script, --fdh-font-body). No hace falta tocar el resto del CSS.
+  - Número de tarjetas: duplica un `.fdh-grid__col` completo (cabecera +
+    contenido + pie) si necesitas una 3ª columna; el grid se adapta solo
+    porque usa `grid-template-columns: repeat(auto, 1fr)` sobre el nº de hijos
+    reales (ver comentario junto a `.fdh-grid__row--content`).
+  ============================================================================
+-->
+<style>
+  .fdh-section{
+    /* ---- tokens editables ---- */
+    --fdh-bg: #efe8db;
+    --fdh-ink: #2b2620;
+    --fdh-border: #35302a;
+    --fdh-muted: #55503f;
+    --fdh-font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --fdh-font-script: 'Playfair Display', Georgia, serif;
+    --fdh-font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+    background: var(--fdh-bg);
+    color: var(--fdh-ink);
+    font-family: var(--fdh-font-body);
+    padding: clamp(32px, 6vw, 64px) clamp(16px, 6vw, 64px);
+    box-sizing: border-box;
+  }
+  .fdh-section *{ box-sizing: border-box; }
+
+  .fdh-frame{
+    max-width: 1100px;
+    margin: 0 auto;
+    border: 1px solid var(--fdh-border);
+  }
+
+  .fdh-title{
+    margin: 0;
+    padding: clamp(20px,3vw,32px) 20px;
+    text-align: center;
+    font-family: var(--fdh-font-serif);
+    font-weight: 500;
+    font-size: clamp(22px, 3.4vw, 34px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--fdh-border);
+  }
+
+  /* Fila de contenido: tantas columnas como .fdh-card haya (edítalo a mano
+     si añades/quitas tarjetas — por defecto 2). */
+  .fdh-grid__row--content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 1px solid var(--fdh-border);
+  }
+  .fdh-grid__row--footer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fdh-card{
+    padding: clamp(28px,4vw,44px) clamp(20px,4vw,40px) clamp(32px,4vw,48px);
+    text-align: center;
+    border-right: 1px solid var(--fdh-border);
+  }
+  .fdh-grid__row--content .fdh-card:last-child,
+  .fdh-grid__row--footer .fdh-link:last-child{
+    border-right: none;
+  }
+
+  .fdh-card__badge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 34px;
+    border: 1px solid var(--fdh-border);
+    border-radius: 50%;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  .fdh-card__brand{
+    margin: 0;
+    font-family: var(--fdh-font-serif);
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.1;
+  }
+  .fdh-card__sub{
+    display: block;
+    margin-top: 2px;
+    font-family: var(--fdh-font-script);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(17px, 2.2vw, 21px);
+  }
+
+  .fdh-card__img{
+    display: block;
+    width: 168px;
+    max-width: 60%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    margin: 26px auto 24px;
+    background: #d8d2c3; /* color de fondo mientras no hay imagen real */
+  }
+  /* Placeholder de imagen: sustitúyelo por <img src="..." class="fdh-card__img" alt="..."> */
+  .fdh-card__img[data-placeholder]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--fdh-border);
+    color: var(--fdh-muted);
+    font-family: var(--fdh-font-body);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .fdh-card__text{
+    margin: 0 auto;
+    max-width: 34ch;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--fdh-ink);
+  }
+
+  .fdh-link{
+    padding: 18px 20px;
+    text-align: center;
+    border-right: 1px solid var(--fdh-border);
+  }
+  .fdh-link a{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--fdh-ink);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+  .fdh-link a .fdh-arrow{
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+  .fdh-link a:hover .fdh-arrow{ transform: translateX(6px); }
+  .fdh-link a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+
+  @media (max-width: 720px){
+    .fdh-grid__row--content,
+    .fdh-grid__row--footer{ grid-template-columns: 1fr; }
+    .fdh-card,
+    .fdh-link{ border-right: none; border-bottom: 1px solid var(--fdh-border); }
+    .fdh-grid__row--content .fdh-card:last-child{ border-bottom: none; }
+    .fdh-grid__row--footer .fdh-link:last-child{ border-bottom: none; }
+  }
+</style>
+
+<section class="fdh-section" aria-label="Formas de habitar">
+  <div class="fdh-frame">
+
+    <h2 class="fdh-title">Formas de habitar [Marca]</h2>
+
+    <div class="fdh-grid__row--content">
+
+      <!-- Tarjeta 1 -->
+      <article class="fdh-card">
+        <span class="fdh-card__badge">01</span>
+        <h3 class="fdh-card__brand">[Marca]<span class="fdh-card__sub">Brands</span></h3>
+
+        <!-- Sustituye este div por: <img src="ruta/a/tu-imagen.jpg" alt="..." class="fdh-card__img"> -->
+        <div class="fdh-card__img" data-placeholder="IMAGEN_TARJETA_1">Imagen 1<br>(sustituir)</div>
+
+        <p class="fdh-card__text">
+          Todas necesitan una razón para existir. En [Marca] descubrimos esa
+          historia y la convertimos en un universo capaz de verse, sentirse
+          y recordarse.
+        </p>
+      </article>
+
+      <!-- Tarjeta 2 -->
+      <article class="fdh-card">
+        <span class="fdh-card__badge">02</span>
+        <h3 class="fdh-card__brand">[Marca]<span class="fdh-card__sub">Experiences</span></h3>
+
+        <!-- Sustituye este div por: <img src="ruta/a/tu-imagen.jpg" alt="..." class="fdh-card__img"> -->
+        <div class="fdh-card__img" data-placeholder="IMAGEN_TARJETA_2">Imagen 2<br>(sustituir)</div>
+
+        <p class="fdh-card__text">
+          Hay historias que necesitan ser vividas. Una boda. Un lanzamiento.
+          Un encuentro. Una experiencia compartida. Creamos universos donde
+          cada detalle ayuda a que ese momento permanezca mucho después de
+          haber terminado.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="fdh-grid__row--footer">
+      <div class="fdh-link"><a href="#">Explorar este universo <span class="fdh-arrow">&#8594;</span></a></div>
+      <div class="fdh-link"><a href="#">Explorar este universo <span class="fdh-arrow">&#8594;</span></a></div>
+    </div>
+
+  </div>
+</section>
