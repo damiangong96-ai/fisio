@@ -1,124 +1,64 @@
 # Sección "Formas de habitar [Marca]" — plantilla de Elementor
 
-`formas-de-habitar-elementor.json` es una **plantilla de sección de
-Elementor** (no HTML suelto): al importarla obtienes una Sección con
-Columnas y widgets nativos (Heading, Texto, Imagen, Botón) que se editan
-100% visual, desde el panel de Elementor, sin tocar código.
+`formas-de-habitar-elementor.json` es una **plantilla de Sección de
+Elementor**: al importarla se inserta como una Sección real (se ve, se
+mueve y se coloca como cualquier otra sección de la página, con su propio
+panel de ajustes de Sección/Columna), pero por dentro usa un widget
+**HTML** con el diseño exacto, protegido con reglas CSS reforzadas
+(`!important`) para que el tema de WordPress no le imponga mayúsculas,
+subrayados u otra tipografía — esto es justo lo que fallaba en las
+versiones anteriores hechas con widgets nativos (Heading/Botón/Columna),
+que dependían de que Elementor y el tema no chocaran.
+
+## Por qué el cambio de enfoque
+
+Las dos primeras versiones (widgets nativos: Heading, Botón con bordes
+redondeados, Columnas con borde) tenían un problema de fondo: yo no puedo
+probarlas dentro de un Elementor/tema real antes de dártelas, y el tema de
+tu WordPress estaba ganando la partida a los controles del panel —
+imponiendo subrayado en enlaces y mayúsculas en textos con reglas CSS más
+fuertes que las que genera Elementor desde el panel.
+
+Esta versión sí la he podido verificar yo mismo: rendericé el HTML/CSS
+exacto contra una hoja de estilos "hostil" simulada (mayúsculas y
+subrayado forzados por todas partes, como hace tu tema) y comprobé que el
+diseño se mantiene intacto — óvalos, mayúsculas solo donde toca, sin
+subrayados, marco completo por las 4 caras. Ya no hace falta que pegues
+ningún CSS adicional en Personalizar.
 
 ## Cómo importarla
 
-1. En el editor de Elementor, abre el panel de plantillas: icono de carpeta
-   ("Añadir plantilla") o **Elementor → Plantillas guardadas → Importar
-   plantillas** desde el escritorio de WordPress.
-2. Sube el archivo `formas-de-habitar-elementor.json`.
-3. Insértala en la página donde quieras la sección (arrástrala o pulsa
-   "Insertar").
+1. Si ya habías insertado una versión anterior de esta sección en la
+   página, bórrala primero.
+2. En el editor de Elementor, abre el panel de plantillas: icono de
+   carpeta ("Añadir plantilla") o **Elementor → Plantillas guardadas →
+   Importar plantillas** desde el escritorio de WordPress.
+3. Sube `formas-de-habitar-elementor.json`.
+4. Insértala en la página donde quieras la sección.
 
-**Si ya habías insertado una versión anterior de esta sección**: bórrala de
-la página (Elementor no actualiza en sitio una sección ya insertada al
-volver a importar la plantilla) y vuelve a insertar la nueva importación,
-para que se apliquen las correcciones de la v2 descritas abajo.
+## Qué es editable y cómo
 
-## v2 — correcciones tras la primera prueba
+- **Sección/Columna** (posición, fondo, ancho, márgenes) → panel visual de
+  Elementor, como cualquier otra sección.
+- **Contenido interno** (textos, marca, párrafos, enlaces, imágenes) → haz
+  doble clic sobre el widget HTML dentro de Elementor para abrir su editor
+  de código, o edítalo aquí mismo antes de importar:
+  - Sustituye `[Marca]` (aparece 3 veces: título y las dos tarjetas).
+  - Los dos párrafos de cada tarjeta.
+  - Los dos `href="#"` de "Explorar este universo" → cámbialos por la URL
+    real de cada página.
+  - Las imágenes: busca los dos `data-placeholder="IMAGEN_TARJETA_1/2"` y
+    sustituye ese `<div>` por un `<img src="..." class="fdh-card__img"
+    alt="...">` con la URL que te dé la Biblioteca de medios de WordPress
+    al subir la imagen (clic derecho sobre la imagen ya subida → "Copiar
+    URL del enlace").
+- **Colores/tipografía** → variables al principio del `<style>`
+  (`--fdh-bg`, `--fdh-ink`, `--fdh-border`, las tres `--fdh-font-*`).
+  Cambia solo esas líneas, no hace falta tocar el resto del CSS.
 
-La primera versión, al importarla, perdía el marco (faltaban los bordes
-izquierdo/derecho/inferior) y el tema de WordPress sobrescribía la
-tipografía de los botones y algunos títulos (los ponía en mayúsculas y con
-subrayado por defecto). Esta versión corrige:
+## Nota sobre Google Fonts
 
-- **Marco completo**: el borde de las 4 caras ahora está en la Columna
-  exterior (100% ancho) en vez de en la Sección — la Sección, con
-  `layout: boxed`, puede pintar su fondo a todo el ancho del navegador y
-  dejar el borde "perdido" fuera de la vista; la Columna, en cambio,
-  siempre queda encajada dentro del ancho de caja (1100px), así que su
-  borde envuelve exactamente el marco visible en la referencia.
-- **Sin mayúsculas/subrayado impuestos por el tema**: cada Heading, Texto y
-  Botón fija ahora explícitamente `text-transform: none` y
-  `text-decoration: none` (excepto el título principal, que sí lleva
-  mayúsculas a propósito), para que no hereden el estilo por defecto de
-  encabezados/botones de tu tema.
-- **Insignias ovaladas 01/02**: menos relleno vertical y color de fondo/borde
-  explícitos también en estado "hover", para que se vean como un óvalo fino
-  y no como un botón con subrayado.
-- Más aire lateral en el texto de cada tarjeta (padding horizontal mayor)
-  para que el párrafo no ocupe todo el ancho de la columna.
-
-Si al importar esta v2 algo sigue sin coincidir (por ejemplo, si tu tema
-tiene reglas CSS con `!important` que ganan a los controles de Elementor),
-dime exactamente qué elemento y lo afino.
-
-## v3 — subrayado persistente en la insignia 01/02 y en "Explorar este universo"
-
-Tras probarlo en tu WordPress real, la insignia y el enlace del pie seguían
-saliendo subrayados aunque el widget *Botón* ya tenía "Decoración de texto:
-Ninguna". Causa casi segura: muchos temas de WordPress fijan
-`a { text-decoration: underline !important; }` de forma global (por
-accesibilidad), y ese `!important` gana siempre a la CSS que genera
-Elementor a partir de los controles del panel — no importa qué pongas ahí,
-el navegador aplica la regla del tema por encima.
-
-Esta versión añade una clase CSS a cada uno de los dos elementos afectados
-(`_css_classes`: `fdh-badge` en la insignia, `fdh-explore` en el enlace del
-pie) para poder apuntarles directamente con más especificidad. **Si tras
-importar esta v3 el subrayado sigue apareciendo**, pega esto en
-**Apariencia → Personalizar → CSS adicional** (o en Elementor Pro →
-Configuración del sitio → CSS personalizado):
-
-```css
-.fdh-badge a,
-.fdh-explore a{
-  text-decoration: none !important;
-}
-```
-
-Esto anula la regla del tema solo para estos dos elementos, sin tocar el
-resto de enlaces/botones del sitio.
-
-También se ha afinado la insignia 01/02 para que quede más aplanada (menos
-relleno vertical, texto más pequeño) y se acerque más al óvalo fino de la
-referencia.
-
-## Qué contiene y cómo editarlo
-
-Estructura (todo dentro de una Sección exterior con el marco de líneas):
-
-- **Fila de título** → widget *Heading*: "FORMAS DE HABITAR [MARCA]".
-- **Fila de contenido** → 2 columnas, cada una con:
-  - *Botón* usado como insignia ovalada ("01" / "02") — solo texto, sin
-    enlace real.
-  - *Heading* con el nombre de marca ("[Marca]").
-  - *Heading* con el subtítulo en cursiva ("Brands" / "Experiences").
-  - *Imagen* — placeholder vacío: haz clic y sube la imagen desde la
-    Biblioteca de medios de WordPress.
-  - *Texto* — párrafo de cada tarjeta.
-- **Fila de pie** → 2 columnas con *Botón* estilo enlace: "Explorar este
-  universo →".
-
-Cada elemento se selecciona y edita directamente en el lienzo de
-Elementor (contenido, tipografía, color, bordes, espaciados) desde el
-panel de la izquierda — no hay HTML ni CSS que tocar.
-
-## Antes de publicar
-
-- Sustituye `[Marca]` por el nombre real (aparece en el título y en cada
-  tarjeta).
-- Sube las dos imágenes reales en los widgets *Imagen*.
-- Ajusta los dos enlaces "Explorar este universo" (widget *Botón* → pestaña
-  *Contenido* → *Enlace*) a las páginas de destino reales.
-- Los colores/tipografía están ya fijados a los de la referencia (fondo
-  crudo `#EFE8DB`, líneas `#35302A`, `Playfair Display` / `Cormorant
-  Garamond` + `Inter`); si tu cuenta usa Google Fonts vía Elemento
-  necesitarás que esas familias estén disponibles (Elementor las carga
-  automáticamente si el sitio tiene salida a Google Fonts activada en
-  Ajustes del sitio → Fuentes, opción por defecto).
-
-## Nota sobre compatibilidad
-
-Esta plantilla se ha construido siguiendo el esquema estándar de
-exportación/importación de Elementor (`elType`/`widgetType` + controles del
-Elementor "free" — Heading, Texto, Imagen, Botón, Sección, Columna — sin
-depender de Elementor Pro). No se ha podido probar la importación dentro
-de una instalación real de Elementor desde este entorno, así que si algún
-control no aparece exactamente como en la referencia al importarla,
-dímelo (o ajusta ese valor concreto desde el panel — el resto de la
-sección no se ve afectado) y lo corrijo.
+El diseño usa `Cormorant Garamond`, `Playfair Display` e `Inter`. Si tu
+sitio ya carga Google Fonts (lo más habitual), se verán automáticamente.
+Si tu WordPress bloquea Google Fonts, sustituye esas tres variables por
+fuentes ya instaladas en tu tema.
