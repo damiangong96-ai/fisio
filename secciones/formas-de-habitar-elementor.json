@@ -1,0 +1,664 @@
+{
+  "content": [
+    {
+      "id": "85caad2",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1100
+        },
+        "gap": "no",
+        "background_background": "classic",
+        "background_color": "#EFE8DB",
+        "border_border": "solid",
+        "border_width": {
+          "unit": "px",
+          "top": "1",
+          "right": "1",
+          "bottom": "1",
+          "left": "1",
+          "isLinked": true
+        },
+        "border_color": "#35302A",
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "9a08570",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "background_background": "classic",
+            "background_color": "#EFE8DB",
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "ac5a759",
+              "elType": "section",
+              "settings": {
+                "gap": "no",
+                "background_background": "classic",
+                "background_color": "#EFE8DB"
+              },
+              "elements": [
+                {
+                  "id": "7788e4c",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 100,
+                    "background_background": "classic",
+                    "background_color": "#EFE8DB",
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "20",
+                      "bottom": "32",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "1",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "border_color": "#35302A"
+                  },
+                  "elements": [
+                    {
+                      "id": "71227f5",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Formas de habitar [Marca]",
+                        "header_size": "h2",
+                        "align": "center",
+                        "title_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Playfair Display",
+                        "typography_font_weight": "500",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 28
+                        },
+                        "typography_text_transform": "uppercase",
+                        "typography_letter_spacing": {
+                          "unit": "em",
+                          "size": 0.08
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    }
+                  ],
+                  "isInner": false
+                }
+              ],
+              "isInner": true
+            },
+            {
+              "id": "d5751e0",
+              "elType": "section",
+              "settings": {
+                "gap": "no",
+                "background_background": "classic",
+                "background_color": "#EFE8DB",
+                "border_border": "solid",
+                "border_width": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "1",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "border_color": "#35302A"
+              },
+              "elements": [
+                {
+                  "id": "40112d0",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 50,
+                    "background_background": "classic",
+                    "background_color": "#EFE8DB",
+                    "padding": {
+                      "unit": "px",
+                      "top": "40",
+                      "right": "32",
+                      "bottom": "44",
+                      "left": "32",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "fd95074",
+                      "elType": "widget",
+                      "widgetType": "button",
+                      "settings": {
+                        "text": "01",
+                        "align": "center",
+                        "size": "xs",
+                        "border_border": "solid",
+                        "border_width": {
+                          "unit": "px",
+                          "top": "1",
+                          "right": "1",
+                          "bottom": "1",
+                          "left": "1",
+                          "isLinked": true
+                        },
+                        "border_color": "#35302A",
+                        "border_radius": {
+                          "unit": "px",
+                          "top": "50",
+                          "right": "50",
+                          "bottom": "50",
+                          "left": "50",
+                          "isLinked": true
+                        },
+                        "background_color": "transparent",
+                        "button_text_color": "#2B2620",
+                        "hover_animation": "",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_weight": "600",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 12
+                        },
+                        "text_padding": {
+                          "unit": "px",
+                          "top": "6",
+                          "right": "18",
+                          "bottom": "6",
+                          "left": "18",
+                          "isLinked": false
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "22",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "link": {
+                          "url": "",
+                          "is_external": "",
+                          "nofollow": ""
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "61c3b63",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "[Marca]",
+                        "header_size": "h3",
+                        "align": "center",
+                        "title_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Cormorant Garamond",
+                        "typography_font_weight": "700",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 26
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "2c12bb3",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Brands",
+                        "header_size": "h4",
+                        "align": "center",
+                        "title_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Playfair Display",
+                        "typography_font_weight": "400",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 19
+                        },
+                        "typography_font_style": "italic"
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "449fd8a",
+                      "elType": "widget",
+                      "widgetType": "image",
+                      "settings": {
+                        "image": {
+                          "url": "",
+                          "id": ""
+                        },
+                        "image_size": "medium_large",
+                        "align": "center",
+                        "width": {
+                          "unit": "%",
+                          "size": 70
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "24",
+                          "left": "0",
+                          "isLinked": false
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "611a306",
+                      "elType": "widget",
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Todas necesitan una razón para existir. En [Marca] descubrimos esa historia y la convertimos en un universo capaz de verse, sentirse y recordarse.</p>",
+                        "align": "center",
+                        "text_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 14.5
+                        },
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    }
+                  ],
+                  "isInner": false
+                },
+                {
+                  "id": "8ae3ead",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 50,
+                    "background_background": "classic",
+                    "background_color": "#EFE8DB",
+                    "padding": {
+                      "unit": "px",
+                      "top": "40",
+                      "right": "32",
+                      "bottom": "44",
+                      "left": "32",
+                      "isLinked": false
+                    },
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "1",
+                      "isLinked": false
+                    },
+                    "border_color": "#35302A"
+                  },
+                  "elements": [
+                    {
+                      "id": "0b0438f",
+                      "elType": "widget",
+                      "widgetType": "button",
+                      "settings": {
+                        "text": "02",
+                        "align": "center",
+                        "size": "xs",
+                        "border_border": "solid",
+                        "border_width": {
+                          "unit": "px",
+                          "top": "1",
+                          "right": "1",
+                          "bottom": "1",
+                          "left": "1",
+                          "isLinked": true
+                        },
+                        "border_color": "#35302A",
+                        "border_radius": {
+                          "unit": "px",
+                          "top": "50",
+                          "right": "50",
+                          "bottom": "50",
+                          "left": "50",
+                          "isLinked": true
+                        },
+                        "background_color": "transparent",
+                        "button_text_color": "#2B2620",
+                        "hover_animation": "",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_weight": "600",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 12
+                        },
+                        "text_padding": {
+                          "unit": "px",
+                          "top": "6",
+                          "right": "18",
+                          "bottom": "6",
+                          "left": "18",
+                          "isLinked": false
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "22",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "link": {
+                          "url": "",
+                          "is_external": "",
+                          "nofollow": ""
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "3b65905",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "[Marca]",
+                        "header_size": "h3",
+                        "align": "center",
+                        "title_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Cormorant Garamond",
+                        "typography_font_weight": "700",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 26
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "8aa341e",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Experiences",
+                        "header_size": "h4",
+                        "align": "center",
+                        "title_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Playfair Display",
+                        "typography_font_weight": "400",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 19
+                        },
+                        "typography_font_style": "italic"
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "7a0777b",
+                      "elType": "widget",
+                      "widgetType": "image",
+                      "settings": {
+                        "image": {
+                          "url": "",
+                          "id": ""
+                        },
+                        "image_size": "medium_large",
+                        "align": "center",
+                        "width": {
+                          "unit": "%",
+                          "size": 70
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "24",
+                          "left": "0",
+                          "isLinked": false
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    },
+                    {
+                      "id": "3d259b6",
+                      "elType": "widget",
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Hay historias que necesitan ser vividas. Una boda. Un lanzamiento. Un encuentro. Una experiencia compartida. Creamos universos donde cada detalle ayuda a que ese momento permanezca mucho después de haber terminado.</p>",
+                        "align": "center",
+                        "text_color": "#2B2620",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 14.5
+                        },
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    }
+                  ],
+                  "isInner": false
+                }
+              ],
+              "isInner": true
+            },
+            {
+              "id": "cbef16c",
+              "elType": "section",
+              "settings": {
+                "gap": "no",
+                "background_background": "classic",
+                "background_color": "#EFE8DB"
+              },
+              "elements": [
+                {
+                  "id": "c6b99fb",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 50,
+                    "background_background": "classic",
+                    "background_color": "#EFE8DB",
+                    "padding": {
+                      "unit": "px",
+                      "top": "18",
+                      "right": "20",
+                      "bottom": "18",
+                      "left": "20",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "aeba084",
+                      "elType": "widget",
+                      "widgetType": "button",
+                      "settings": {
+                        "text": "Explorar este universo",
+                        "align": "center",
+                        "size": "sm",
+                        "background_color": "transparent",
+                        "border_border": "none",
+                        "button_text_color": "#2B2620",
+                        "hover_color": "#2B2620",
+                        "hover_animation": "",
+                        "icon_align": "right",
+                        "selected_icon": {
+                          "value": "fas fa-long-arrow-alt-right",
+                          "library": "fa-solid"
+                        },
+                        "icon_indent": {
+                          "unit": "px",
+                          "size": 10
+                        },
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 13
+                        },
+                        "typography_letter_spacing": {
+                          "unit": "em",
+                          "size": 0.03
+                        },
+                        "text_padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        },
+                        "link": {
+                          "url": "#",
+                          "is_external": "",
+                          "nofollow": ""
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    }
+                  ],
+                  "isInner": false
+                },
+                {
+                  "id": "e23c04a",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 50,
+                    "background_background": "classic",
+                    "background_color": "#EFE8DB",
+                    "padding": {
+                      "unit": "px",
+                      "top": "18",
+                      "right": "20",
+                      "bottom": "18",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "1",
+                      "isLinked": false
+                    },
+                    "border_color": "#35302A"
+                  },
+                  "elements": [
+                    {
+                      "id": "9e50121",
+                      "elType": "widget",
+                      "widgetType": "button",
+                      "settings": {
+                        "text": "Explorar este universo",
+                        "align": "center",
+                        "size": "sm",
+                        "background_color": "transparent",
+                        "border_border": "none",
+                        "button_text_color": "#2B2620",
+                        "hover_color": "#2B2620",
+                        "hover_animation": "",
+                        "icon_align": "right",
+                        "selected_icon": {
+                          "value": "fas fa-long-arrow-alt-right",
+                          "library": "fa-solid"
+                        },
+                        "icon_indent": {
+                          "unit": "px",
+                          "size": 10
+                        },
+                        "typography_typography": "custom",
+                        "typography_font_family": "Inter",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 13
+                        },
+                        "typography_letter_spacing": {
+                          "unit": "em",
+                          "size": 0.03
+                        },
+                        "text_padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        },
+                        "link": {
+                          "url": "#",
+                          "is_external": "",
+                          "nofollow": ""
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false
+                    }
+                  ],
+                  "isInner": false
+                }
+              ],
+              "isInner": true
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Formas de habitar [Marca]",
+  "type": "section"
+}
