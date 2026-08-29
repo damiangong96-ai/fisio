@@ -1,0 +1,228 @@
+{
+  "content": [
+    {
+      "id": "61d2e90",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "gap": "no",
+        "background_background": "classic",
+        "background_color": "#B6AA99",
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "4179589",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "background_background": "classic",
+            "background_color": "#B6AA99",
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "9f02a97",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<style>\n  .fdh2-wave.fdh2-wave{\n    background: transparent !important;\n    box-sizing: border-box !important;\n  }\n  .fdh2-wave.fdh2-wave *{ box-sizing: border-box !important; }\n  .fdh2-wave .fdh2-wave__band{\n    width: 100vw !important;\n    margin-left: calc(50% - 50vw) !important;\n    margin-right: calc(50% - 50vw) !important;\n    display: block !important;\n    line-height: 0 !important;\n  }\n  .fdh2-wave .fdh2-wave__band svg{ display: block !important; width: 100% !important; height: auto !important; }\n  .fdh2-wave .fdh2-wave__text{\n    font-family: Georgia, 'Times New Roman', serif !important;\n    font-size: 13px !important;\n    letter-spacing: 0.12em !important;\n    fill: #2b2620 !important;\n  }\n</style>\n<div class=\"fdh2-wave\">\n  <div class=\"fdh2-wave__band\">\n    <svg viewBox=\"0 0 1200 200\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Franja decorativa THIS IS BLOMSTRA\">\n      <path d=\"M0,0 L1200,0 L1200,90 C1150,90 1100,70 1000,100 C800,160 700,40 500,100 C300,160 200,40 0,100 Z\" fill=\"#efe7de\"></path>\n      <path id=\"fdh2-wavepath\" d=\"M0,100 C200,40 300,160 500,100 C700,40 800,160 1000,100 C1100,70 1150,90 1200,90\" fill=\"none\" stroke=\"#2b2620\" stroke-width=\"1.2\" stroke-dasharray=\"3 5\"></path>\n      <text class=\"fdh2-wave__text\">\n        <textPath href=\"#fdh2-wavepath\" startOffset=\"0\">THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; THIS IS BLOMSTRA &#183; </textPath>\n      </text>\n    </svg>\n  </div>\n</div>\n"
+              },
+              "elements": [],
+              "isInner": false
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "ebfea33",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1100
+        },
+        "gap": "no",
+        "background_background": "classic",
+        "background_color": "#B6AA99"
+      },
+      "elements": [
+        {
+          "id": "96eb794",
+          "elType": "column",
+          "settings": {
+            "_column_size": 25,
+            "background_background": "classic",
+            "background_color": "#B6AA99",
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "12",
+              "bottom": "20",
+              "left": "12",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "717de0a",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "1",
+                "align": "center",
+                "size": "xs",
+                "border_border": "solid",
+                "border_width": {
+                  "unit": "px",
+                  "top": "1",
+                  "right": "1",
+                  "bottom": "1",
+                  "left": "1",
+                  "isLinked": true
+                },
+                "border_color": "#2B2620",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "50",
+                  "right": "50",
+                  "bottom": "50",
+                  "left": "50",
+                  "isLinked": true
+                },
+                "background_color": "transparent",
+                "background_hover_color": "transparent",
+                "hover_border_color": "#2B2620",
+                "button_text_color": "#2B2620",
+                "hover_color": "#2B2620",
+                "hover_animation": "",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 11
+                },
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "text_padding": {
+                  "unit": "px",
+                  "top": "2",
+                  "right": "16",
+                  "bottom": "2",
+                  "left": "16",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "_css_classes": "fdh2-badge",
+                "link": {
+                  "url": "",
+                  "is_external": "",
+                  "nofollow": ""
+                }
+              },
+              "elements": [],
+              "isInner": false
+            },
+            {
+              "id": "75c0773",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Relato",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#2B2620",
+                "typography_typography": "custom",
+                "typography_font_family": "Cormorant Garamond",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 15
+                },
+                "typography_font_weight": "500",
+                "typography_letter_spacing": {
+                  "unit": "em",
+                  "size": 0.12
+                },
+                "typography_text_transform": "uppercase",
+                "typography_text_decoration": "none"
+              },
+              "elements": [],
+              "isInner": false
+            }
+          ],
+          "isInner": false
+        },
+        {
+          "id": "1bce2fa",
+          "elType": "column",
+          "settings": {
+            "_column_size": 75,
+            "background_background": "classic",
+            "background_color": "#B6AA99",
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "12",
+              "bottom": "40",
+              "left": "12",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "350a430",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "",
+                  "id": ""
+                },
+                "image_size": "large",
+                "align": "left",
+                "width": {
+                  "unit": "%",
+                  "size": 100
+                }
+              },
+              "elements": [],
+              "isInner": false
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "This is Blomstra — franja + relato",
+  "type": "section"
+}
