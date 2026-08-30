@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blomstra — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Petit+Formal+Script&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /*
+    Página completa "desktop_home_page" de WEBSIDE_BLOMSTRA (Figma, nodo
+    204:3), leída con get_design_context: texto, colores y estructura
+    reales de las 14 secciones. Aproximaciones deliberadas:
+    - "Aspire Pasque" (Serif + Script) es una fuente de pago no disponible
+      en Google Fonts. Se sustituye por "Cormorant Garamond" (títulos) y
+      "Petit Formal Script" (los fragmentos manuscritos/cursivos). Con el
+      archivo de la fuente real se autohospeda vía @font-face.
+    - El logotipo "Blomstra" (con el rizo decorativo en la B) es un SVG
+      vectorial propio del archivo que no se pudo descargar (política de
+      red de este entorno). Aquí es texto real con la tipografía de sustitución.
+    - Los collages de fotos rotadas/superpuestas se simplifican a grids
+      limpios con las mismas fotos y etiquetas, no la geometría exacta.
+    - Todas las fotos son placeholders a cuadros pendientes de las imágenes
+      reales del cliente.
+  */
+  :root {
+    --cream: #f0ead7;
+    --offwhite-1: #efe9e1;
+    --offwhite-2: #fcf9f5;
+    --taupe: #d2c9bd;
+    --stripe: #cfc3af;
+    --brown: #827560;
+    --ink: #32281b;
+    --ink-dark: #31271b;
+    --photo-tint: #cac7c4;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-script: 'Petit Formal Script', cursive;
+    --font-body: 'Montserrat', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--offwhite-2); }
+  .canvas-wrap { overflow-x: auto; }
+  .canvas { width: 1024px; margin: 0 auto; position: relative; }
+
+  h1, h2, h3 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; }
+
+  .eyebrow { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .btn-outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--ink); border-radius: 999px;
+    font-family: var(--font-body); font-weight: 500; font-size: 12px;
+    padding: 14px 30px; cursor: pointer; background: transparent; color: var(--ink);
+  }
+  .divider { height: 1px; background: var(--ink); opacity: 0.25; width: 100%; }
+
+  .img-placeholder {
+    background-image:
+      linear-gradient(45deg, #d9d2c4 25%, transparent 25%),
+      linear-gradient(-45deg, #d9d2c4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d9d2c4 75%),
+      linear-gradient(-45deg, transparent 75%, #d9d2c4 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: var(--photo-tint);
+  }
+
+  /* ===== announcement bar ===== */
+  .announce { background: var(--brown); padding: 10px 0; text-align: center; }
+  .announce p { font-size: 10px; letter-spacing: 0.05em; color: var(--cream); font-weight: 600; }
+  .announce a { text-decoration: underline; }
+
+  /* ===== hero ===== */
+  .hero { position: relative; height: 633px; }
+  .hero-photo { position: absolute; inset: 0; }
+  .hero-photo::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.35); }
+  .hero-nav { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 24px 42px 0; color: #fff; }
+  .hero-nav .menu-icon { width: 27px; height: 15px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-nav .menu-icon span { display: block; height: 1px; background: #fff; }
+  .hero-logo { font-family: var(--font-script); font-size: 30px; color: #fff; }
+  .hero-nav-right { display: flex; align-items: center; gap: 20px; font-size: 12px; }
+  .hero-divider { position: relative; z-index: 1; height: 1px; background: rgba(255,255,255,.4); margin-top: 22px; }
+  .hero-headline {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, 40px);
+    z-index: 1; color: var(--cream); font-family: var(--font-body); font-weight: 400;
+    font-size: 11px; letter-spacing: 0.5em; text-align: center; white-space: nowrap;
+  }
+
+  /* ===== romantiza tu vida ===== */
+  .romance { background: var(--offwhite-1); padding: 90px 0 60px; text-align: center; }
+  .romance h2 { font-size: 34px; line-height: 1.2; max-width: 500px; margin: 0 auto 40px; }
+  .romance h2 em { font-family: var(--font-script); font-style: normal; font-size: 40px; }
+  .romance .lead { font-size: 12px; line-height: 1.35; max-width: 480px; margin: 0 auto; }
+  .romance .lead b { font-weight: 700; }
+
+  /* ===== todo empieza aqui ===== */
+  .begins { background: var(--offwhite-2); padding: 80px 42px 60px; }
+  .begins h2 { text-align: center; font-size: 34px; margin-bottom: 50px; }
+  .collage-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
+  .collage-item { text-align: center; }
+  .collage-item .img-placeholder { aspect-ratio: 3/4; border-radius: 2px; margin-bottom: 14px; }
+  .collage-item .label { font-family: var(--font-serif); font-size: 18px; text-transform: uppercase; margin-bottom: 6px; }
+  .collage-item .sub { font-family: var(--font-body); font-style: italic; font-size: 11px; }
+  .begins .closing { max-width: 460px; margin: 40px auto 0; text-align: center; font-size: 12px; line-height: 1.4; }
+  .begins .closing p:first-child { margin-bottom: 14px; }
+  .begins .closing p:last-child { font-style: italic; }
+
+  /* ===== designing universes bar ===== */
+  .intent-bar { background: var(--ink-dark); padding: 12px 0; text-align: center; }
+  .intent-bar p { color: #fff; font-size: 12px; }
+
+  /* ===== formas de habitar blomstra ===== */
+  .forms { background: var(--offwhite-1); padding: 70px 0 0; }
+  .forms h2 { text-align: center; font-size: 34px; text-transform: uppercase; padding-bottom: 40px; border-bottom: 1px solid rgba(50,40,27,.2); }
+  .forms-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .forms-col { padding: 50px 42px; text-align: center; border-right: 1px solid rgba(50,40,27,.15); }
+  .forms-col:last-child { border-right: none; }
+  .forms-col .step { font-size: 10px; font-weight: 700; margin-bottom: 10px; }
+  .forms-col .word-mark { height: 40px; margin: 0 auto 30px; opacity: .8; font-family: var(--font-serif); font-size: 22px; }
+  .forms-col .img-placeholder { width: 142px; height: 182px; margin: 0 auto 24px; border: 1px solid var(--ink); }
+  .forms-col p.copy { font-size: 12px; line-height: 1.4; max-width: 260px; margin: 0 auto 24px; }
+  .forms-col .explore { font-size: 10px; display: inline-flex; align-items: center; gap: 10px; }
+  .forms-col .explore::after { content: '→'; }
+
+  /* ===== como trabajamos (taupe band) ===== */
+  .how { background: var(--taupe); padding: 90px 0; position: relative; overflow: hidden; }
+  .how-banner { position: relative; height: 60px; margin-bottom: 30px; overflow: hidden; }
+  .how-banner svg text { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.12em; fill: var(--ink); opacity: .5; }
+  .how-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; padding: 0 42px; align-items: start; }
+  .how h2 { font-size: 30px; text-transform: uppercase; margin-bottom: 24px; }
+  .how .copy { font-size: 12px; line-height: 1.35; max-width: 440px; margin-bottom: 20px; }
+  .how ul { list-style: disc; padding-left: 18px; font-size: 12px; line-height: 1.6; margin-bottom: 20px; }
+  .how .closing { font-size: 12px; margin-bottom: 8px; }
+
+  .how-list { display: flex; flex-direction: column; gap: 34px; }
+  .how-item { display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: center; }
+  .how-item .num { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .how-item .num span:first-child { font-size: 10px; font-weight: 700; }
+  .how-item .num .label { font-family: var(--font-serif); font-size: 20px; text-transform: uppercase; writing-mode: vertical-rl; }
+  .how-item .img-placeholder { aspect-ratio: 212/238; border-radius: 6px; }
+
+  /* ===== nuestro universo de bodas ===== */
+  .wedding { background: var(--offwhite-2); padding: 80px 42px; text-align: center; }
+  .wedding h2 { font-size: 34px; text-transform: uppercase; margin-bottom: 40px; }
+  .wedding-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 30px; }
+  .wedding-grid .img-placeholder { aspect-ratio: 3/4; border-radius: 2px; }
+  .wedding-grid .img-placeholder:nth-child(2n) { border: 1px solid var(--ink); }
+  .wedding .handle { font-size: 10px; margin-bottom: 30px; }
+  .wedding .copy { max-width: 500px; margin: 0 auto 24px; font-size: 12px; line-height: 1.4; }
+  .wedding .tagline { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 14px; }
+  .wedding .tagline::after { content: '→'; }
+
+  /* ===== gallery stripe + manifesto ===== */
+  .strip { position: relative; background: repeating-linear-gradient(90deg, var(--taupe) 0 4.5%, var(--cream) 4.5% 6%); height: 657px; display: flex; align-items: center; justify-content: center; }
+  .manifesto-card {
+    position: relative; z-index: 1; background: var(--offwhite-1); border: 1px solid var(--ink);
+    border-radius: 20px; max-width: 370px; padding: 50px 30px; text-align: center;
+  }
+  .manifesto-card h2 { font-size: 30px; text-transform: uppercase; margin-bottom: 26px; }
+  .manifesto-card p { font-size: 12px; line-height: 1.5; margin-bottom: 14px; }
+
+  /* ===== meet the founder ===== */
+  .founder { background: var(--offwhite-1); padding: 90px 42px; }
+  .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .founder h2 { font-family: var(--font-script); font-size: 52px; margin-bottom: 20px; }
+  .founder .bio { font-size: 12px; line-height: 1.4; text-align: justify; margin-bottom: 24px; }
+  .founder .name { font-size: 12px; margin-bottom: 20px; }
+  .founder .name em { font-style: italic; }
+  .founder-photos { display: flex; gap: 16px; align-items: flex-end; }
+  .founder-photos .tall { flex: 1; aspect-ratio: 328/434; }
+  .founder-photos .small-col { display: flex; flex-direction: column; gap: 16px; width: 30%; }
+  .founder-photos .small-col .img-placeholder:first-child { aspect-ratio: 156/182; }
+  .founder-photos .small-col .img-placeholder:last-child { aspect-ratio: 75/87; }
+
+  /* ===== cta ===== */
+  .cta { background: var(--offwhite-2); padding: 100px 42px; text-align: center; }
+  .cta h2 { font-size: 34px; line-height: 1.15; max-width: 560px; margin: 0 auto 40px; }
+  .cta h2 em { font-family: var(--font-script); font-style: normal; font-size: 40px; }
+
+  /* ===== footer / newsletter ===== */
+  .footer { background: var(--taupe); padding: 70px 42px 50px; }
+  .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; }
+  .footer-top h3 { font-size: 15px; font-family: var(--font-body); font-weight: 600; margin-bottom: 10px; }
+  .footer-top .desc { font-size: 12px; font-style: italic; max-width: 320px; margin-bottom: 14px; }
+  .footer-top .copy { font-size: 12px; line-height: 1.4; max-width: 320px; }
+  .footer-thumbs { display: flex; gap: 8px; align-self: flex-end; }
+  .footer-thumbs .img-placeholder { width: 75px; height: 103px; }
+  .newsletter-row { display: flex; gap: 8px; max-width: 420px; margin-bottom: 12px; }
+  .newsletter-row input { flex: 1; border: none; border-radius: 999px; padding: 14px 22px; font-family: var(--font-body); font-size: 12px; }
+  .newsletter-row button { border: none; border-radius: 999px; padding: 14px 26px; background: var(--ink-dark); color: #fff; font-size: 11px; letter-spacing: 0.05em; cursor: pointer; }
+  .footer-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink); opacity: .8; margin-bottom: 50px; }
+  .footer-wordmark { text-align: center; font-family: var(--font-serif); font-size: 64px; letter-spacing: 0.02em; color: var(--cream); }
+
+  @media (max-width: 1080px) {
+    .canvas { width: 1024px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+<div class="canvas">
+
+  <!-- ===== announcement bar ===== -->
+  <div class="announce">
+    <p>✨ JOIN OUR LITTLE BIG UNIVERS. <a href="#">JOIN NOW</a> ✨</p>
+  </div>
+
+  <!-- ===== hero ===== -->
+  <section class="hero">
+    <!-- <img src="assets/images/hero.jpg" alt="Universo Blomstra"> -->
+    <div class="hero-photo img-placeholder"></div>
+    <div class="hero-nav">
+      <div class="menu-icon"><span></span><span></span></div>
+      <div class="hero-logo">Blomstra</div>
+      <div class="hero-nav-right">
+        <span>EN ▾</span>
+        <span>WHATSAPP</span>
+      </div>
+    </div>
+    <div class="hero-divider"></div>
+    <p class="hero-headline">WELCOME TO OUR UNIVERSE</p>
+  </section>
+
+  <!-- ===== romantiza tu vida ===== -->
+  <section class="romance">
+    <h2><em>Romantiza tu vida.</em><br>Hay historias que solo encuentran su forma cuando alguien aprende a escucharlas.</h2>
+    <p class="lead">Algunas se convierten en una marca. Otras, en una celebración. Otras, en una experiencia.
+    Nosotros empezamos siempre igual: <b>escuchando.</b></p>
+  </section>
+
+  <!-- ===== todo empieza aqui ===== -->
+  <section class="begins">
+    <h2>Todo empieza aquí.</h2>
+
+    <div class="collage-row">
+      <div class="collage-item">
+        <!-- <img src="assets/images/historias.jpg" alt="Historias"> -->
+        <div class="img-placeholder"></div>
+        <p class="label">Historias.</p>
+        <p class="sub">Que encuentran su forma.</p>
+      </div>
+      <div class="collage-item">
+        <!-- <img src="assets/images/experiencias.jpg" alt="Experiencias"> -->
+        <div class="img-placeholder"></div>
+        <p class="label">Experiencias.</p>
+        <p class="sub">Que permanecen.</p>
+      </div>
+      <div class="collage-item">
+        <!-- <img src="assets/images/marcas.jpg" alt="Marcas"> -->
+        <div class="img-placeholder"></div>
+        <p class="label">Marcas.</p>
+        <p class="sub">Que saben quiénes son.</p>
+      </div>
+      <div class="collage-item">
+        <!-- <img src="assets/images/universos.jpg" alt="Universos"> -->
+        <div class="img-placeholder"></div>
+        <p class="label">universos</p>
+        <p class="sub">Que pueden sentirse.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <p>Creemos en los proyectos que tienen algo que decir. Y en las personas que entienden que la belleza solo tiene sentido cuando nace de una intención.</p>
+      <p>Por eso diseñamos universos que pueden verse, sentirse y recordarse.</p>
+    </div>
+  </section>
+
+  <!-- ===== designing universes bar ===== -->
+  <div class="intent-bar"><p>Designing universes with intention.</p></div>
+
+  <!-- ===== formas de habitar blomstra ===== -->
+  <section class="forms">
+    <h2>formas de habitar Blomstra</h2>
+    <div class="forms-grid">
+      <div class="forms-col">
+        <p class="step">01</p>
+        <div class="word-mark">Brands</div>
+        <!-- <img src="assets/images/brands.jpg" alt="Marcas Blomstra"> -->
+        <div class="img-placeholder"></div>
+        <p class="copy">Todas necesitan una razón para existir. En Blomstra descubrimos esa historia y la convertimos en un universo capaz de verse, sentirse y recordarse.</p>
+        <a class="explore" href="#">Explorar este universo</a>
+      </div>
+      <div class="forms-col">
+        <p class="step">02</p>
+        <div class="word-mark">Events</div>
+        <!-- <img src="assets/images/events.jpg" alt="Eventos y experiencias Blomstra"> -->
+        <div class="img-placeholder"></div>
+        <p class="copy">Hay historias que necesitan ser vividas. Una boda. Un lanzamiento. Un encuentro. Una experiencia compartida. Creamos universos donde cada detalle ayuda a que ese momento permanezca mucho después de haber terminado.</p>
+        <a class="explore" href="#">Explorar este universo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== como trabajamos ===== -->
+  <section class="how">
+    <div class="how-banner">
+      <svg viewBox="0 0 1024 60" preserveAspectRatio="none" width="100%" height="60">
+        <path id="howPath" d="M-100,30 C 200,10 400,50 700,25 C 900,8 1000,35 1150,20" fill="none"/>
+        <text><textPath href="#howPath">THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA ·</textPath></text>
+      </svg>
+    </div>
+
+    <div class="how-grid">
+      <div>
+        <h2>Cómo trabajamos</h2>
+        <p class="copy">Toda historia tiene una narrativa. Aunque todavía no se vea. Está en aquello que la hace diferente. En las personas que la viven. En lo que quiere transmitir y en cómo quiere ser recordada. Nuestro trabajo consiste en descubrirla. Porque cuando la narrativa es clara, todo lo demás encuentra su lugar.</p>
+        <ul>
+          <li>La identidad.</li>
+          <li>La dirección de arte.</li>
+          <li>Los espacios.</li>
+          <li>Los materiales.</li>
+          <li>La experiencia.</li>
+        </ul>
+        <p class="closing">Cada decisión empieza a hablar el mismo lenguaje.</p>
+        <p class="closing">Y es entonces cuando nace un universo.</p>
+        <a class="btn-outline" href="#" style="margin-top:20px">Descubre nuestro proceso</a>
+      </div>
+
+      <div class="how-list">
+        <div class="how-item">
+          <div class="num"><span>1</span><span class="label">Relato</span></div>
+          <!-- <img src="assets/images/relato.jpg" alt="Relato"> -->
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="how-item">
+          <div class="num"><span>2</span><span class="label">Diseño</span></div>
+          <!-- <img src="assets/images/diseno.jpg" alt="Diseño"> -->
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="how-item">
+          <div class="num"><span>3</span><span class="label">Experiencia</span></div>
+          <!-- <img src="assets/images/experiencia.jpg" alt="Experiencia"> -->
+          <div class="img-placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== nuestro universo de bodas ===== -->
+  <section class="wedding">
+    <h2>Nuestro universo de bodas</h2>
+    <div class="wedding-grid">
+      <!-- <img src="assets/images/boda-1.jpg" alt="Boda 1"> -->
+      <div class="img-placeholder"></div>
+      <!-- <img src="assets/images/boda-2.jpg" alt="Boda 2"> -->
+      <div class="img-placeholder"></div>
+      <!-- <img src="assets/images/boda-3.jpg" alt="Boda 3"> -->
+      <div class="img-placeholder"></div>
+      <!-- <img src="assets/images/boda-4.jpg" alt="Boda 4"> -->
+      <div class="img-placeholder"></div>
+      <!-- <img src="assets/images/boda-5.jpg" alt="Boda 5"> -->
+      <div class="img-placeholder"></div>
+    </div>
+    <p class="handle">@blomstraweddings</p>
+    <p class="copy">Una de nuestras experiencias más demandadas. Con más de 8 años de experiencia, llevamos años usando la fórmula. Wedding visual storyteller.</p>
+    <a class="tagline" href="#">Para los amantes de las historias de amor · Descubre nuestro universo de historias de amor</a>
+  </section>
+
+  <!-- ===== gallery stripe + manifesto ===== -->
+  <section class="strip">
+    <div class="manifesto-card">
+      <h2>Manifiesto</h2>
+      <p>Es aprender a mirar con intención. Es descubrir belleza donde otros solo ven rutina. Creemos que toda persona, toda marca y toda celebración tienen un universo propio. Nuestro trabajo no consiste en inventarlo.</p>
+      <p>Consiste en descubrirlo. Porque detrás de toda gran idea hay una narrativa esperando ser escuchada. Y cuando esa narrativa aparece, todo encuentra su lugar. Las palabras. Los colores. Los espacios. Los materiales. Las personas. Cada decisión deja de ser una decisión aislada para formar parte de un mismo universo. A eso lo llamamos creatividad ordenada.</p>
+      <p>La capacidad de transformar intuición en estrategia. Emoción en dirección. Historias en experiencias. Y belleza en significado. Porque diseñar no consiste en hacer que algo se vea bonito. Consiste en conseguir que las personas se reconozcan en aquello que están viviendo. Y cuando eso ocurre, se convierte en un universo que puede verse, sentirse y recordarse.</p>
+    </div>
+  </section>
+
+  <!-- ===== meet the founder ===== -->
+  <section class="founder">
+    <div class="founder-grid">
+      <div class="founder-photos">
+        <div class="small-col">
+          <!-- <img src="assets/images/founder-detail-1.jpg" alt="Detalle"> -->
+          <div class="img-placeholder"></div>
+          <!-- <img src="assets/images/founder-detail-2.jpg" alt="Detalle"> -->
+          <div class="img-placeholder"></div>
+        </div>
+        <!-- <img src="assets/images/founder.jpg" alt="Anna Aneas, fundadora de Blomstra"> -->
+        <div class="img-placeholder tall"></div>
+      </div>
+
+      <div>
+        <h2>Meet<br>the founder</h2>
+        <p class="bio">No recuerdo un momento de mi vida en el que no estuviera fascinada por las historias. Crecí entre escenarios, imaginando personajes y aprendiendo que las emociones también podían contarse. Con el tiempo entendí que no quería interpretar historias. Quería ayudar a otras personas a descubrir las suyas. Viajar me enseñó que cada cultura construye su propio universo.</p>
+        <p class="bio">Las conversaciones, que siempre hay algo valioso detrás de una buena pregunta. Y el diseño, que la belleza solo tiene sentido cuando nace de una intención. Así nació Blomstra. Un estudio donde la estrategia, la narrativa y la dirección de arte se encuentran para construir universos capaces de sentirse. Porque sigo creyendo lo mismo que cuando era pequeña: las mejores historias son las que consiguen quedarse contigo.</p>
+        <p class="name">Anna Aneas · The founder.<br><em>Designer, Creative Director & Visual Storyteller</em></p>
+        <a class="btn-outline" href="#">Meet the founder</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== cta ===== -->
+  <section class="cta">
+    <h2>Si sientes que hay una historia esperando encontrar su forma, <em>quizá ha llegado el momento de empezar a escucharla.</em></h2>
+    <a class="btn-outline" href="#">Empecemos por una conversación</a>
+  </section>
+
+  <!-- ===== footer / newsletter ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <h3>The Romantic Coffee Club ☕️</h3>
+        <p class="desc">Un rincón para quienes creen que la belleza siempre debería tener un propósito.</p>
+        <p class="copy">De vez en cuando compartimos cartas sobre creatividad, narrativa, diseño, historias y todo aquello que inspira nuestro universo. Sin ruido. Sin prisas. Solo ideas que merecen ser leídas con un café entre las manos.</p>
+      </div>
+      <div class="footer-thumbs">
+        <!-- <img src="assets/images/gallery-1.jpg" alt=""> -->
+        <div class="img-placeholder"></div>
+        <!-- <img src="assets/images/gallery-2.jpg" alt=""> -->
+        <div class="img-placeholder"></div>
+        <!-- <img src="assets/images/gallery-3.jpg" alt=""> -->
+        <div class="img-placeholder"></div>
+        <!-- <img src="assets/images/gallery-4.jpg" alt=""> -->
+        <div class="img-placeholder"></div>
+        <!-- <img src="assets/images/gallery-5.jpg" alt=""> -->
+        <div class="img-placeholder"></div>
+      </div>
+    </div>
+
+    <div class="newsletter-row">
+      <input type="email" placeholder="Email">
+      <button>SIGN UP</button>
+    </div>
+    <div class="footer-meta">
+      <span>We respect your privacy.</span>
+      <span>@thisisblomstra</span>
+    </div>
+
+    <div class="footer-wordmark">Blomstra</div>
+  </footer>
+
+</div>
+</div>
+
+</body>
+</html>
