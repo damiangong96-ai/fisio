@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo trabajamos · Blomstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --band-top: #ece4da;
+    --band-bottom: #c7bfae;
+    --ink: #2b2622;
+    --ink-soft: #4a433c;
+    --line: #3a332c;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--ink);
+    background: var(--band-bottom);
+  }
+
+  .como-trabajamos {
+    position: relative;
+    background: var(--band-top);
+    overflow: hidden;
+  }
+
+  /* Wavy divider + banner text, drawn as one SVG so the dashed path and
+     the curved "THIS IS BLOMSTRA" repeat stay perfectly aligned. */
+  .banner-curve {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+
+  .banner-curve svg { display: block; width: 100%; height: auto; }
+
+  .banner-curve .fill-below {
+    fill: var(--band-bottom);
+  }
+
+  .banner-curve .dashed-path {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
+  }
+
+  .banner-curve text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    fill: var(--ink-soft);
+  }
+
+  .content-grid {
+    background: var(--band-bottom);
+    display: grid;
+    grid-template-columns: minmax(280px, 480px) 1fr;
+    gap: 40px;
+    padding: 0 64px 96px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .text-col {
+    padding-top: 24px;
+  }
+
+  .text-col h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: 0.01em;
+    margin: 0 0 28px;
+    text-transform: uppercase;
+  }
+
+  .text-col p {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+    max-width: 46ch;
+  }
+
+  .text-col ul {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+
+  .text-col ul li::before {
+    content: "· ";
+  }
+
+  .btn-outline {
+    margin-top: 16px;
+    display: inline-block;
+    padding: 14px 28px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  /* Staggered image gallery — each step is a bit lower and further right
+     than the one before it, matching the cascading layout in the design. */
+  .gallery-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+  }
+
+  .gallery-item:nth-child(1) { align-self: flex-start; margin-left: 16%; }
+  .gallery-item:nth-child(2) { align-self: flex-start; margin-left: 26%; margin-top: 24px; }
+  .gallery-item:nth-child(3) { align-self: flex-start; margin-left: 17%; margin-top: 24px; }
+
+  .item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    width: 44px;
+    height: 30px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .item-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    border: 1px dashed #9c9384;
+    background-image:
+      linear-gradient(45deg, #dcd4c6 25%, transparent 25%),
+      linear-gradient(-45deg, #dcd4c6 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #dcd4c6 75%),
+      linear-gradient(-45deg, transparent 75%, #dcd4c6 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: #efe9de;
+  }
+
+  .gallery-item:nth-child(1) .image-placeholder { aspect-ratio: 3 / 2; }
+  .gallery-item:nth-child(2) .image-placeholder { aspect-ratio: 3 / 5; }
+  .gallery-item:nth-child(3) .image-placeholder { aspect-ratio: 4 / 5; }
+
+  @media (max-width: 860px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      padding: 0 24px 64px;
+    }
+    .gallery-col { margin-top: 40px; }
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) {
+      margin-left: 0;
+      margin-top: 24px;
+      align-self: center;
+      width: 70%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="como-trabajamos">
+  <div class="banner-curve">
+    <svg viewBox="0 0 1280 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="fill-below" d="M0,90 C 200,150 400,30 640,80 C 880,130 1080,20 1280,70 L1280,220 L0,220 Z"/>
+      <path id="wavePath" class="dashed-path" d="M0,90 C 200,150 400,30 640,80 C 880,130 1080,20 1280,70"/>
+      <text>
+        <textPath href="#wavePath" startOffset="0%">
+          THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA · THIS IS BLOMSTRA ·
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="content-grid">
+    <div class="text-col">
+      <h2>Cómo trabajamos</h2>
+
+      <p>Toda historia tiene una narrativa. Aunque todavía no se vea. Está en
+      aquello que la hace diferente. En las personas que la viven. En lo que
+      quiere transmitir y en cómo quiere ser recordada. Nuestro trabajo
+      consiste en descubrirla. Porque cuando la narrativa es clara, todo lo
+      demás encuentra su lugar.</p>
+
+      <ul>
+        <li>La identidad.</li>
+        <li>La dirección de arte.</li>
+        <li>Los espacios.</li>
+        <li>Los materiales.</li>
+        <li>La experiencia.</li>
+      </ul>
+
+      <p>Cada decisión empieza a hablar el mismo lenguaje.</p>
+      <p>Y es entonces cuando nace un universo.</p>
+
+      <button class="btn-outline">Descubre nuestro proceso</button>
+    </div>
+
+    <div class="gallery-col">
+      <div class="gallery-item">
+        <div class="item-header">
+          <span class="badge">1</span>
+          <span class="item-label">Relato</span>
+        </div>
+        <!-- <img src="assets/images/relato.jpg" alt="Relato"> -->
+        <div class="image-placeholder" data-placeholder="relato.jpg"></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="item-header">
+          <span class="badge">2</span>
+          <span class="item-label">Diseño</span>
+        </div>
+        <!-- <img src="assets/images/diseno.jpg" alt="Diseño"> -->
+        <div class="image-placeholder" data-placeholder="diseno.jpg"></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="item-header">
+          <span class="badge">3</span>
+          <span class="item-label">Experiencia</span>
+        </div>
+        <!-- <img src="assets/images/experiencia.jpg" alt="Experiencia"> -->
+        <div class="image-placeholder" data-placeholder="experiencia.jpg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
