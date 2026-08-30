@@ -60,15 +60,7 @@
   .founder-collage__img{
     position: absolute;
     object-fit: cover;
-    background: linear-gradient(135deg,#8a7a68,#4a3f36);
-    border: none;
-    color: #efe9e1;
-    font-family: var(--font-body);
-    font-size: 11px;
-    letter-spacing: .04em;
-    display: flex;
-    align-items: flex-end;
-    padding: 10px;
+    display: block;
   }
 
   .founder-collage__img--main{
@@ -76,6 +68,7 @@
     left: 0;
     width: 175px;
     height: 175px;
+    object-position: 50% 22%;
     z-index: 1;
   }
 
@@ -85,6 +78,10 @@
     width: 130px;
     height: 130px;
     z-index: 2;
+    background-image: url('assets/images/founder-lifestyle.jpg');
+    background-size: 260%;
+    background-position: 28% 88%;
+    background-repeat: no-repeat;
     box-shadow: 0 6px 18px rgba(0,0,0,.18);
   }
 
@@ -160,15 +157,11 @@
     flex: 1;
     aspect-ratio: 3 / 3.55;
     max-height: 420px;
+    width: 100%;
     object-fit: cover;
+    object-position: 50% 18%;
     filter: grayscale(1) contrast(1.05);
-    background: linear-gradient(160deg,#6b6560,#2b2724);
-    display: flex;
-    align-items: flex-end;
-    padding: 14px;
-    color: #e7e2da;
-    font-size: 11px;
-    letter-spacing: .04em;
+    display: block;
   }
 
   .founder-caption{
@@ -218,10 +211,8 @@
     <!-- Left page -->
     <div class="founder-left">
       <div class="founder-collage">
-        <!-- Reemplaza por <img src="assets/images/founder-01.jpg" alt="..."> -->
-        <div class="founder-collage__img founder-collage__img--main" data-placeholder="FOUNDER_IMAGE_1"></div>
-        <!-- Reemplaza por <img src="assets/images/founder-02.jpg" alt="..."> -->
-        <div class="founder-collage__img founder-collage__img--small" data-placeholder="FOUNDER_IMAGE_2"></div>
+        <img src="assets/images/founder-lifestyle.jpg" alt="La fundadora sujetando su portátil y sus gafas de sol" class="founder-collage__img founder-collage__img--main" loading="eager">
+        <div class="founder-collage__img founder-collage__img--small" role="img" aria-hidden="true"></div>
       </div>
 
       <div class="founder-text">
@@ -242,8 +233,7 @@
 
       <div class="founder-photo-row">
         <span class="founder-vertical-label">Romántica, apasionada…</span>
-        <!-- Reemplaza por <img src="assets/images/founder-portrait.jpg" alt="Anna Aneas, fundadora"> -->
-        <div class="founder-photo" data-placeholder="FOUNDER_PORTRAIT"></div>
+        <img src="assets/images/founder-portrait.jpg" alt="Anna Aneas, fundadora, retrato en blanco y negro" class="founder-photo" loading="lazy">
       </div>
 
       <div class="founder-caption">
