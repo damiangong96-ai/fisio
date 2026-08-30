@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital@1&family=Montserrat:wght@400&display=swap" rel="stylesheet">
 
 <style>
   @font-face{
@@ -19,13 +19,14 @@
   }
 
   :root{
-    --bg: #ece5db;
+    --bg: #efe9e1;
     --ink: #262220;
     --ink-soft: #4a433d;
     --rule: #262220;
     --font-script: 'Aspire Pasque Script', cursive;
     --font-body: 'Work Sans', sans-serif;
     --font-caption-italic: 'Lora', serif;
+    --font-paragraph: 'Montserrat', sans-serif;
   }
 
   *{ box-sizing: border-box; }
@@ -93,11 +94,17 @@
     box-shadow: 0 6px 18px rgba(0,0,0,.18);
   }
 
+  .founder-text{
+    max-width: 349px;
+  }
+
   .founder-text p{
     margin: 0 0 1.1em;
-    font-weight: 300;
-    font-size: 14.5px;
-    line-height: 1.75;
+    font-family: var(--font-paragraph);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
     text-align: justify;
     color: var(--ink-soft);
   }
