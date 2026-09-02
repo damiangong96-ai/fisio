@@ -137,8 +137,14 @@ de normas de cita en el bloque de Contacto.
 
 ## Datos de contacto
 
-Teléfono real: `634 68 90 03` (`tel:+34634689003`), ya puesto en cabecera,
+Teléfono real: `679 08 78 93` (`tel:+34679087893`), puesto en cabecera,
 barra superior, menú móvil, contacto y pie de página.
+
+Los 4 botones "Reservar cita" (cabecera, menú móvil, hero y banda final)
+enlazan a `https://tufisio.com/fisioterapeuta/villasana-de-mena/sara-vivanco-hurtado`
+en pestaña nueva. El botón "Llamar ahora" y el "Contacto" del acordeón de
+colaboraciones siguen siendo `tel:` y `#contacto` respectivamente — no son
+botones de reserva.
 
 Email: **`info@fisioterapiasaravivanco.com` es un ejemplo/placeholder** (me
 pediste uno de muestra) — no es una cuenta real, así que sustitúyelo por tu
