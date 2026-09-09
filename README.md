@@ -279,6 +279,73 @@ Esto es opcional — la Opción A/B de arriba funciona sin tocar `functions.php`
 
 ---
 
+## Reseñas de Google automáticas
+
+Se ha añadido una sección **"Reseñas de Google"** (id `resenas-google`, entre
+"Testimonios" y el banner de CTA, con su propio enlace en el menú) que
+muestra la nota media, el nº de reseñas y un carrusel con las reseñas reales
+de tu ficha de Google Negocio, actualizándose solo sin que tengas que
+copiar/pegar nada a mano.
+
+### Cómo activarla (5-10 minutos)
+
+1. **Crea una API key de Google**: entra en
+   [Google Cloud Console](https://console.cloud.google.com/), crea (o usa)
+   un proyecto, activa la **"Places API (New)"** y en **Credenciales**
+   crea una API key.
+2. **Restringe la key a tu dominio**: en la propia key, en
+   "Restricciones de la aplicación" elige **"Referencias HTTP"** y añade tu
+   dominio (`https://tudominio.com/*`). Esto es imprescindible porque la
+   key queda visible en el código fuente de la página; restringida así,
+   solo funciona si la petición viene de tu propio sitio.
+3. **Busca tu Place ID**: usa el
+   [buscador oficial de Place ID de Google](https://developers.google.com/maps/documentation/places/web-service/place-id)
+   escribiendo el nombre/dirección de tu negocio tal como aparece en Google
+   Maps.
+4. **Pega ambos valores** al principio de `js/main.js` (o, si usas
+   `wordpress-embed.html`, en el bloque `<script>` del pie de página — busca
+   `GOOGLE_PLACES_API_KEY` y `GOOGLE_PLACE_ID`):
+   ```js
+   var GOOGLE_PLACES_API_KEY = 'AIzaSy...tu-key...';
+   var GOOGLE_PLACE_ID = 'ChIJ...tu-place-id...';
+   ```
+5. Publica/sube el cambio. Al cargar la página, el JS pide la librería
+   `places` de Google Maps y sustituye la nota, el nº de reseñas y las
+   tarjetas del carrusel por datos reales.
+
+Sin estos dos valores configurados, la sección se queda con el contenido de
+ejemplo que ya trae el HTML (una reseña placeholder), sin errores visibles.
+
+### Limitaciones a tener en cuenta (son de la API de Google, no de este código)
+
+- **Máximo 5 reseñas por API**: Google solo devuelve, como mucho, las 5
+  reseñas que su algoritmo considera "más relevantes" para ese negocio — no
+  existe ninguna API pública que dé acceso a las 592 completas. Es la misma
+  limitación que tiene cualquier plugin/addon (incluido el "Case" de la
+  captura que compartiste): para ver todas hay que ir directamente a la
+  ficha de Google.
+- **Requiere facturación activada** en el proyecto de Google Cloud (tiene
+  cuota gratuita mensual, pero pide tarjeta). Revisa los precios actuales de
+  "Places API (New)" antes de activarlo en producción.
+- **Cuota/coste**: cada visita a la página que tenga la sección visible
+  hace una llamada a la API. Si el tráfico es alto, considera cachear la
+  respuesta (p. ej. con un plugin de WordPress que guarde el resultado en
+  un transient y lo sirva unas horas) en vez de llamar a Google en cada
+  carga — no incluido aquí porque este proyecto es HTML/JS puro sin backend.
+- **El enlace "Ver todas las reseñas en Google"** usa el Place ID para
+  llevar directamente a dejar/ver reseñas en Google; se actualiza solo con
+  la URL real (`googleMapsURI`) en cuanto la API responde.
+
+### Alternativa sin tocar código
+
+Si prefieres no gestionar una API key tú mismo, existen plugins de
+Elementor ya hechos para esto (con planes gratuitos limitados y de pago
+para más reseñas): **Reviews Feed for Google**, **Trustindex**, **Elfsight
+Google Reviews**, etc. Se instalan como cualquier plugin de WordPress y
+añaden su propio widget de Elementor con sincronización automática — sin
+necesidad de editar `js/main.js`. El diseño no será exactamente el de esta
+sección, pero se puede maquetar para que se parezca.
+
 ## Checklist funcional
 
 - [x] Header sticky: se encoge y añade sombra al pasar 40px de scroll; se
@@ -299,6 +366,9 @@ Esto es opcional — la Opción A/B de arriba funciona sin tocar `functions.php`
   introducir cifras reales).
 - [x] Slider de testimonios: flechas, puntos, autoplay con pausa en hover,
   swipe táctil.
+- [x] Sección "Reseñas de Google" con el mismo slider genérico, lista para
+  rellenarse sola desde la API de Google Places al configurar la API key
+  y el Place ID (ver sección "Reseñas de Google automáticas" arriba).
 - [x] Hover en tarjetas de servicio (elevación + icono invertido), en
   botones (elevación + sombra), en enlaces de navegación.
 - [x] Formulario de contacto con validación de cliente (campos

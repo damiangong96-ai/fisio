@@ -14,6 +14,20 @@
     gsap.registerPlugin(ScrollTrigger);
   }
 
+  /* ---------------------------------------------------------------------- *
+   * RESEÑAS DE GOOGLE — configuración.
+   * 1) Google Cloud Console → crea una API key, habilita "Places API (New)"
+   *    y restríngela por referrer HTTP a tu dominio (evita que otros la usen).
+   * 2) Busca tu Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id
+   * 3) Pega ambos valores aquí abajo.
+   * Sin estos dos valores, la sección muestra el contenido de ejemplo que
+   * ya trae el HTML. La propia API de Google solo devuelve como máximo las
+   * 5 reseñas más relevantes (no las 592 completas): es un límite de la
+   * API oficial, no de este código. Ver README, "Reseñas de Google automáticas".
+   * ---------------------------------------------------------------------- */
+  var GOOGLE_PLACES_API_KEY = ''; // p.ej. 'AIzaSy...'
+  var GOOGLE_PLACE_ID = '';       // p.ej. 'ChIJ...'
+
   document.addEventListener('DOMContentLoaded', function () {
     setYear();
     initHeaderScroll();
@@ -22,6 +36,7 @@
     initScrollReveals();
     initCounters();
     initTestimonialSlider();
+    initGoogleReviews();
     initContactForm();
     initSmoothAnchors();
     initBackToTop();
@@ -232,54 +247,64 @@
   }
 
   /* ---------------------------------------------------------------------- *
-   * SLIDER DE TESTIMONIOS: carrusel simple por transform translateX,
-   * puntos de navegación generados dinámicamente, autoplay con pausa
-   * al pasar el ratón por encima.
+   * SLIDER GENÉRICO: carrusel simple por transform translateX, puntos de
+   * navegación generados dinámicamente, autoplay con pausa al pasar el
+   * ratón por encima y swipe táctil. Usado por el slider de testimonios y
+   * el de reseñas de Google. `render()` se puede volver a llamar cuando el
+   * contenido del track cambia (p. ej. al recibir las reseñas de Google).
    * ---------------------------------------------------------------------- */
-  function initTestimonialSlider() {
-    var track = document.getElementById('testimonialTrack');
-    var dotsWrap = document.getElementById('testimonialDots');
-    var prevBtn = document.getElementById('testimonialPrev');
-    var nextBtn = document.getElementById('testimonialNext');
-    var slider = document.getElementById('testimonialSlider');
-    if (!track || !dotsWrap) return;
+  function createSlider(opts) {
+    var track = document.getElementById(opts.trackId);
+    var dotsWrap = document.getElementById(opts.dotsId);
+    var prevBtn = document.getElementById(opts.prevId);
+    var nextBtn = document.getElementById(opts.nextId);
+    var slider = document.getElementById(opts.sliderId);
+    if (!track || !dotsWrap) return null;
 
-    var slides = Array.prototype.slice.call(track.children);
     var index = 0;
     var autoplayId = null;
 
-    slides.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.setAttribute('aria-label', 'Ir al testimonio ' + (i + 1));
-      if (i === 0) dot.classList.add('is-active');
-      dot.addEventListener('click', function () { goTo(i); });
-      dotsWrap.appendChild(dot);
-    });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
+    function slideCount() { return track.children.length; }
 
-    function goTo(i) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      dots.forEach(function (d, di) { d.classList.toggle('is-active', di === index); });
+    function render() {
+      dotsWrap.innerHTML = '';
+      Array.prototype.forEach.call(track.children, function (_, i) {
+        var dot = document.createElement('button');
+        dot.setAttribute('aria-label', 'Ir al elemento ' + (i + 1));
+        if (i === 0) dot.classList.add('is-active');
+        dot.addEventListener('click', function () { goTo(i); resetAutoplay(); });
+        dotsWrap.appendChild(dot);
+      });
+      index = 0;
+      track.style.transform = 'translateX(0)';
+      resetAutoplay();
     }
 
-    prevBtn && prevBtn.addEventListener('click', function () { goTo(index - 1); resetAutoplay(); });
-    nextBtn && nextBtn.addEventListener('click', function () { goTo(index + 1); resetAutoplay(); });
+    function goTo(i) {
+      var total = slideCount();
+      if (!total) return;
+      index = (i + total) % total;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      Array.prototype.forEach.call(dotsWrap.children, function (d, di) {
+        d.classList.toggle('is-active', di === index);
+      });
+    }
 
     function startAutoplay() {
-      autoplayId = setInterval(function () { goTo(index + 1); }, 6000);
+      if (slideCount() > 1) autoplayId = setInterval(function () { goTo(index + 1); }, opts.interval || 6000);
     }
     function resetAutoplay() {
       clearInterval(autoplayId);
       startAutoplay();
     }
+
+    prevBtn && prevBtn.addEventListener('click', function () { goTo(index - 1); resetAutoplay(); });
+    nextBtn && nextBtn.addEventListener('click', function () { goTo(index + 1); resetAutoplay(); });
     if (slider) {
       slider.addEventListener('mouseenter', function () { clearInterval(autoplayId); });
       slider.addEventListener('mouseleave', startAutoplay);
     }
-    if (slides.length > 1) startAutoplay();
 
-    /* Swipe táctil */
     var startX = null;
     track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', function (e) {
@@ -289,6 +314,128 @@
       startX = null;
       resetAutoplay();
     });
+
+    render();
+    return { render: render, goTo: goTo };
+  }
+
+  function initTestimonialSlider() {
+    createSlider({
+      trackId: 'testimonialTrack', dotsId: 'testimonialDots',
+      prevId: 'testimonialPrev', nextId: 'testimonialNext', sliderId: 'testimonialSlider'
+    });
+  }
+
+  /* ---------------------------------------------------------------------- *
+   * RESEÑAS DE GOOGLE: si hay API key + Place ID configurados arriba, carga
+   * la librería "places" de Google Maps y sustituye la nota media, el nº de
+   * reseñas y las tarjetas del carrusel por datos reales (máx. 5 reseñas,
+   * límite de la propia API de Google). Sin configurar, se queda el
+   * contenido de ejemplo ya presente en el HTML.
+   * ---------------------------------------------------------------------- */
+  var GOOGLE_QUOTE_ICON = '<svg class="google-review-card__quote" viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M10 8C5.6 8 2 11.6 2 16s3.6 8 8 8v-4c-2.2 0-4-1.8-4-4s1.8-4 4-4h2V8h-2zm14 0c-4.4 0-8 3.6-8 8s3.6 8 8 8v-4c-2.2 0-4-1.8-4-4s1.8-4 4-4h2V8h-2z"/></svg>';
+
+  function initGoogleReviews() {
+    var sliderApi = createSlider({
+      trackId: 'googleReviewsTrack', dotsId: 'googleReviewsDots',
+      prevId: 'googleReviewsPrev', nextId: 'googleReviewsNext', sliderId: 'googleReviewsSlider'
+    });
+
+    var linkEl = document.getElementById('googleReviewsLink');
+    if (linkEl && GOOGLE_PLACE_ID) {
+      linkEl.href = 'https://search.google.com/local/writereview?placeid=' + encodeURIComponent(GOOGLE_PLACE_ID);
+    }
+
+    if (!GOOGLE_PLACES_API_KEY || !GOOGLE_PLACE_ID) return;
+
+    loadGoogleMapsScript(GOOGLE_PLACES_API_KEY)
+      .then(function () { return google.maps.importLibrary('places'); })
+      .then(function (placesLib) {
+        var place = new placesLib.Place({ id: GOOGLE_PLACE_ID });
+        return place.fetchFields({
+          fields: ['rating', 'userRatingCount', 'reviews', 'googleMapsURI']
+        }).then(function () { return place; });
+      })
+      .then(function (place) { renderGoogleReviews(place, sliderApi); })
+      .catch(function (err) {
+        console.warn('No se pudieron cargar las reseñas de Google:', err);
+      });
+  }
+
+  function loadGoogleMapsScript(apiKey) {
+    if (window.google && window.google.maps) return Promise.resolve();
+    if (window.__fisioGoogleMapsPromise) return window.__fisioGoogleMapsPromise;
+
+    window.__fisioGoogleMapsPromise = new Promise(function (resolve, reject) {
+      window.__fisioGoogleMapsReady = resolve;
+      var script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) +
+        '&libraries=places&loading=async&callback=__fisioGoogleMapsReady';
+      script.async = true;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    return window.__fisioGoogleMapsPromise;
+  }
+
+  function starString(n) {
+    n = Math.max(0, Math.min(5, Math.round(n || 0)));
+    return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+  }
+
+  function renderGoogleReviews(place, sliderApi) {
+    var scoreEl = document.getElementById('googleReviewsScore');
+    var starsEl = document.getElementById('googleReviewsStars');
+    var countEl = document.getElementById('googleReviewsCount');
+    var track = document.getElementById('googleReviewsTrack');
+    var linkEl = document.getElementById('googleReviewsLink');
+
+    if (scoreEl && place.rating) {
+      scoreEl.textContent = place.rating.toFixed(1) + ' ';
+      var small = document.createElement('small');
+      small.textContent = '/ 5.0';
+      scoreEl.appendChild(small);
+    }
+    if (starsEl && place.rating) starsEl.textContent = starString(place.rating);
+    if (countEl && place.userRatingCount) countEl.textContent = place.userRatingCount + ' Reseñas en Google';
+    if (linkEl && place.googleMapsURI) linkEl.href = place.googleMapsURI;
+
+    if (!track || !place.reviews || !place.reviews.length) return;
+
+    track.innerHTML = '';
+    place.reviews.forEach(function (review) {
+      var card = document.createElement('div');
+      card.className = 'google-review-card';
+
+      var stars = document.createElement('div');
+      stars.className = 'google-review-card__stars';
+      stars.textContent = starString(review.rating);
+      card.appendChild(stars);
+
+      var text = document.createElement('p');
+      text.className = 'google-review-card__text';
+      text.textContent = '"' + (review.text || '') + '"';
+      card.appendChild(text);
+
+      var footer = document.createElement('div');
+      footer.className = 'google-review-card__footer';
+
+      var author = document.createElement('div');
+      author.className = 'google-review-card__author';
+      var strong = document.createElement('strong');
+      strong.textContent = (review.authorAttribution && review.authorAttribution.displayName) || 'Paciente de Google';
+      author.appendChild(strong);
+      footer.appendChild(author);
+
+      var quoteWrap = document.createElement('div');
+      quoteWrap.innerHTML = GOOGLE_QUOTE_ICON;
+      footer.appendChild(quoteWrap.firstChild);
+
+      card.appendChild(footer);
+      track.appendChild(card);
+    });
+
+    if (sliderApi) sliderApi.render();
   }
 
   /* ---------------------------------------------------------------------- *

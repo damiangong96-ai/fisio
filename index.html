@@ -63,6 +63,7 @@
         <li><a href="#servicios" class="main-nav__link">Servicios</a></li>
         <li><a href="#enfoque" class="main-nav__link">Enfoque</a></li>
         <li><a href="#testimonios" class="main-nav__link">Testimonios</a></li>
+        <li><a href="#resenas-google" class="main-nav__link">Reseñas</a></li>
         <li><a href="#contacto" class="main-nav__link">Contacto</a></li>
       </ul>
     </nav>
@@ -96,6 +97,7 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#enfoque">Enfoque</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#resenas-google">Reseñas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="mobile-menu__footer">
@@ -428,6 +430,52 @@
         </button>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- =============== RESEÑAS DE GOOGLE =============== -->
+<!-- Se rellena automáticamente desde la API de Google Places: configura
+     GOOGLE_PLACES_API_KEY y GOOGLE_PLACE_ID en js/main.js (ver README,
+     sección "Reseñas de Google automáticas"). Sin esa configuración se
+     muestra el contenido de ejemplo que hay más abajo. -->
+<section class="google-reviews" id="resenas-google">
+  <div class="container google-reviews__summary js-reveal">
+    <span class="google-reviews__badge">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12s3.36-7.27 7.19-7.27c3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.19 2C6.42 2 2.03 6.8 2.03 12s4.39 10 10.16 10c5.08 0 9.81-3.55 9.81-10 0-.35-.05-.7-.05-.9z"/></svg>
+      <span id="googleReviewsCount">592 Reseñas en Google</span>
+    </span>
+    <div class="google-reviews__score" id="googleReviewsScore">4.8 <small>/ 5.0</small></div>
+    <div class="google-reviews__stars" id="googleReviewsStars">★★★★★</div>
+    <p class="google-reviews__lead">Gracias por acompañarnos en este camino</p>
+  </div>
+
+  <div class="google-reviews__slider" id="googleReviewsSlider">
+    <div class="google-reviews__track" id="googleReviewsTrack">
+      <div class="google-review-card">
+        <div class="google-review-card__stars">★★★★★</div>
+        <p class="google-review-card__text">"[Reseña de ejemplo — se sustituye por reseñas reales de Google en cuanto configures la API]"</p>
+        <div class="google-review-card__footer">
+          <div class="google-review-card__author">
+            <strong>[Nombre del paciente]</strong>
+          </div>
+          <svg class="google-review-card__quote" viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M10 8C5.6 8 2 11.6 2 16s3.6 8 8 8v-4c-2.2 0-4-1.8-4-4s1.8-4 4-4h2V8h-2zm14 0c-4.4 0-8 3.6-8 8s3.6 8 8 8v-4c-2.2 0-4-1.8-4-4s1.8-4 4-4h2V8h-2z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="google-reviews__controls">
+      <button class="google-reviews__btn" id="googleReviewsPrev" aria-label="Reseña anterior">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="google-reviews__dots" id="googleReviewsDots"></div>
+      <button class="google-reviews__btn" id="googleReviewsNext" aria-label="Siguiente reseña">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="container google-reviews__cta">
+    <a href="#" id="googleReviewsLink" target="_blank" rel="noopener" class="btn btn--ghost">Ver todas las reseñas en Google</a>
   </div>
 </section>
 
