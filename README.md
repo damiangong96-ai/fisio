@@ -113,18 +113,34 @@ puedo afinar cualquiera de estos puntos para acercarlos aún más.
 ## Placeholders de imagen que quedan
 
 Logo, favicon, hero, "Sobre mí", banda "SD Eibar" y el mapa de Contacto ya
-son imágenes/`<iframe>` reales (ver sección anterior). Solo quedan estos
-bloques `[data-placeholder="NOMBRE"]` (rectángulo con rayado verde) por si
-algún día tienes ese material:
+son imágenes/`<iframe>` reales (ver sección anterior). El slider de
+testimonios ya no lleva foto de perfil (a petición tuya, solo texto), así
+que solo queda este placeholder por si algún día quieres usarlo:
 
 | Placeholder | Ubicación | Notas |
 |---|---|---|
-| `TESTIMONIAL_IMAGE_01/02/03` | Slider de testimonios | Foto de perfil circular, o elimínala y deja el círculo de color — de momento son testimonios de ejemplo, no reseñas reales. |
 | `LOGO_SD_EIBAR`, `LOGO_CERT_0X` | Barra de confianza | Opcional: ahora mismo son texto, no imagen, y ya se ven bien así. |
 
 Para sustituir uno, cambia el `<div data-placeholder="...">` por un `<img>`
 manteniendo la misma clase contenedora (conserva proporción, `border-radius`
 y sombra) y añade `style="width:100%;height:100%;object-fit:cover"`.
+
+## Testimonios
+
+Son **4 reseñas de ejemplo (texto, sin foto)**, no reseñas reales de
+pacientes — sirven para maquetar la sección con un contenido creíble
+mientras no tengas las de verdad. Sustitúyelas en `index.html` y
+`wordpress-embed.html` (busca `testimonial-card`) en cuanto tengas
+opiniones reales, para no publicar citas atribuidas a personas que no las
+han escrito.
+
+## Redes sociales y aviso legal
+
+A petición tuya, se han quitado del pie de página los iconos de
+Instagram/Facebook/LinkedIn (no llevaban a ningún perfil real) y los
+enlaces "Aviso legal / Política de privacidad / Política de cookies" (no
+existían esas páginas). Si en el futuro abres esos perfiles o redactas esas
+políticas, dímelo y los vuelvo a añadir con los enlaces reales.
 
 ## Estado del contenido
 
@@ -150,14 +166,6 @@ Email: **`info@fisioterapiasaravivanco.com` es un ejemplo/placeholder** (me
 pediste uno de muestra) — no es una cuenta real, así que sustitúyelo por tu
 dirección de verdad en cuanto la tengas (busca y reemplaza en `index.html`
 y `wordpress-embed.html`, aparece 3 veces cada uno más el `mailto:`).
-
-Pendiente:
-
-- Enlaces `href="#"` de redes sociales (Instagram, Facebook, LinkedIn), si
-  el centro tiene perfiles activos.
-- Los tres testimonios (texto y nombre entre corchetes) — son un ejemplo de
-  maquetación, sustitúyelos por reseñas reales de pacientes cuando las
-  tengas (no se han inventado citas para no publicar opiniones falsas).
 
 ## Tipografías: sustituir por archivos propios
 

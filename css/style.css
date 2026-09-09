@@ -416,8 +416,7 @@ body.menu-open{overflow:hidden;}
 }
 #fa-site .testimonial-card__stars{color:#e0a848;font-size:18px;letter-spacing:3px;margin-bottom:20px;}
 #fa-site .testimonial-card p{font-family:var(--font-display);font-size:20px;font-style:italic;color:var(--color-ink);margin-bottom:28px;line-height:1.5;}
-#fa-site .testimonial-card__author{display:flex;align-items:center;justify-content:center;gap:14px;}
-#fa-site .testimonial-card__avatar{width:48px;height:48px;min-height:0;border-radius:50%;background:var(--color-primary-light);border:1.5px dashed rgba(31,125,111,.4);flex:none;}
+#fa-site .testimonial-card__author{display:flex;flex-direction:column;align-items:center;gap:4px;}
 #fa-site .testimonial-card__author strong{display:block;font-size:14px;}
 #fa-site .testimonial-card__author span{font-size:12px;color:var(--color-ink-soft);}
 
@@ -495,9 +494,6 @@ body.menu-open{overflow:hidden;}
 #fa-site .site-footer__top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;}
 #fa-site .site-footer__logo{height:44px;margin-bottom:18px;filter:brightness(0) invert(1);}
 #fa-site .site-footer__brand p{font-size:14px;color:#93a29d;margin-bottom:20px;max-width:280px;}
-#fa-site .site-footer__social{display:flex;gap:12px;}
-#fa-site .site-footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid #2f3f3a;display:flex;align-items:center;justify-content:center;transition:all .3s;}
-#fa-site .site-footer__social a:hover{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
 #fa-site .site-footer__col h4{color:#fff;font-size:15px;font-family:var(--font-body);font-weight:700;margin-bottom:20px;}
 #fa-site .site-footer__col ul{display:flex;flex-direction:column;gap:12px;}
 #fa-site .site-footer__col a{font-size:14px;color:#93a29d;transition:color .25s;}
@@ -507,9 +503,6 @@ body.menu-open{overflow:hidden;}
   border-top:1px solid #2a3733;padding:24px 0;
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#7d8d88;
 }
-#fa-site .site-footer__legal{display:flex;gap:22px;}
-#fa-site .site-footer__legal a{color:#7d8d88;transition:color .25s;}
-#fa-site .site-footer__legal a:hover{color:#fff;}
 
 /* ==========================================================================
    BACK TO TOP
