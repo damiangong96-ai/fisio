@@ -1,0 +1,33 @@
+<section class="section" style="--section-pt: 48px; --section-pb: 120px;">
+  <div class="page-width" style="max-width: 880px;">
+    <div class="collection-hero">
+      <a href="{{ routes.account_url }}" class="eyebrow">{{ 'customer.account.title' | t }}</a>
+      <h1 class="h1">{{ 'customer.addresses.title' | t }}</h1>
+    </div>
+    {%- paginate customer.addresses by 10 -%}
+      <div style="display: grid; gap: 16px; margin-bottom: 48px;">
+        {%- for address in customer.addresses -%}
+          <div class="cart-summary" style="position: static;">
+            {%- if address == customer.default_address -%}<span class="badge">{{ 'customer.addresses.default' | t }}</span>{%- endif -%}
+            <div>{{ address | format_address }}</div>
+            {%- form 'customer_address', address -%}
+              <details>
+                <summary class="link-arrow" style="cursor: pointer;">{{ 'customer.addresses.edit' | t }}</summary>
+                {% render 'address-fields', form: form, address: address %}
+              </details>
+            {%- endform -%}
+            <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}" onsubmit="return confirm({{ 'customer.addresses.delete_confirm' | t | json | escape }});">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="cart-item__remove">{{ 'customer.addresses.delete' | t }}</button>
+            </form>
+          </div>
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+    <h2 class="h3" style="margin-bottom: 16px;">{{ 'customer.addresses.add' | t }}</h2>
+    {%- form 'customer_address', customer.new_address -%}
+      {% render 'address-fields', form: form, address: customer.new_address %}
+    {%- endform -%}
+  </div>
+</section>

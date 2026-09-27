@@ -1,0 +1,34 @@
+{%- capture items -%}
+  {%- for block in section.blocks -%}
+    <span class="marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text }} {% render 'icon', name: 'asterisk' %}</span>
+  {%- endfor -%}
+{%- endcapture -%}
+<div class="marquee scheme-{{ section.settings.scheme }}" style="--speed: {{ section.settings.speed }}s; --marquee-size: {{ section.settings.size }}px;">
+  <div class="marquee__track" aria-hidden="false">
+    {%- for i in (1..4) -%}{{ items }}{%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Texto en movimiento",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "scheme", "label": "Colores", "options": [{ "value": "accent", "label": "Acento" }, { "value": "dark", "label": "Oscuro" }, { "value": "light", "label": "Claro" }, { "value": "surface", "label": "Gris claro" }], "default": "accent" },
+    { "type": "range", "id": "size", "label": "Tamaño del texto", "min": 14, "max": 80, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "speed", "label": "Duración de la animación", "min": 10, "max": 80, "step": 5, "unit": "s", "default": 35 }
+  ],
+  "blocks": [
+    { "type": "text", "name": "Texto", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "Envío gratis" }] }
+  ],
+  "presets": [{
+    "name": "Texto en movimiento",
+    "blocks": [
+      { "type": "text", "settings": { "text": "Envíos gratis" } },
+      { "type": "text", "settings": { "text": "Devoluciones en 30 días" } },
+      { "type": "text", "settings": { "text": "Nueva colección" } },
+      { "type": "text", "settings": { "text": "Edición limitada" } }
+    ]
+  }]
+}
+{% endschema %}

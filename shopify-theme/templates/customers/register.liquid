@@ -1,0 +1,14 @@
+<section class="section" style="--section-pt: 64px; --section-pb: 120px;">
+  <div class="page-width auth">
+    <h1 class="h1">{{ 'customer.register.title' | t }}</h1>
+    {%- form 'create_customer', class: 'form-grid' -%}
+      {%- if form.errors -%}<p class="form-message form-message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <input class="field" type="text" name="customer[first_name]" autocomplete="given-name" placeholder="{{ 'customer.first_name' | t }}">
+      <input class="field" type="text" name="customer[last_name]" autocomplete="family-name" placeholder="{{ 'customer.last_name' | t }}">
+      <input class="field" type="email" name="customer[email]" autocomplete="email" placeholder="{{ 'contact.email' | t }}" required>
+      <input class="field" type="password" name="customer[password]" autocomplete="new-password" placeholder="{{ 'customer.password' | t }}" required>
+      <button type="submit" class="button button--full">{{ 'customer.register.submit' | t }}</button>
+      <a href="{{ routes.account_login_url }}" class="muted" style="text-align: center;">{{ 'customer.login.title' | t }}</a>
+    {%- endform -%}
+  </div>
+</section>

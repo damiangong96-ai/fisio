@@ -1,0 +1,50 @@
+<section class="section" style="--section-pt: 32px; --section-pb: 96px;">
+  <div class="page-width">
+    <div class="collection-hero">
+      <h1 class="h0">{{ 'cart.title' | t }}</h1>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-page" id="CartForm">
+        <div>
+          {% render 'cart-items' %}
+        </div>
+        <aside class="cart-summary">
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <div class="cart-summary__row"><span>{{ discount.title }}</span><span>-{{ discount.total_allocated_amount | money }}</span></div>
+            {%- endfor -%}
+          {%- endif -%}
+          <div class="cart-summary__row cart-summary__total">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money_with_currency }}</span>
+          </div>
+          <p class="muted" style="font-size: 13px;">{{ 'cart.taxes_note' | t }}</p>
+          {%- if section.settings.show_note -%}
+            <label for="CartNote" class="muted" style="font-size: 14px;">{{ 'cart.note' | t }}</label>
+            <textarea id="CartNote" name="note" class="field">{{ cart.note }}</textarea>
+          {%- endif -%}
+          <button type="submit" name="checkout" class="button button--full">{{ 'cart.checkout' | t }}</button>
+          {%- if additional_checkout_buttons -%}
+            <div>{{ content_for_additional_checkout_buttons }}</div>
+          {%- endif -%}
+        </aside>
+      </form>
+    {%- else -%}
+      <div class="empty-state">
+        <p class="h3">{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'cart.continue' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrito",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "show_note", "label": "Permitir nota del pedido", "default": true }
+  ]
+}
+{% endschema %}

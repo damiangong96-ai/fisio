@@ -1,0 +1,61 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="section scheme-{{ s.scheme }}" style="--section-pt: {{ s.padding_top }}px; --section-pb: {{ s.padding_bottom }}px;">
+  <div class="page-width faq">
+    <div class="faq__intro reveal">
+      {%- if s.eyebrow != blank -%}<span class="eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
+      {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading | newline_to_br }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="muted">{{ s.text }}</div>{%- endif -%}
+      {%- if s.button_label != blank -%}
+        <div><a href="{{ s.button_link | default: '#' }}" class="button">{{ s.button_label }}</a></div>
+      {%- endif -%}
+    </div>
+    <div class="accordion reveal">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}{% if forloop.first and s.open_first %} open{% endif %}>
+          <summary>{{ block.settings.question }}<span class="accordion__icon"></span></summary>
+          <div class="accordion__content rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Preguntas frecuentes",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "FAQ" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "Antes de\nque preguntes" },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Ver todas las preguntas" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón" },
+    { "type": "checkbox", "id": "open_first", "label": "Abrir la primera pregunta", "default": false },
+    { "type": "select", "id": "scheme", "label": "Colores", "options": [{ "value": "light", "label": "Claro" }, { "value": "surface", "label": "Gris claro" }, { "value": "dark", "label": "Oscuro" }], "default": "light" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pregunta",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cuánto tarda el envío?" },
+        { "type": "richtext", "id": "answer", "label": "Respuesta", "default": "<p>Los pedidos salen en 1–2 días laborables y llegan en 2–5 días.</p>" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Preguntas frecuentes",
+    "blocks": [
+      { "type": "question", "settings": { "question": "¿Las tallas son las habituales?", "answer": "<p>Sí, nuestras tallas siguen el estándar europeo. Si estás entre dos tallas, te recomendamos la mayor.</p>" } },
+      { "type": "question", "settings": { "question": "He pedido una talla equivocada, ¿qué hago?", "answer": "<p>Tienes 30 días para cambiarla sin coste. Escríbenos y te enviamos la etiqueta de devolución.</p>" } },
+      { "type": "question", "settings": { "question": "¿Reponéis los productos agotados?", "answer": "<p>La mayoría sí. Suscríbete a la newsletter para enterarte antes que nadie.</p>" } },
+      { "type": "question", "settings": { "question": "¿Dónde se fabrican vuestros productos?", "answer": "<p>Trabajamos con talleres seleccionados en Europa que cumplen con estándares de producción responsable.</p>" } },
+      { "type": "question", "settings": { "question": "¿Puedo colaborar con la marca?", "answer": "<p>¡Claro! Escríbenos desde la página de contacto contándonos tu propuesta.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

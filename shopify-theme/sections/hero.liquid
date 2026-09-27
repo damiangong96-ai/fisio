@@ -1,0 +1,73 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="hero hero--{{ s.alignment }}{% if s.dark_text %} hero--dark-text{% endif %}" style="--hero-height: {{ s.height }}vh; --overlay: {{ s.overlay | divided_by: 100.0 }};">
+  <div class="hero__media">
+    {%- if s.video != blank -%}
+      {{ s.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1920x' }}
+    {%- elsif s.image != blank -%}
+      {%- if s.image_mobile != blank -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 1000 }}">
+          {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 1920, 2400', sizes: '100vw', alt: s.image.alt }}
+        </picture>
+      {%- else -%}
+        {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 1920, 2400', sizes: '100vw', alt: s.image.alt }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="page-width hero__inner">
+    {%- if s.eyebrow != blank -%}
+      <span class="eyebrow reveal" style="color: inherit; opacity: .85; margin-bottom: 16px;">{{ s.eyebrow }}</span>
+    {%- endif -%}
+    {%- if s.heading != blank -%}
+      <h1 class="h0 hero__heading reveal">{{ s.heading | newline_to_br }}</h1>
+    {%- endif -%}
+    <div class="hero__bottom reveal">
+      {%- if s.text != blank -%}
+        <div class="hero__text">{{ s.text }}</div>
+      {%- endif -%}
+      <div class="hero__buttons">
+        {%- if s.button_label != blank -%}
+          <a href="{{ s.button_link | default: routes.all_products_collection_url }}" class="button button--accent">{{ s.button_label }} {% render 'icon', name: 'arrow-up-right' %}</a>
+        {%- endif -%}
+        {%- if s.button_label_2 != blank -%}
+          <a href="{{ s.button_link_2 | default: routes.all_products_collection_url }}" class="button button--light">{{ s.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} .button svg { width: 16px; height: 16px; }
+  @media (max-width: 749px) { #shopify-section-{{ section.id }} .hero__inner { min-height: {{ s.height_mobile }}vh; } }
+</style>
+
+{% schema %}
+{
+  "name": "Portada (hero)",
+  "tag": "div",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Imagen para móvil (opcional)" },
+    { "type": "video", "id": "video", "label": "Vídeo (sustituye a la imagen)" },
+    { "type": "range", "id": "overlay", "label": "Oscurecer imagen", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 15 },
+    { "type": "range", "id": "height", "label": "Altura en escritorio", "min": 50, "max": 100, "step": 5, "unit": "vh", "default": 90 },
+    { "type": "range", "id": "height_mobile", "label": "Altura en móvil", "min": 50, "max": 100, "step": 5, "unit": "vh", "default": 80 },
+    { "type": "select", "id": "alignment", "label": "Alineación", "options": [{ "value": "bottom", "label": "Abajo a la izquierda" }, { "value": "center", "label": "Centrado" }], "default": "bottom" },
+    { "type": "checkbox", "id": "dark_text", "label": "Texto oscuro", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nueva colección" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "Hecho para\nmoverse." },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Diseño atrevido, comodidad real. Piezas pensadas para el día a día y para ir un paso por delante.</p>" },
+    { "type": "text", "id": "button_label", "label": "Botón 1", "default": "Comprar ahora" },
+    { "type": "url", "id": "button_link", "label": "Enlace botón 1" },
+    { "type": "text", "id": "button_label_2", "label": "Botón 2", "default": "Descubrir" },
+    { "type": "url", "id": "button_link_2", "label": "Enlace botón 2" }
+  ],
+  "presets": [{ "name": "Portada (hero)" }]
+}
+{% endschema %}

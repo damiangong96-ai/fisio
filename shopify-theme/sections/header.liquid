@@ -1,0 +1,111 @@
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+<div class="header-wrapper{% if section.settings.sticky %} header-wrapper--sticky{% endif %}">
+  <header class="page-width header">
+    <button type="button" class="header__icon header__menu-toggle" data-open="MenuDrawer" aria-label="{{ 'header.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <nav class="header__nav" aria-label="{{ 'header.menu' | t }}">
+      <ul>
+        {%- for link in menu.links -%}
+          <li>
+            <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="header__submenu">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo -%}
+        {%- assign logo_width = section.settings.logo_height | times: section.settings.logo.aspect_ratio | round -%}
+        {{ section.settings.logo | image_url: height: 200 | image_tag:
+          style: 'height: var(--logo-height)',
+          width: logo_width,
+          height: section.settings.logo_height,
+          alt: shop.name
+        }}
+        <style>#shopify-section-{{ section.id }} { --logo-height: {{ section.settings.logo_height }}px; }</style>
+      {%- else -%}
+        <span class="header__logo-text">{{ section.settings.logo_text | default: shop.name }}{% if section.settings.show_registered %}<sup>®</sup>{% endif %}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="header__icons">
+      <button type="button" class="header__icon" data-open="SearchModal" aria-label="{{ 'header.search' | t }}">
+        {% render 'icon', name: 'search' %}
+      </button>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__icon header__icon--account" aria-label="{{ 'header.account' | t }}">
+          {% render 'icon', name: 'account' %}
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="header__icon"{% if settings.cart_type == 'drawer' %} data-open="CartDrawer"{% endif %} aria-label="{{ 'header.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div class="search-modal" id="SearchModal" aria-hidden="true">
+  <div class="page-width">
+    <form action="{{ routes.search_url }}" method="get" role="search">
+      {% render 'icon', name: 'search' %}
+      <input type="search" name="q" placeholder="{{ 'header.search_placeholder' | t }}" aria-label="{{ 'header.search' | t }}">
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="button" class="icon-button" data-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </form>
+  </div>
+</div>
+
+<div class="menu-drawer" id="MenuDrawer" aria-hidden="true">
+  <div class="menu-drawer__top">
+    <span class="header__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+    <button type="button" class="icon-button" data-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+  <ul class="menu-drawer__list">
+    {%- for link in menu.links -%}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- if link.links != blank -%}
+          <ul class="menu-drawer__sub">
+            {%- for child in link.links -%}
+              <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  <div class="menu-drawer__footer">
+    {%- if shop.customer_accounts_enabled -%}
+      <p><a href="{{ routes.account_url }}">{{ 'header.account' | t }}</a></p>
+    {%- endif -%}
+    <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cabecera",
+  "class": "section-header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (imagen)" },
+    { "type": "range", "id": "logo_height", "label": "Altura del logo", "min": 16, "max": 80, "step": 2, "unit": "px", "default": 32 },
+    { "type": "text", "id": "logo_text", "label": "Logo en texto", "info": "Se usa si no subes una imagen. Por defecto, el nombre de la tienda." },
+    { "type": "checkbox", "id": "show_registered", "label": "Mostrar ® junto al logo en texto", "default": true },
+    { "type": "link_list", "id": "menu", "label": "Menú", "default": "main-menu" },
+    { "type": "checkbox", "id": "sticky", "label": "Cabecera fija al hacer scroll", "default": true }
+  ],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}

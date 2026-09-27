@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": { "type": "main-collection", "settings": {} },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "Envíos gratis" } },
+        "t2": { "type": "text", "settings": { "text": "Devoluciones en 30 días" } }
+      },
+      "block_order": ["t1", "t2"],
+      "settings": {}
+    }
+  },
+  "order": ["main", "marquee"]
+}

@@ -1,0 +1,12 @@
+<section class="section" style="--section-pt: 64px; --section-pb: 120px;">
+  <div class="page-width auth">
+    <h1 class="h1">{{ 'customer.activate.title' | t }}</h1>
+    {%- form 'activate_customer_password', class: 'form-grid' -%}
+      {%- if form.errors -%}<p class="form-message form-message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <input class="field" type="password" name="customer[password]" autocomplete="new-password" placeholder="{{ 'customer.password' | t }}" required>
+      <input class="field" type="password" name="customer[password_confirmation]" autocomplete="new-password" placeholder="{{ 'customer.password_confirm' | t }}" required>
+      <button type="submit" class="button button--full">{{ 'customer.activate.submit' | t }}</button>
+      <button type="submit" name="decline" class="button button--outline button--full">{{ 'customer.activate.decline' | t }}</button>
+    {%- endform -%}
+  </div>
+</section>

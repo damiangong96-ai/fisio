@@ -1,0 +1,85 @@
+{%- comment -%}
+  Usage: {% render 'product-card', product: product, show_vendor: false, image_fit: 'cover' %}
+  Custom badge: add a product tag like "badge:Popular".
+{%- endcomment -%}
+{%- liquid
+  assign custom_badge = blank
+  for tag in product.tags
+    if tag contains 'badge:'
+      assign custom_badge = tag | remove_first: 'badge:' | strip
+      break
+    endif
+  endfor
+  assign sale = false
+  if product.compare_at_price > product.price
+    assign sale = true
+  endif
+-%}
+<div class="card{% if image_fit == 'contain' %} card--contain{% endif %}">
+  <div class="card__media">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 900 | image_tag:
+        loading: 'lazy',
+        widths: '360, 540, 720, 900',
+        sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+        alt: product.featured_media.alt | default: product.title
+      }}
+      {%- if settings.card_second_image and product.media[1] -%}
+        {{ product.media[1] | image_url: width: 900 | image_tag:
+          loading: 'lazy',
+          class: 'card__img--second',
+          widths: '360, 540, 720, 900',
+          sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+          alt: ''
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+
+    <div class="card__badges">
+      {%- if product.available == false -%}
+        <span class="badge badge--dark">{{ 'products.product.sold_out' | t }}</span>
+      {%- elsif sale -%}
+        <span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+      {%- if custom_badge != blank -%}
+        <span class="badge badge--light">{{ custom_badge }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if settings.card_quick_add and product.available and product.has_only_default_variant -%}
+      <form action="{{ routes.cart_add_url }}" method="post" class="card__quick" data-product-form>
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="button button--accent"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
+      </form>
+    {%- elsif settings.card_quick_add and product.available -%}
+      <div class="card__quick">
+        <a href="{{ product.url }}" class="button button--light" style="position: relative; z-index: 3;">{{ 'products.product.choose_options' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="card__info">
+    <div>
+      {%- if show_vendor -%}
+        <div class="card__vendor">{{ product.vendor }}</div>
+      {%- endif -%}
+      <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+      {%- if settings.card_swatches -%}
+        {%- for option in product.options_with_values -%}
+          {%- if option.values.first.swatch -%}
+            <div class="card__swatches">
+              {%- for value in option.values limit: 5 -%}
+                <span class="card__swatch" title="{{ value | escape }}" style="background: {% if value.swatch.image %}url({{ value.swatch.image | image_url: width: 24 }}) center/cover{% else %}{{ value.swatch.color }}{% endif %};"></span>
+              {%- endfor -%}
+            </div>
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {% render 'price', product: product %}
+  </div>
+</div>

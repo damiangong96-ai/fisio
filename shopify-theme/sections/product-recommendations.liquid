@@ -1,0 +1,40 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="section scheme-{{ s.scheme }}" style="--section-pt: {{ s.padding_top }}px; --section-pb: {{ s.padding_bottom }}px;">
+  <div class="page-width">
+    <div data-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ s.limit }}&intent=related">
+      {%- if recommendations.performed and recommendations.products_count > 0 -%}
+        <div class="section-head">
+          <div class="section-head__titles">
+            {%- if s.eyebrow != blank -%}<span class="eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
+            <h2 class="h2">{{ s.heading }}</h2>
+          </div>
+        </div>
+        <ul class="product-grid" style="--cols: {{ s.columns }}; --cols-tablet: 3;">
+          {%- for product in recommendations.products -%}
+            <li class="reveal">{% render 'product-card', product: product, image_fit: s.image_fit %}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Productos relacionados",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Te puede interesar" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "También te gustará" },
+    { "type": "range", "id": "limit", "label": "Número de productos", "min": 2, "max": 10, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns", "label": "Columnas", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "select", "id": "image_fit", "label": "Encaje de imagen", "options": [{ "value": "cover", "label": "Rellenar" }, { "value": "contain", "label": "Ajustar" }], "default": "cover" },
+    { "type": "select", "id": "scheme", "label": "Colores", "options": [{ "value": "light", "label": "Claro" }, { "value": "surface", "label": "Gris claro" }], "default": "surface" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [{ "name": "Productos relacionados" }]
+}
+{% endschema %}

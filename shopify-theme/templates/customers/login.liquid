@@ -1,0 +1,36 @@
+<section class="section" style="--section-pt: 64px; --section-pb: 120px;">
+  <div class="page-width auth">
+    <h1 class="h1">{{ 'customer.login.title' | t }}</h1>
+
+    <div id="RecoverForm" hidden>
+      {%- form 'recover_customer_password', class: 'form-grid' -%}
+        <p class="muted">{{ 'customer.recover.text' | t }}</p>
+        {%- if form.posted_successfully? -%}<p class="form-message">{{ 'customer.recover.success' | t }}</p>{%- endif -%}
+        {%- if form.errors -%}<p class="form-message form-message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <input class="field" type="email" name="email" autocomplete="email" placeholder="{{ 'contact.email' | t }}" required>
+        <button type="submit" class="button button--full">{{ 'customer.recover.submit' | t }}</button>
+        <a href="#" class="muted" style="text-align: center;" onclick="document.getElementById('RecoverForm').hidden = true; document.getElementById('LoginForm').hidden = false; return false;">{{ 'general.cancel' | t }}</a>
+      {%- endform -%}
+    </div>
+
+    <div id="LoginForm">
+      {%- form 'customer_login', class: 'form-grid' -%}
+        {%- if form.errors -%}<p class="form-message form-message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <input class="field" type="email" name="customer[email]" autocomplete="email" placeholder="{{ 'contact.email' | t }}" required>
+        {%- if form.password_needed -%}
+          <input class="field" type="password" name="customer[password]" autocomplete="current-password" placeholder="{{ 'customer.password' | t }}" required>
+          <a href="#recover" class="muted" style="font-size: 14px;" onclick="document.getElementById('RecoverForm').hidden = false; document.getElementById('LoginForm').hidden = true; return false;">{{ 'customer.login.forgot' | t }}</a>
+        {%- endif -%}
+        <button type="submit" class="button button--full">{{ 'customer.login.submit' | t }}</button>
+        <a href="{{ routes.account_register_url }}" class="button button--outline button--full">{{ 'customer.register.title' | t }}</a>
+      {%- endform -%}
+    </div>
+
+    {%- if shop.checkout.guest_login -%}
+      {%- form 'guest_login', class: 'form-grid' -%}
+        <button type="submit" class="button button--outline button--full">{{ 'customer.login.guest' | t }}</button>
+      {%- endform -%}
+    {%- endif -%}
+  </div>
+</section>
+<script>if (window.location.hash === '#recover') { document.getElementById('RecoverForm').hidden = false; document.getElementById('LoginForm').hidden = true; }</script>

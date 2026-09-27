@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "Envíos gratis" } },
+        "t2": { "type": "text", "settings": { "text": "Devoluciones en 30 días" } },
+        "t3": { "type": "text", "settings": { "text": "Nueva colección" } },
+        "t4": { "type": "text", "settings": { "text": "Edición limitada" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {}
+    },
+    "featured": { "type": "featured-collection", "settings": {} },
+    "collections": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "title": "Mujer" } },
+        "c2": { "type": "collection", "settings": { "title": "Hombre" } },
+        "c3": { "type": "collection", "settings": { "title": "Novedades" } }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {}
+    },
+    "split": { "type": "image-with-text", "settings": {} },
+    "featured_2": {
+      "type": "featured-collection",
+      "settings": { "eyebrow": "Novedades", "heading": "Recién llegados", "layout": "slider", "scheme": "surface", "limit": 8 }
+    },
+    "testimonial": { "type": "testimonial", "settings": {} },
+    "gallery": {
+      "type": "gallery",
+      "blocks": {
+        "g1": { "type": "image", "settings": {} },
+        "g2": { "type": "image", "settings": {} },
+        "g3": { "type": "image", "settings": {} },
+        "g4": { "type": "image", "settings": {} },
+        "g5": { "type": "image", "settings": {} },
+        "g6": { "type": "image", "settings": {} }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Las tallas son las habituales?", "answer": "<p>Sí, nuestras tallas siguen el estándar europeo. Si estás entre dos tallas, te recomendamos la mayor.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "He pedido una talla equivocada, ¿qué hago?", "answer": "<p>Tienes 30 días para cambiarla sin coste. Escríbenos y te enviamos la etiqueta de devolución.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "¿Reponéis los productos agotados?", "answer": "<p>La mayoría sí. Suscríbete a la newsletter para enterarte antes que nadie.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "¿Dónde se fabrican vuestros productos?", "answer": "<p>Trabajamos con talleres seleccionados en Europa que cumplen con estándares de producción responsable.</p>" } },
+        "q5": { "type": "question", "settings": { "question": "¿Puedo colaborar con la marca?", "answer": "<p>¡Claro! Escríbenos desde la página de contacto contándonos tu propuesta.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "marquee", "featured", "collections", "split", "featured_2", "testimonial", "gallery", "faq"]
+}

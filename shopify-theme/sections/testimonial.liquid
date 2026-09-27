@@ -1,0 +1,38 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="section testimonial scheme-{{ s.scheme }}" style="--section-pt: {{ s.padding_top }}px; --section-pb: {{ s.padding_bottom }}px;">
+  <div class="page-width">
+    {%- if s.stars > 0 -%}
+      <div class="testimonial__stars reveal" aria-label="{{ s.stars }}/5">
+        {%- for i in (1..s.stars) -%}{% render 'icon', name: 'star' %}{%- endfor -%}
+      </div>
+    {%- endif -%}
+    <blockquote class="testimonial__quote reveal" style="margin: 0 auto;">{{ s.quote }}</blockquote>
+    <div class="testimonial__author reveal">
+      {%- if s.avatar != blank -%}
+        <div class="testimonial__avatar">{{ s.avatar | image_url: width: 120 | image_tag: loading: 'lazy', alt: s.author }}</div>
+      {%- endif -%}
+      <span class="testimonial__name">{{ s.author }}</span>
+      <span class="muted">{{ s.role }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonio",
+  "tag": "div",
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Cita", "default": "No son solo zapatillas, son motivación. Me las pongo y me muevo, así de simple. Cada paso tiene un propósito." },
+    { "type": "text", "id": "author", "label": "Autor", "default": "Laura Martín" },
+    { "type": "text", "id": "role", "label": "Descripción", "default": "Clienta de Madrid" },
+    { "type": "image_picker", "id": "avatar", "label": "Foto" },
+    { "type": "range", "id": "stars", "label": "Estrellas", "min": 0, "max": 5, "step": 1, "default": 5 },
+    { "type": "select", "id": "scheme", "label": "Colores", "options": [{ "value": "dark", "label": "Oscuro" }, { "value": "light", "label": "Claro" }, { "value": "surface", "label": "Gris claro" }, { "value": "accent", "label": "Acento" }], "default": "dark" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 120 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 120 }
+  ],
+  "presets": [{ "name": "Testimonio" }]
+}
+{% endschema %}

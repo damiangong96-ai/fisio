@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "divider": { "type": "divider", "settings": {} },
+        "variants": { "type": "variant_picker", "settings": {} },
+        "buy": { "type": "buy_buttons", "settings": {} },
+        "perk1": { "type": "perk", "settings": { "icon": "truck", "title": "Envío rápido", "text": "Tu pedido llega en 2–5 días laborables" } },
+        "perk2": { "type": "perk", "settings": { "icon": "globe", "title": "Envíos y devoluciones gratis", "text": "Enviamos a toda España sin coste" } },
+        "perk3": { "type": "perk", "settings": { "icon": "return", "title": "Devolución garantizada", "text": "Tienes 30 días para devolver tu pedido" } },
+        "description": { "type": "description", "settings": {} }
+      },
+      "block_order": ["title", "price", "divider", "variants", "buy", "perk1", "perk2", "perk3", "description"],
+      "settings": {}
+    },
+    "recommendations": { "type": "product-recommendations", "settings": {} },
+    "testimonial": { "type": "testimonial", "settings": {} },
+    "split": { "type": "image-with-text", "settings": {} }
+  },
+  "order": ["main", "recommendations", "testimonial", "split"]
+}

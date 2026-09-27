@@ -1,0 +1,102 @@
+{%- liquid
+  assign s = section.settings
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+-%}
+<section class="section" style="--section-pt: 0px; --section-pb: 96px;">
+  <div class="page-width">
+    <div class="collection-hero">
+      <span class="eyebrow">{{ 'collections.products_count' | t: count: collection.products_count }}</span>
+      <h1 class="h0">{{ collection.title }}</h1>
+      {%- if s.show_description and collection.description != blank -%}
+        <div class="collection-hero__desc rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- paginate collection.products by s.per_page -%}
+      <form class="collection-toolbar" id="CollectionFilters">
+        <div class="facets">
+          {%- if s.enable_filters -%}
+            {%- for filter in collection.filters -%}
+              <details>
+                <summary>
+                  {{ filter.label }}
+                  {%- if filter.active_values.size > 0 %} ({{ filter.active_values.size }}){% endif -%}
+                  {% render 'icon', name: 'chevron' %}
+                </summary>
+                <div class="facets__panel">
+                  {%- case filter.type -%}
+                    {%- when 'price_range' -%}
+                      <div class="facets__price">
+                        <input class="field" type="number" name="{{ filter.min_value.param_name }}" placeholder="{{ 'collections.from' | t }}" value="{% if filter.min_value.value %}{{ filter.min_value.value | divided_by: 100 }}{% endif %}" min="0">
+                        <input class="field" type="number" name="{{ filter.max_value.param_name }}" placeholder="{{ filter.range_max | divided_by: 100 }}" value="{% if filter.max_value.value %}{{ filter.max_value.value | divided_by: 100 }}{% endif %}" min="0">
+                      </div>
+                      <button type="submit" class="button">{{ 'collections.apply' | t }}</button>
+                    {%- else -%}
+                      {%- for value in filter.values -%}
+                        <label>
+                          <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %} data-auto-submit>
+                          {{ value.label }} <span class="count">({{ value.count }})</span>
+                        </label>
+                      {%- endfor -%}
+                  {%- endcase -%}
+                </div>
+              </details>
+            {%- endfor -%}
+            {%- assign has_active = false -%}
+            {%- for filter in collection.filters -%}
+              {%- if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value -%}{%- assign has_active = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- if has_active -%}
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="filter-pill">{{ 'collections.clear' | t }} ✕</a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+        {%- if s.enable_sorting -%}
+          <label style="display: flex; gap: 10px; align-items: center; font-size: 14px;">
+            <span class="muted">{{ 'collections.sort_by' | t }}</span>
+            <select name="sort_by" data-auto-submit>
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        {%- endif -%}
+      </form>
+
+      {%- if collection.products.size > 0 -%}
+        <ul class="product-grid" style="--cols: {{ s.columns }}; --cols-tablet: 3; --card-ratio: {{ s.image_ratio }};">
+          {%- for product in collection.products -%}
+            <li class="reveal" style="transition-delay: {{ forloop.index0 | modulo: 4 | times: 60 }}ms;">
+              {% render 'product-card', product: product, show_vendor: s.show_vendor, image_fit: s.image_fit %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="empty-state">
+          <p class="h3">{{ 'collections.empty' | t }}</p>
+          <a href="{{ collection.url }}" class="button">{{ 'collections.clear' | t }}</a>
+        </div>
+      {%- endif -%}
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+<style>#shopify-section-{{ section.id }} .facets summary svg { width: 14px; height: 14px; }</style>
+
+{% schema %}
+{
+  "name": "Productos de la colección",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Productos por página", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "range", "id": "columns", "label": "Columnas en escritorio", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "select", "id": "image_ratio", "label": "Proporción de imagen", "options": [{ "value": "1 / 1", "label": "Cuadrada" }, { "value": "4 / 5", "label": "Vertical" }, { "value": "3 / 4", "label": "Vertical alta" }], "default": "4 / 5" },
+    { "type": "select", "id": "image_fit", "label": "Encaje de imagen", "options": [{ "value": "cover", "label": "Rellenar" }, { "value": "contain", "label": "Ajustar" }], "default": "cover" },
+    { "type": "checkbox", "id": "show_description", "label": "Mostrar descripción de la colección", "default": true },
+    { "type": "checkbox", "id": "show_vendor", "label": "Mostrar marca", "default": false },
+    { "type": "checkbox", "id": "enable_filters", "label": "Activar filtros", "info": "Configúralos con la app Search & Discovery.", "default": true },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Activar ordenación", "default": true }
+  ]
+}
+{% endschema %}

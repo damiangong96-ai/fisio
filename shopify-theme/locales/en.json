@@ -1,0 +1,156 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "blog": {
+    "back": "Back to blog"
+  },
+  "cart": {
+    "checkout": "Check out",
+    "continue": "Continue shopping",
+    "decrease": "Decrease quantity",
+    "empty": "Your cart is empty",
+    "increase": "Increase quantity",
+    "note": "Order note",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "taxes_note": "Taxes included. Shipping calculated at checkout.",
+    "title": "Cart",
+    "view_cart": "View cart"
+  },
+  "collections": {
+    "apply": "Apply",
+    "clear": "Clear filters",
+    "empty": "No products found",
+    "from": "From",
+    "products_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "sort_by": "Sort by"
+  },
+  "contact": {
+    "email": "Email",
+    "message": "Message",
+    "name": "Name",
+    "phone": "Phone",
+    "send": "Send",
+    "success": "Thanks! We'll get back to you soon."
+  },
+  "customer": {
+    "account": {
+      "logout": "Log out",
+      "title": "Account"
+    },
+    "activate": {
+      "decline": "Decline invitation",
+      "submit": "Activate account",
+      "title": "Activate account"
+    },
+    "addresses": {
+      "add": "Add address",
+      "address1": "Address",
+      "address2": "Apartment, suite, etc.",
+      "city": "City",
+      "company": "Company",
+      "default": "Default",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you want to delete this address?",
+      "edit": "Edit",
+      "province": "Province",
+      "save": "Save address",
+      "set_default": "Set as default address",
+      "title": "Addresses",
+      "zip": "Postal code"
+    },
+    "first_name": "First name",
+    "last_name": "Last name",
+    "login": {
+      "forgot": "Forgot your password?",
+      "guest": "Continue as guest",
+      "submit": "Sign in",
+      "title": "Login"
+    },
+    "orders": {
+      "cancelled": "Order cancelled",
+      "date": "Date",
+      "fulfillment": "Fulfillment",
+      "none": "You haven't placed any orders yet.",
+      "order": "Order",
+      "payment": "Payment",
+      "shipping_address": "Shipping address",
+      "title": "Order history",
+      "total": "Total"
+    },
+    "password": "Password",
+    "password_confirm": "Confirm password",
+    "recover": {
+      "submit": "Submit",
+      "success": "We've sent you an email with a link to reset your password.",
+      "text": "We will send you an email to reset your password."
+    },
+    "register": {
+      "submit": "Create account",
+      "title": "Create account"
+    },
+    "reset": {
+      "submit": "Reset password",
+      "title": "Reset password"
+    }
+  },
+  "general": {
+    "404_text": "The page you were looking for does not exist.",
+    "404_title": "Page not found",
+    "cancel": "Cancel",
+    "close": "Close",
+    "next": "Next",
+    "page": "Page {{ page }}",
+    "pagination": "Pagination",
+    "previous": "Previous"
+  },
+  "gift_card": {
+    "expired": "Expired",
+    "print": "Print",
+    "title": "Gift card"
+  },
+  "header": {
+    "account": "Account",
+    "cart": "Cart",
+    "menu": "Menu",
+    "search": "Search",
+    "search_placeholder": "What are you looking for?"
+  },
+  "newsletter": {
+    "placeholder": "Your email",
+    "submit": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "password": {
+    "coming_soon": "Coming soon",
+    "enter": "Enter using password",
+    "submit": "Enter"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "choose_options": "Choose options",
+      "description": "Description",
+      "on_sale": "Sale",
+      "placeholder_title": "Product title",
+      "price_from": "From {{ price }}",
+      "sold_out": "Sold out",
+      "taxes_included": "Taxes included.",
+      "unavailable": "Unavailable"
+    }
+  },
+  "search": {
+    "no_results": "No results found for \"{{ terms }}\"",
+    "results_count": {
+      "one": "{{ count }} result",
+      "other": "{{ count }} results"
+    },
+    "results_for": "Results for \"{{ terms }}\"",
+    "title": "Search"
+  }
+}

@@ -1,0 +1,50 @@
+<section class="section" style="--section-pt: 32px; --section-pb: 96px;">
+  <div class="page-width">
+    <div class="collection-hero">
+      <h1 class="h1">{%- if search.performed -%}{{ 'search.results_for' | t: terms: search.terms }}{%- else -%}{{ 'search.title' | t }}{%- endif -%}</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" style="display: flex; gap: 8px; max-width: 560px;">
+        <input class="field" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'header.search_placeholder' | t }}" aria-label="{{ 'header.search' | t }}">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="submit" class="button">{{ 'header.search' | t }}</button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+        {%- if search.results_count == 0 -%}
+          <div class="empty-state"><p class="h3">{{ 'search.no_results' | t: terms: search.terms }}</p></div>
+        {%- else -%}
+          <p class="muted" style="margin-bottom: 24px;">{{ 'search.results_count' | t: count: search.results_count }}</p>
+          <ul class="product-grid">
+            {%- for item in search.results -%}
+              <li class="reveal">
+                {%- case item.object_type -%}
+                  {%- when 'product' -%}
+                    {% render 'product-card', product: item %}
+                  {%- when 'article' -%}
+                    <a href="{{ item.url }}" class="article-card">
+                      <div class="media" style="aspect-ratio: 4/5; border-radius: var(--radius);">{% if item.image %}{{ item.image | image_url: width: 600 | image_tag: loading: 'lazy' }}{% endif %}</div>
+                      <span class="card__title">{{ item.title }}</span>
+                    </a>
+                  {%- when 'page' -%}
+                    <a href="{{ item.url }}" class="article-card">
+                      <div class="media" style="aspect-ratio: 4/5; border-radius: var(--radius); display: grid; place-items: center; padding: 24px;"><span class="h3" style="position: relative;">{{ item.title }}</span></div>
+                    </a>
+                {%- endcase -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+          {% render 'pagination', paginate: paginate %}
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Resultados de búsqueda",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}

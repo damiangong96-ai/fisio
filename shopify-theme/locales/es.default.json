@@ -1,0 +1,156 @@
+{
+  "accessibility": {
+    "skip_to_content": "Saltar al contenido"
+  },
+  "blog": {
+    "back": "Volver al blog"
+  },
+  "cart": {
+    "checkout": "Finalizar compra",
+    "continue": "Seguir comprando",
+    "decrease": "Reducir cantidad",
+    "empty": "Tu carrito está vacío",
+    "increase": "Aumentar cantidad",
+    "note": "Nota del pedido",
+    "quantity": "Cantidad",
+    "remove": "Eliminar",
+    "subtotal": "Subtotal",
+    "taxes_note": "Impuestos incluidos. Gastos de envío calculados en la pantalla de pago.",
+    "title": "Carrito",
+    "view_cart": "Ver carrito"
+  },
+  "collections": {
+    "apply": "Aplicar",
+    "clear": "Quitar filtros",
+    "empty": "No hay productos que coincidan",
+    "from": "Desde",
+    "products_count": {
+      "one": "{{ count }} producto",
+      "other": "{{ count }} productos"
+    },
+    "sort_by": "Ordenar por"
+  },
+  "contact": {
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "send": "Enviar",
+    "success": "¡Gracias! Te responderemos lo antes posible."
+  },
+  "customer": {
+    "account": {
+      "logout": "Cerrar sesión",
+      "title": "Mi cuenta"
+    },
+    "activate": {
+      "decline": "Rechazar invitación",
+      "submit": "Activar cuenta",
+      "title": "Activar cuenta"
+    },
+    "addresses": {
+      "add": "Añadir dirección",
+      "address1": "Dirección",
+      "address2": "Piso, puerta, etc.",
+      "city": "Ciudad",
+      "company": "Empresa",
+      "default": "Predeterminada",
+      "delete": "Eliminar",
+      "delete_confirm": "¿Seguro que quieres eliminar esta dirección?",
+      "edit": "Editar",
+      "province": "Provincia",
+      "save": "Guardar dirección",
+      "set_default": "Usar como dirección predeterminada",
+      "title": "Direcciones",
+      "zip": "Código postal"
+    },
+    "first_name": "Nombre",
+    "last_name": "Apellidos",
+    "login": {
+      "forgot": "¿Has olvidado tu contraseña?",
+      "guest": "Continuar como invitado",
+      "submit": "Iniciar sesión",
+      "title": "Iniciar sesión"
+    },
+    "orders": {
+      "cancelled": "Pedido cancelado",
+      "date": "Fecha",
+      "fulfillment": "Envío",
+      "none": "Todavía no has hecho ningún pedido.",
+      "order": "Pedido",
+      "payment": "Pago",
+      "shipping_address": "Dirección de envío",
+      "title": "Historial de pedidos",
+      "total": "Total"
+    },
+    "password": "Contraseña",
+    "password_confirm": "Confirmar contraseña",
+    "recover": {
+      "submit": "Enviar",
+      "success": "Te hemos enviado un correo para restablecer la contraseña.",
+      "text": "Te enviaremos un correo para restablecer tu contraseña."
+    },
+    "register": {
+      "submit": "Crear cuenta",
+      "title": "Crear cuenta"
+    },
+    "reset": {
+      "submit": "Restablecer contraseña",
+      "title": "Restablecer contraseña"
+    }
+  },
+  "general": {
+    "404_text": "La página que buscas no existe o se ha movido.",
+    "404_title": "Página no encontrada",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "page": "Página {{ page }}",
+    "pagination": "Paginación",
+    "previous": "Anterior"
+  },
+  "gift_card": {
+    "expired": "Caducada",
+    "print": "Imprimir",
+    "title": "Tarjeta regalo"
+  },
+  "header": {
+    "account": "Cuenta",
+    "cart": "Carrito",
+    "menu": "Menú",
+    "search": "Buscar",
+    "search_placeholder": "¿Qué estás buscando?"
+  },
+  "newsletter": {
+    "placeholder": "Tu correo electrónico",
+    "submit": "Suscribirme",
+    "success": "¡Gracias por suscribirte!"
+  },
+  "password": {
+    "coming_soon": "Muy pronto",
+    "enter": "Entrar con contraseña",
+    "submit": "Entrar"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "choose_options": "Elegir opciones",
+      "description": "Descripción",
+      "on_sale": "Oferta",
+      "placeholder_title": "Nombre del producto",
+      "price_from": "Desde {{ price }}",
+      "sold_out": "Agotado",
+      "taxes_included": "Impuestos incluidos.",
+      "unavailable": "No disponible"
+    }
+  },
+  "search": {
+    "no_results": "No hay resultados para \"{{ terms }}\"",
+    "results_count": {
+      "one": "{{ count }} resultado",
+      "other": "{{ count }} resultados"
+    },
+    "results_for": "Resultados para \"{{ terms }}\"",
+    "title": "Buscar"
+  }
+}

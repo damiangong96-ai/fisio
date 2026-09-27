@@ -1,0 +1,27 @@
+{
+  "type": "footer",
+  "name": "Grupo de pie de página",
+  "sections": {
+    "features": {
+      "type": "features",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "leaf", "text": "Embalaje y papel certificados FSC®." } },
+        "f2": { "type": "feature", "settings": { "icon": "box", "text": "Pedidos enviados en 1–2 días con seguimiento." } },
+        "f3": { "type": "feature", "settings": { "icon": "shield", "text": "Materiales duraderos que mantienen la forma." } },
+        "f4": { "type": "feature", "settings": { "icon": "return", "text": "30 días para cambios o devoluciones." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"],
+      "settings": { "scheme": "dark", "padding_top": 48, "padding_bottom": 0 }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "m1": { "type": "menu", "settings": { "title": "Tienda", "menu": "main-menu" } },
+        "m2": { "type": "menu", "settings": { "title": "Ayuda", "menu": "footer" } }
+      },
+      "block_order": ["m1", "m2"],
+      "settings": {}
+    }
+  },
+  "order": ["features", "footer"]
+}

@@ -1,0 +1,49 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="split{% if s.image_position == 'right' %} split--reverse{% endif %}" style="--split-height: {{ s.height }}px; background: {{ s.color_bg }}; color: {{ s.color_text }};">
+  <div class="split__media media">
+    {%- if s.image != blank -%}
+      {{ s.image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1800', sizes: '(min-width: 750px) 50vw, 100vw', alt: s.image.alt }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="split__content">
+    {%- if s.eyebrow != blank -%}<span class="eyebrow reveal" style="color: inherit; opacity: .75;">{{ s.eyebrow }}</span>{%- endif -%}
+    <div class="split__body reveal">
+      {%- if s.heading != blank -%}<h2 class="h1">{{ s.heading | newline_to_br }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="rte" style="font-size: 17px; opacity: .85;">{{ s.text }}</div>{%- endif -%}
+      <div class="split__buttons">
+        {%- if s.button_label != blank -%}
+          <a href="{{ s.button_link | default: routes.all_products_collection_url }}" class="button" style="--btn-bg: {{ s.color_text }}; --btn-fg: {{ s.color_bg }};">{{ s.button_label }}</a>
+        {%- endif -%}
+        {%- if s.button_label_2 != blank -%}
+          <a href="{{ s.button_link_2 | default: routes.all_products_collection_url }}" class="button button--outline" style="--btn-bg: {{ s.color_text }}; --btn-fg: {{ s.color_bg }};">{{ s.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Imagen con texto",
+  "tag": "div",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "select", "id": "image_position", "label": "Posición de la imagen", "options": [{ "value": "left", "label": "Izquierda" }, { "value": "right", "label": "Derecha" }], "default": "left" },
+    { "type": "range", "id": "height", "label": "Altura mínima", "min": 400, "max": 900, "step": 20, "unit": "px", "default": 640 },
+    { "type": "color", "id": "color_bg", "label": "Color de fondo", "default": "#35B9E9" },
+    { "type": "color", "id": "color_text", "label": "Color del texto", "default": "#030607" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Nuestra filosofía" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "Declaración,\nno discreción." },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Básicos que se mueven contigo. Sin relleno, solo función. Materiales duraderos y un diseño que no pasa desapercibido.</p>" },
+    { "type": "text", "id": "button_label", "label": "Botón 1", "default": "Comprar" },
+    { "type": "url", "id": "button_link", "label": "Enlace botón 1" },
+    { "type": "text", "id": "button_label_2", "label": "Botón 2" },
+    { "type": "url", "id": "button_link_2", "label": "Enlace botón 2" }
+  ],
+  "presets": [{ "name": "Imagen con texto" }]
+}
+{% endschema %}

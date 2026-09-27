@@ -1,0 +1,30 @@
+<section class="section" style="--section-pt: 0px; --section-pb: 96px;">
+  <div class="page-width" style="max-width: 880px;">
+    {%- if section.settings.heading != blank -%}<h2 class="h2" style="margin-bottom: 24px;">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- form 'contact', class: 'form-grid' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-message">{{ 'contact.success' | t }}</p>
+      {%- elsif form.errors -%}
+        <p class="form-message form-message--error">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
+        <input class="field" type="text" name="contact[name]" placeholder="{{ 'contact.name' | t }}" value="{{ form.name }}" autocomplete="name">
+        <input class="field" type="email" name="contact[email]" placeholder="{{ 'contact.email' | t }}" value="{{ form.email }}" autocomplete="email" required>
+      </div>
+      <input class="field" type="tel" name="contact[phone]" placeholder="{{ 'contact.phone' | t }}" value="{{ form.phone }}" autocomplete="tel">
+      <textarea class="field" name="contact[body]" placeholder="{{ 'contact.message' | t }}">{{ form.body }}</textarea>
+      <div><button type="submit" class="button">{{ 'contact.send' | t }}</button></div>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formulario de contacto",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Escríbenos" }
+  ],
+  "presets": [{ "name": "Formulario de contacto" }]
+}
+{% endschema %}

@@ -1,0 +1,80 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Pulse",
+    "theme_version": "1.0.0",
+    "theme_author": "Mi tienda",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      { "type": "color", "id": "color_ink", "label": "Texto y elementos oscuros", "default": "#030607" },
+      { "type": "color", "id": "color_background", "label": "Fondo", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_surface", "label": "Fondo secundario (gris)", "default": "#F4F4F4" },
+      { "type": "color", "id": "color_accent", "label": "Color de acento", "default": "#D2FF1F" },
+      { "type": "color", "id": "color_accent_contrast", "label": "Texto sobre el acento", "default": "#030607" },
+      { "type": "color", "id": "color_sale", "label": "Color de ofertas", "default": "#F01919" }
+    ]
+  },
+  {
+    "name": "Tipografía",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_family",
+        "label": "Fuente",
+        "info": "Fuentes de Google Fonts.",
+        "options": [
+          { "value": "Instrument Sans", "label": "Instrument Sans" },
+          { "value": "Inter", "label": "Inter" },
+          { "value": "Inter Tight", "label": "Inter Tight" },
+          { "value": "Archivo", "label": "Archivo" },
+          { "value": "Space Grotesk", "label": "Space Grotesk" },
+          { "value": "DM Sans", "label": "DM Sans" },
+          { "value": "Manrope", "label": "Manrope" },
+          { "value": "Plus Jakarta Sans", "label": "Plus Jakarta Sans" }
+        ],
+        "default": "Instrument Sans"
+      },
+      { "type": "select", "id": "heading_weight", "label": "Grosor de los títulos", "options": [{ "value": "500", "label": "Medio" }, { "value": "600", "label": "Seminegrita" }, { "value": "700", "label": "Negrita" }], "default": "600" },
+      { "type": "range", "id": "heading_scale", "label": "Tamaño de los títulos", "min": 70, "max": 130, "step": 5, "unit": "%", "default": 100 },
+      { "type": "checkbox", "id": "heading_uppercase", "label": "Títulos en mayúsculas", "default": false }
+    ]
+  },
+  {
+    "name": "Diseño",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Ancho máximo de página", "min": 1000, "max": 1800, "step": 20, "unit": "px", "default": 1440 },
+      { "type": "range", "id": "radius", "label": "Redondeo de tarjetas e imágenes", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 8 },
+      { "type": "range", "id": "button_radius", "label": "Redondeo de botones", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 40 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "32 × 32 px" }
+    ]
+  },
+  {
+    "name": "Tarjetas de producto",
+    "settings": [
+      { "type": "checkbox", "id": "card_second_image", "label": "Mostrar segunda imagen al pasar el ratón", "default": true },
+      { "type": "checkbox", "id": "card_quick_add", "label": "Botón de compra rápida", "default": true },
+      { "type": "checkbox", "id": "card_swatches", "label": "Mostrar muestras de color", "default": true },
+      { "type": "paragraph", "content": "Para añadir una etiqueta personalizada (por ejemplo \"Popular\"), añade al producto la etiqueta badge:Popular." }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      { "type": "select", "id": "cart_type", "label": "Tipo de carrito", "options": [{ "value": "drawer", "label": "Panel lateral" }, { "value": "page", "label": "Página" }], "default": "drawer" }
+    ]
+  },
+  {
+    "name": "Redes sociales",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_x", "label": "X (Twitter)" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  }
+]

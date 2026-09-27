@@ -1,0 +1,9 @@
+{
+  "type": "header",
+  "name": "Grupo de cabecera",
+  "sections": {
+    "announcement": { "type": "announcement-bar", "settings": {} },
+    "header": { "type": "header", "settings": { "menu": "main-menu", "sticky": true, "show_registered": true } }
+  },
+  "order": ["announcement", "header"]
+}

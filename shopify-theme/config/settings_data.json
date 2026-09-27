@@ -1,0 +1,24 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_ink": "#030607",
+      "color_background": "#FFFFFF",
+      "color_surface": "#F4F4F4",
+      "color_accent": "#D2FF1F",
+      "color_accent_contrast": "#030607",
+      "color_sale": "#F01919",
+      "font_family": "Instrument Sans",
+      "heading_weight": "600",
+      "heading_scale": 100,
+      "heading_uppercase": false,
+      "page_width": 1440,
+      "radius": 8,
+      "button_radius": 40,
+      "card_second_image": true,
+      "card_quick_add": true,
+      "card_swatches": true,
+      "cart_type": "drawer"
+    }
+  }
+}

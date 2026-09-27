@@ -1,0 +1,28 @@
+<section class="section" style="--section-pt: 48px; --section-pb: 96px;">
+  <div class="page-width">
+    <article class="article">
+      <header class="article__head">
+        <a href="{{ blog.url }}" class="eyebrow">{{ blog.title }}</a>
+        <h1 class="h1">{{ article.title }}</h1>
+        <span class="muted">{{ article.published_at | time_tag: format: 'date' }}{% if section.settings.show_author %} · {{ article.author }}{% endif %}</span>
+      </header>
+      {%- if article.image -%}
+        <div class="article__image">
+          {{ article.image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 800px) 760px, 100vw', alt: article.image.alt | default: article.title }}
+        </div>
+      {%- endif -%}
+      <div class="article__body rte">{{ article.content }}</div>
+      <p style="margin-top: 48px;"><a href="{{ blog.url }}" class="link-arrow">← {{ 'blog.back' | t }}</a></p>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Artículo",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "show_author", "label": "Mostrar autor", "default": false }
+  ]
+}
+{% endschema %}

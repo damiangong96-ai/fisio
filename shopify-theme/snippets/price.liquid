@@ -1,0 +1,28 @@
+{%- comment -%}
+  Usage: {% render 'price', product: product, variant: variant, class: 'price--large' %}
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign price = target.price
+  assign compare_at = target.compare_at_price
+  if variant == blank and product.price_varies
+    assign price = product.price_min
+    assign compare_at = product.compare_at_price_min
+  endif
+  assign on_sale = false
+  if compare_at > price
+    assign on_sale = true
+  endif
+-%}
+<div class="price{% if on_sale %} price--sale{% endif %} {{ class }}"{% if attr %} {{ attr }}{% endif %}>
+  <span class="price__current">
+    {%- if variant == blank and product.price_varies -%}
+      {{- 'products.product.price_from' | t: price: price | money -}}
+    {%- else -%}
+      {{- price | money -}}
+    {%- endif -%}
+  </span>
+  {%- if on_sale -%}
+    <s class="price__compare">{{ compare_at | money }}</s>
+  {%- endif -%}
+</div>

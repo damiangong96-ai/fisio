@@ -1,0 +1,23 @@
+{%- style -%}
+  :root {
+    --color-ink: {{ settings.color_ink }};
+    --color-ink-rgb: {{ settings.color_ink.red }}, {{ settings.color_ink.green }}, {{ settings.color_ink.blue }};
+    --color-bg: {{ settings.color_background }};
+    --color-surface: {{ settings.color_surface }};
+    --color-accent: {{ settings.color_accent }};
+    --color-accent-contrast: {{ settings.color_accent_contrast }};
+    --color-sale: {{ settings.color_sale }};
+    --color-border: rgba({{ settings.color_ink.red }}, {{ settings.color_ink.green }}, {{ settings.color_ink.blue }}, 0.1);
+    --color-muted: rgba({{ settings.color_ink.red }}, {{ settings.color_ink.green }}, {{ settings.color_ink.blue }}, 0.6);
+
+    --font-body: '{{ settings.font_family }}', 'Helvetica Neue', Arial, sans-serif;
+    --font-heading-weight: {{ settings.heading_weight }};
+    --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+    --heading-transform: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+
+    --page-width: {{ settings.page_width }}px;
+    --gutter: clamp(16px, 3.4vw, 48px);
+    --radius: {{ settings.radius }}px;
+    --radius-button: {{ settings.button_radius }}px;
+  }
+{%- endstyle -%}
