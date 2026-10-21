@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academia Hellins · Inglés y refuerzo escolar en Móstoles</title>
+<meta name="description" content="Te hacemos bilingüe desde 1 año. Inglés para todas las edades, exámenes Cambridge y TOEIC y refuerzo escolar de Primaria a Bachillerato en Móstoles, en grupos de máximo 8 alumnos.">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f0e5; --bg-2:#eae4d3; --card:#faf7f3;
+  --ink:#14261d; --ink-2:#45564b; --deep:#1b3428; --deep-2:#14261d;
+  --green:#497e64; --orange:#e8722c; --orange-sh:#b26e45;
+  --blue:#c9e0f2; --blue-d:#5488b2;
+  --lime:#d6e59a; --lime-d:#a4b45f;
+  --pink:#f6d7e8; --pink-d:#c98fb0;
+  --peach:#f9d8c0; --peach-d:#ba9275;
+  --sage:#dfe8d6; --sage-d:#7c9a7a;
+  --line:rgba(20,38,29,.12);
+  --display:"Bricolage Grotesque","Bricolage Grotesque Placeholder",system-ui,sans-serif;
+  --text:"Instrument Sans","Instrument Sans Placeholder",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-appear:cubic-bezier(.44,0,.56,1);
+  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+  --gutter:30px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink-2);font:400 16px/1.4 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- type ---------- */
+.h1{font:700 103px/1 var(--display);letter-spacing:-.06em;color:var(--ink)}
+.h2{font:600 82px/1.1 var(--display);letter-spacing:-.08em;color:var(--ink)}
+.h3{font:500 24px/1.2 var(--display);letter-spacing:-.04em;color:var(--ink)}
+.lead{font-size:16px;line-height:1.45;color:var(--ink-2);max-width:46ch}
+.split{display:flex;flex-wrap:wrap;column-gap:.22em;row-gap:0}
+.split.center{justify-content:center}
+.w{display:inline-block;will-change:transform}
+.hl{position:relative;display:inline-block;color:var(--green);transform:rotate(5deg);transform-origin:20% 80%;padding-right:.08em}
+.hl.neg{transform:rotate(-4deg)}
+.swoosh{position:absolute;left:0;bottom:-.28em;width:min(100%,220px);height:auto;overflow:visible;pointer-events:none}
+.swoosh path{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.spark{position:absolute;right:-.42em;top:-.18em;width:.42em;height:.42em;overflow:visible;pointer-events:none}
+.spark path{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round}
+
+/* ---------- small atoms ---------- */
+.badge{display:inline-flex;align-items:center;gap:10px;padding:6px 20px 6px 18px;border-radius:100px;background:var(--pink);color:var(--ink);font-size:16px;line-height:1.4}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.badge.white{background:#fff}
+.btn{--bs:var(--orange-sh);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 30px;border-radius:100px;border:1px solid var(--bs);background:var(--orange);color:#fff;font:500 16px/1 var(--text);cursor:pointer;white-space:nowrap;box-shadow:0 4px 0 0 var(--bs);transition:transform .16s var(--ease-out),box-shadow .16s var(--ease-out),background-color .2s}
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--bs)}
+@media (hover:hover) and (pointer:fine){.btn:hover{transform:translateY(2px);box-shadow:0 2px 0 0 var(--bs)}.btn:hover:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--bs)}}
+.btn.ghost{--bs:var(--ink);background:var(--bg);color:var(--ink)}
+.btn.dark{--bs:var(--green);background:var(--deep);color:#fff}
+.btn.full{width:100%}
+.btn svg{width:18px;height:18px}
+.tile{flex:none;display:grid;place-items:center;width:50px;height:50px;border-radius:10px;background:var(--c,var(--blue));border:1px solid var(--d,var(--blue-d));box-shadow:3px 3px 0 0 var(--d,var(--blue-d));color:var(--ink)}
+.tile svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.c-blue{--c:var(--blue);--d:var(--blue-d)} .c-lime{--c:var(--lime);--d:var(--lime-d)} .c-pink{--c:var(--pink);--d:var(--pink-d)} .c-peach{--c:var(--peach);--d:var(--peach-d)} .c-sage{--c:var(--sage);--d:var(--sage-d)}
+.section{position:relative;padding:150px 0}
+.alt{background:var(--bg-2)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background-color .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(244,240,229,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:90px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink)}
+.brand img{width:46px;height:46px;border-radius:12px;object-fit:cover;background:#fff;border:1px solid var(--line)}
+.brand b{display:block;font:600 21px/1 var(--display);letter-spacing:-.05em}
+.brand small{display:block;font-size:13px;color:var(--ink-2);margin-top:3px}
+.links{display:flex;gap:40px;font-size:16px;color:var(--ink)}
+.links a{position:relative;padding:4px 0;transition:color .2s}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-out)}
+.links a.on{color:var(--orange)} .links a.on::after{transform:scaleX(1)}
+@media (hover:hover){.links a:hover{color:var(--orange)}}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta .btn{height:50px;padding:0 28px}
+.tel{font:500 16px/1 var(--text);color:var(--ink)}
+.burger{display:none;width:48px;height:48px;border-radius:14px;border:1px solid var(--ink);background:var(--bg);box-shadow:0 3px 0 var(--ink);cursor:pointer;place-items:center}
+.burger span{display:block;width:18px;height:1.5px;background:var(--ink);margin:4px auto;transition:transform .25s var(--ease-out),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:146px 0 0;overflow:hidden}
+.hero-copy{display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center}
+.hero .h1{max-width:1180px}
+.hero .lead{max-width:600px;text-align:center}
+.hero-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+.stage{position:relative;max-width:1780px;margin:0 auto;padding:40px 0 170px}
+.stage-row{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:0 10px}
+.col-l{flex:1 0 0;padding:110px 0 0 10px;position:relative}
+.col-c{flex:1 0 0;display:flex;justify-content:center;position:relative}
+.col-r{flex:1 0 0;position:relative;min-height:327px}
+.ph{position:relative;border-radius:20px;overflow:hidden;transform:rotate(-4deg);box-shadow:0 1px 0 rgba(20,38,29,.04)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph-s{width:180px;aspect-ratio:.83}
+.ph-c{width:370px;aspect-ratio:.835}
+.col-r .ph-s{position:absolute;top:-50px;right:50px}
+.float{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 0 var(--ink);color:var(--ink);font-size:14px;line-height:1.25;white-space:nowrap}
+.float b{display:block;font:600 17px/1.1 var(--display);letter-spacing:-.04em}
+.float .tile{width:38px;height:38px;border-radius:9px;box-shadow:2px 2px 0 var(--d,var(--blue-d))}
+.float .tile svg{width:18px;height:18px;stroke-width:2.2}
+.f1{right:-60px;bottom:40px;transform:rotate(4deg)}
+.f2{left:120px;top:40px;transform:rotate(-5deg)}
+.ticker{position:absolute;z-index:1;left:-80px;right:-80px;top:56%;transform:translateY(-50%) rotate(-4deg);pointer-events:none;user-select:none}
+.ticker svg{display:block;width:100%;height:auto;overflow:visible}
+.ticker .band{fill:none;stroke:var(--green);stroke-width:46;stroke-linecap:round}
+.ticker text{font:500 22px var(--text);letter-spacing:.04em;fill:var(--bg)}
+
+/* ---------- programs ---------- */
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:60px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.prog{display:flex;flex-direction:column;gap:16px;padding:20px;border-radius:16px;background:var(--c);min-height:430px;transition:transform .3s var(--ease-out)}
+.prog p{color:var(--ink-2);font-size:15.5px}
+.prog .age{font-size:14px;color:var(--ink);opacity:.7;margin-top:-10px}
+.prog figure{margin:auto 0 0;border-radius:12px;overflow:hidden;aspect-ratio:1.15;transform:rotate(-2deg);transition:transform .35s var(--ease-out)}
+.prog figure img{width:100%;height:100%;object-fit:cover}
+@media (hover:hover) and (pointer:fine){.prog:hover{transform:translateY(-6px)}.prog:hover figure{transform:rotate(0deg) scale(1.02)}}
+
+/* ---------- about / stats ---------- */
+.statement{display:flex;flex-direction:column;align-items:center;gap:40px;text-align:center}
+.statement .h2s{font:500 46px/1.2 var(--display);letter-spacing:-.06em;color:var(--ink);max-width:760px}
+.statement .h2s em{font-style:normal;color:var(--green)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:90px;padding:0 150px 0 180px}
+.stats{background:var(--deep);border-radius:20px;padding:40px;color:var(--bg);transform:rotate(-2deg)}
+.stat{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 0 18px;margin-bottom:60px;border-bottom:1px solid rgba(255,255,255,.1)}
+.stat:nth-child(2){flex-direction:row-reverse}
+.stat strong{white-space:nowrap;font:600 62px/1 var(--display);letter-spacing:-.08em;color:var(--bg);font-variant-numeric:tabular-nums}
+.stat span{font-size:16px;text-align:right;max-width:20ch}
+.stat:nth-child(2) span{text-align:left}
+.pill-dark{display:inline-flex;align-items:center;gap:10px;padding:10px 26px 10px 20px;border-radius:100px;background:rgba(0,0,0,.22);font-size:16px}
+.pill-dark::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.about-img{border-radius:20px;overflow:hidden;aspect-ratio:1.45;transform:rotate(3deg)}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:18% 50%}
+
+/* ---------- steps ---------- */
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:150px;align-items:start}
+.steps-left .lead{margin-top:28px}
+.steps-img{margin-top:60px;max-width:440px;border-radius:20px;overflow:hidden;aspect-ratio:1.25;transform:rotate(-3deg)}
+.steps-img img{width:100%;height:100%;object-fit:cover;object-position:80% 35%}
+.steps{display:flex;flex-direction:column;gap:22px;padding-top:10px}
+.step{display:flex;gap:28px;padding:30px;background:#fff;border:1px solid var(--line);border-radius:20px;transform:rotate(var(--r,0deg));transition:transform .4s var(--ease-out)}
+.step:nth-child(1){--r:2deg}.step:nth-child(2){--r:-2deg}.step:nth-child(3){--r:1.5deg}
+@media (hover:hover) and (pointer:fine){.step:hover{transform:rotate(0deg)}}
+.step .tile{font:500 16px/1 var(--text)}
+.step h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font:500 30px/1.1 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.step h3 i{font:italic 400 16px/1.4 var(--text);letter-spacing:0;color:var(--ink-2)}
+.step p{margin-top:10px;max-width:44ch}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:100px;padding:40px 50px;border-radius:20px;background:var(--pink)}
+.perk{display:flex;gap:12px}
+.perk svg{flex:none;width:20px;height:20px;margin-top:3px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.perk b{display:block;font:500 22px/1.2 var(--display);letter-spacing:-.05em;color:var(--ink);margin-bottom:8px}
+
+/* ---------- team ---------- */
+.team{background:var(--blue)}
+.team .split{margin-bottom:70px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.mate{--c:var(--lime);display:flex;flex-direction:column;gap:22px;padding:20px 20px 26px;border-radius:20px;background:var(--c);min-height:500px}
+.mate.green{--c:var(--green);color:rgba(244,240,229,.85)}
+.mate.green .h3{color:var(--bg)}
+.mate .role{display:block;margin-top:8px;font-size:16px}
+.mate figure{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:1;transition:transform .4s var(--ease-out)}
+.mate figure img{width:100%;height:100%;object-fit:cover}
+.mate p{margin-top:auto;font-size:16px;max-width:30ch}
+@media (hover:hover) and (pointer:fine){.mate:hover figure{transform:rotate(-3deg) scale(.98)}}
+.more{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:50px;font:500 22px/1.2 var(--display);letter-spacing:-.05em;color:var(--ink-2)}
+.more a{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;display:inline-flex;align-items:center;gap:6px}
+.more svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s var(--ease-out)}
+@media (hover:hover){.more a:hover svg{transform:translateX(4px)}}
+
+/* ---------- levels ---------- */
+.lv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:70px}
+.lv-head .badge{margin-bottom:16px}
+.lv-head .lead{text-align:right;max-width:52ch}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.lv{display:flex;align-items:center;gap:26px;padding:28px 30px;background:#fff;border:1px solid var(--line);border-radius:20px;transition:transform .25s var(--ease-out)}
+.lv .tile{width:58px;height:58px;font:600 18px/1 var(--display);letter-spacing:-.04em}
+.lv h3{font:500 30px/1.1 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.lv p{margin-top:6px}
+.lv .go{margin-left:auto;flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--deep);transition:transform .25s var(--ease-out)}
+.lv .go svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover) and (pointer:fine){.lv:hover{transform:translateY(-3px)}.lv:hover .go{transform:rotate(-45deg)}}
+
+/* ---------- method ---------- */
+.method{background:var(--lime)}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.method-img{justify-self:center;width:100%;max-width:520px;border-radius:24px;overflow:hidden;aspect-ratio:1;transform:rotate(-3deg)}
+.method-img img{width:100%;height:100%;object-fit:cover}
+.method-copy .badge{margin-bottom:16px}
+.method-copy .lead{margin-top:34px;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin:40px 0 60px;padding:0;list-style:none}
+.chips li{padding:9px 20px;border-radius:100px;background:var(--bg);color:var(--ink);font-size:16px}
+
+/* ---------- testimonials ---------- */
+.ops{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:80px;align-items:start}
+.op{--c:var(--blue);position:relative;margin:0;display:flex;flex-direction:column;gap:40px;min-height:330px;padding:30px;border-radius:20px;background:var(--c);transform:rotate(var(--r)) translateY(var(--y,0));transition:transform .45s var(--ease-out)}
+.op:nth-child(1){--r:-6deg;--y:20px}.op:nth-child(2){--r:0deg}.op:nth-child(3){--r:5deg;--y:24px}.op:nth-child(4){--r:-3deg;--y:6px}
+@media (hover:hover) and (pointer:fine){.op:hover{transform:rotate(0deg) translateY(-4px)}}
+.op .stars{position:absolute;top:-14px;left:16px;display:flex;gap:2px;color:var(--orange)}
+.op .stars svg{width:20px;height:20px;fill:currentColor}
+.op blockquote{margin:0;font:500 20px/1.25 var(--display);letter-spacing:-.04em;color:var(--ink)}
+.op footer{margin-top:auto;display:flex;align-items:center;gap:14px}
+.op footer img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.op footer b{display:block;font:500 20px/1.2 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.op footer small{font-size:14.5px}
+.rating{display:flex;justify-content:center;margin-top:60px}
+.rating .btn{--bs:var(--lime-d);background:var(--lime);color:var(--ink);cursor:default}
+.rating .btn:hover,.rating .btn:active{transform:none;box-shadow:0 4px 0 0 var(--bs)}
+.rating .stars-i{display:flex;gap:2px;color:var(--orange)}
+.rating .stars-i svg{width:16px;height:16px;fill:currentColor}
+
+/* ---------- pricing ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.plan{display:flex;flex-direction:column;padding:30px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.plan .top{display:flex;justify-content:space-between;align-items:center;min-height:34px}
+.plan .name{font:500 22px/1.2 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.plan .price{display:flex;align-items:baseline;gap:6px;margin:28px 0 22px;font-size:16px}
+.plan .price strong{font:600 50px/1 var(--display);letter-spacing:-.07em;color:var(--ink)}
+.plan .desc{padding-bottom:26px;border-bottom:1px solid var(--line)}
+.plan ul{list-style:none;padding:0;margin:26px 0 40px;display:flex;flex-direction:column;gap:14px;flex:1}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{flex:none;width:18px;height:18px;margin-top:1px;stroke:var(--green);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.plan .btn{width:100%}
+.plan.feat{background:var(--deep);border-color:var(--deep);color:rgba(244,240,229,.82)}
+.plan.feat .name,.plan.feat .price strong{color:var(--bg)}
+.plan.feat .desc{border-color:rgba(255,255,255,.12)}
+.plan.feat li svg{stroke:var(--lime)}
+.plan.feat .btn{--bs:#0d1a13;background:var(--green);border-color:#0d1a13}
+.tag{white-space:nowrap;padding:6px 14px;border-radius:100px;background:var(--orange);color:#fff;font-size:14px}
+.plans-note{margin-top:40px;text-align:center}
+.plans-note b{color:var(--ink);font-weight:500}
+
+/* ---------- faq ---------- */
+.faq-list{max-width:700px;margin:60px auto 0;display:flex;flex-direction:column;gap:16px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:20px}
+.qa button{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 28px 24px 30px;cursor:pointer;border-radius:20px;font:500 24px/1.2 var(--display);letter-spacing:-.05em;color:var(--ink)}
+.qa button:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
+.qa .tile{width:38px;height:38px;border-radius:9px;transition:background-color .25s,border-color .25s,box-shadow .25s}
+.qa .tile svg{width:18px;height:18px;stroke-width:1.8}
+.qa[data-open="true"] .tile{--c:var(--lime);--d:var(--lime-d)}
+.qa .tile .v{transform-origin:center;transition:transform .3s var(--ease-out)}
+.qa[data-open="true"] .tile .v{transform:scaleY(0)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease-out)}
+.qa[data-open="true"] .ans{grid-template-rows:1fr}
+.qa .ans>div{overflow:hidden}
+.qa .ans p{padding:0 90px 26px 30px;opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .35s var(--ease-out)}
+.qa[data-open="true"] .ans p{opacity:1;transform:none;transition-delay:.06s}
+
+/* ---------- cta ---------- */
+.cta{background:var(--bg-2);overflow:hidden}
+.cta-lines{position:absolute;inset:0;pointer-events:none}
+.cta-lines i{position:absolute;border:1px solid rgba(20,38,29,.14)}
+.cta-in{position:relative;display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.cta .lead{text-align:center;max-width:44ch}
+.book{display:grid;grid-template-columns:1fr 1fr 1.25fr auto;gap:12px;width:100%;max-width:920px;margin-top:14px;padding:14px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 0 var(--ink);text-align:left}
+.field{position:relative}
+.field label{position:absolute;left:18px;top:9px;font-size:12px;color:var(--ink-2)}
+.field input,.field select{width:100%;height:56px;padding:22px 16px 6px 18px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px;appearance:none;transition:border-color .2s,background-color .2s}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%2314261d' stroke-width='1.8'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.field input:focus,.field select:focus{outline:none;border-color:var(--green);background:#fff}
+.book .btn{height:56px}
+.form-msg{min-height:22px;font-size:15px;color:var(--ink)}
+.form-note{font-size:14px}
+.contact-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;margin-top:10px;color:var(--ink)}
+.contact-row a,.contact-row span{display:inline-flex;align-items:center;gap:8px}
+.contact-row svg{width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- footer ---------- */
+.foot{background:var(--deep);color:rgba(244,240,229,.7);padding:120px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.3fr .8fr 1.1fr;gap:40px}
+.foot .brand{color:var(--bg)}
+.foot .brand small{color:rgba(244,240,229,.6)}
+.foot-info{margin-top:40px;display:flex;flex-direction:column;gap:12px}
+.foot-info a{color:var(--bg)}
+.foot h4{margin:0 0 24px;font:500 24px/1.2 var(--display);letter-spacing:-.05em;color:var(--bg)}
+.foot-links{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px}
+.foot-links a{color:var(--bg);transition:color .2s}
+@media (hover:hover){.foot-links a:hover,.foot-info a:hover{color:var(--orange)}}
+.big-tel{display:inline-block;font:600 46px/1 var(--display);letter-spacing:-.07em;color:var(--bg);margin:6px 0 18px}
+.foot-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:100px;padding:18px 30px;border-radius:100px;background:var(--deep-2);color:rgba(244,240,229,.85)}
+.foot-bar nav{display:flex;align-items:center;gap:12px}
+.foot-bar nav i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7}
+
+/* ---------- motion ---------- */
+.js [data-appear]{opacity:0;transform:translateY(30px)}
+.js .loaded [data-appear]{opacity:1;transform:none;transition:opacity .4s var(--ease-appear) var(--d,0s),transform .4s var(--ease-appear) var(--d,0s)}
+.js .split .w{opacity:0;transform:translateY(.45em)}
+.js .split.in .w{opacity:1;transform:none;transition:opacity .5s var(--ease-out) calc(var(--i)*55ms + var(--sd,0ms)),transform .7s var(--ease-out) calc(var(--i)*55ms + var(--sd,0ms))}
+.js .split .w.hl{transform:translateY(.45em) rotate(0deg) scale(.92)}
+.js .split.in .w.hl{transform:rotate(5deg);transition:opacity .45s var(--ease-out) calc(var(--i)*55ms + var(--sd,0ms)),transform .75s var(--ease-pop) calc(var(--i)*55ms + var(--sd,0ms))}
+.js .split.in .w.hl.neg{transform:rotate(-4deg)}
+.js .split .swoosh path{stroke-dashoffset:1}
+.js .split.in .swoosh path{stroke-dashoffset:0;transition:stroke-dashoffset .6s var(--ease-out) calc(var(--i)*55ms + var(--sd,0ms) + 380ms)}
+.js .split .spark{opacity:0;transform:scale(.4) rotate(-20deg)}
+.js .split.in .spark{opacity:1;transform:none;transition:opacity .2s calc(var(--i)*55ms + var(--sd,0ms) + 520ms),transform .5s var(--ease-pop) calc(var(--i)*55ms + var(--sd,0ms) + 520ms)}
+.js [data-rv]{opacity:0;transform:translateY(40px) rotate(var(--rv-r,0deg))}
+.js [data-rv].in{opacity:1;transform:rotate(var(--r,0deg)) translateY(var(--y,0));transition:opacity .6s var(--ease-out) var(--d,0s),transform .9s var(--ease-out) var(--d,0s)}
+.js .step[data-rv]{--rv-r:calc(var(--r) * 3)}
+.js .op[data-rv]{--rv-r:calc(var(--r) * 2)}
+.js .stats[data-rv]{--r:-2deg}
+.js .about-img[data-rv]{--r:3deg}
+.js .method-img[data-rv]{--r:-3deg}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}
+  .js [data-appear],.js .split .w,.js [data-rv],.js .split .spark{opacity:1!important}
+  .js [data-appear],.js .split .w:not(.hl),.js [data-rv]:not(.step):not(.op){transform:none!important}
+  .js .split .swoosh path{stroke-dashoffset:0!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1199.98px){
+  .h1{font-size:76px}
+  .h2{font-size:64px}
+  .links{gap:24px}
+  .tel{display:none}
+  .grid-5{grid-template-columns:repeat(3,1fr)}
+  .about-grid{padding:0;gap:40px}
+  .steps-grid{gap:60px}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .mate{min-height:0}
+  .ops{grid-template-columns:repeat(2,1fr);row-gap:50px}
+  .perks{grid-template-columns:repeat(2,1fr);padding:40px}
+  .ph-c{width:300px}
+  .f1{right:-30px}
+  .f2{left:20px}
+  .plans{grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .book{grid-template-columns:1fr 1fr}
+  .book .btn{grid-column:span 2}
+}
+@media (max-width:980px){
+  .links,.nav-cta .btn{display:none}
+  .burger{display:grid}
+  .links.open{display:flex;position:absolute;top:84px;left:16px;right:16px;flex-direction:column;gap:6px;padding:16px;border-radius:20px;background:var(--bg);border:1px solid var(--ink);box-shadow:0 4px 0 var(--ink)}
+  .links.open a{padding:12px 10px;font:500 22px/1.2 var(--display);letter-spacing:-.04em}
+  .links.open a::after{display:none}
+  .steps-grid,.method-grid,.about-grid{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .lv-head,.head-row{flex-direction:column;align-items:flex-start}
+  .lv-head .lead{text-align:left}
+  .grid-2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:span 2}
+}
+@media (max-width:809.98px){
+  :root{--gutter:16px}
+  .section{padding:96px 0}
+  .h1{font-size:50px}
+  .h2{font-size:46px}
+  .nav-in{height:76px}
+  .hero{padding-top:120px}
+  .hero-copy{gap:22px}
+  .hero-btns{flex-direction:column;align-items:stretch;width:100%;max-width:340px}
+  .stage{padding:60px 0 40px}
+  .stage-row{flex-direction:column;padding:0}
+  .col-l,.col-r{display:none}
+  .ph-c{width:240px}
+  .f1{right:-50px;bottom:24px;font-size:13px}
+  .f1 b{font-size:15px}
+  .ticker{left:-40px;right:-40px;top:auto;bottom:90px;transform:rotate(-4deg)}
+  .ticker svg{width:200%;max-width:none}
+  .grid-5{grid-template-columns:1fr}
+  .prog{min-height:0}
+  .prog figure{aspect-ratio:1.6}
+  .statement .h2s{font-size:32px}
+  .about-grid{margin-top:60px}
+  .stats{padding:28px}
+  .stat{margin-bottom:34px}
+  .stat strong{font-size:48px}
+  .steps-img{display:none}
+  .step{padding:22px;gap:18px}
+  .step h3{font-size:24px}
+  .perks{grid-template-columns:1fr;padding:30px 24px;margin-top:60px}
+  .grid-4{grid-template-columns:1fr}
+  .team .split{margin-bottom:46px}
+  .more{font-size:19px}
+  .lv{padding:20px;gap:16px}
+  .lv h3{font-size:24px}
+  .lv .tile{width:50px;height:50px;font-size:15px}
+  .ops{grid-template-columns:1fr;gap:40px;margin-top:60px}
+  .op{min-height:0}
+  .op:nth-child(n){--y:0px}
+  .op:nth-child(1){--r:-3deg}.op:nth-child(3){--r:3deg}.op:nth-child(4){--r:-2deg}
+  .qa button{font-size:20px;padding:20px 20px 20px 22px}
+  .qa .ans p{padding:0 22px 22px}
+  .book{grid-template-columns:1fr;padding:12px}
+  .book .btn{grid-column:auto}
+  .foot{padding-top:80px}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-grid>div:first-child{grid-column:auto}
+  .big-tel{font-size:38px}
+  .foot-bar{border-radius:20px;flex-direction:column;align-items:flex-start;padding:18px 22px;margin-top:60px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.6l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.9l-5.8 3.2 1.4-6.4L2.7 9.3l6.5-.7z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11 11 0 0 0 5.2 5.2l1.4-2.1 4.2 1.6V17a2.5 2.5 0 0 1-2.7 2.5C9.4 19 5 14.6 4.5 8.2A2.5 2.5 0 0 1 5 3.5z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-block" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 15.5V8.5h3.2a2 2 0 0 1 0 4H9M12.2 12.5a2 2 0 0 1 0 3H9"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2 2 0 0 1 6 4h5v15H6a2 2 0 0 0-2 1.5zM20 5.5A2 2 0 0 0 18 4h-5v15h5a2 2 0 0 1 2 1.5z"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.3 7 21l5-2.6 5 2.6-1.5-7.7"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M15.5 4.5l4 4L8 20H4v-4z"/><path d="M13 7l4 4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.4 5.2 3.4 8.5s-1 6.1-3.4 8.5c-2.4-2.4-3.4-5.2-3.4-8.5s1-6.1 3.4-8.5z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.3"/><path d="M3 19.5c.6-3.4 3-5.3 6-5.3s5.4 1.9 6 5.3"/><path d="M15.5 5.4a3.2 3.2 0 0 1 0 6.2M17.6 14.5c1.9.6 3.1 2.4 3.4 5"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4.3c1.5 1.6 3.3 2.3 5.5 2.3s4-.7 5.5-2.3v-4.3M21.5 9.5v5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 7.6-1.7"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#inicio" aria-label="Academia Hellins, inicio">
+      <img src="img/logo.jpg" alt="" width="46" height="46">
+      <span><b>Academia Hellins</b><small>Idiomas y refuerzo · Móstoles</small></span>
+    </a>
+    <nav class="links" id="links" aria-label="Principal">
+      <a href="#inicio" class="on">Inicio</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#metodo">Método</a>
+      <a href="#profesores">Profesores</a>
+      <a href="#precios">Precios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="tel" href="tel:+34910712398">91 071 23 98</a>
+      <a class="btn dark" href="#contacto">Clase gratis</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-copy">
+    <span class="badge" data-appear style="--d:.2s">Todas las edades · Grupos de máximo 8</span>
+    <h1 class="h1 split center" data-split data-auto style="--sd:250ms">Te hacemos bilingüe desde <span class="hl">1 año<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/><path pathLength="1" d="M40 40C92 30 140 28 186 34" style="stroke-width:4"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h1>
+    <p class="lead" data-appear style="--d:.3s">Inglés para todas las edades, preparación de exámenes Cambridge y TOEIC, y refuerzo escolar de Primaria a Bachillerato en Móstoles.</p>
+    <div class="hero-btns" data-appear style="--d:.35s">
+      <a class="btn" href="#contacto">Reserva tu clase de prueba gratis</a>
+      <a class="btn ghost" href="#cursos">Ver cursos</a>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="ticker" data-appear style="--d:.65s" aria-hidden="true">
+      <svg viewBox="0 0 1600 300" preserveAspectRatio="none">
+        <path id="wave" class="band" d="M-40 220C160 290 300 60 520 110S860 250 1020 200 1320 40 1640 120"/>
+        <text dy="8"><textPath id="tp" href="#wave" startOffset="0">Grupos de máximo 8 | Profesores nativos y titulados | Cambridge y TOEIC | Baby English desde 1 año | Refuerzo de Primaria a Bachillerato | Prueba de nivel gratis | Mañanas y tardes de lunes a viernes | Inglés EvAU |&#160;</textPath></text>
+      </svg>
+    </div>
+    <div class="stage-row" data-appear style="--d:.5s">
+      <div class="col-l">
+        <div class="ph ph-s"><img src="img/nino-2.jpg" alt="Alumno de Primaria sonriendo en clase" width="640" height="640"></div>
+        <div class="float f2"><span class="tile c-lime"><svg><use href="#i-chat"/></svg></span><span><b>Hello, teacher!</b>Primaria · 8 años</span></div>
+      </div>
+      <div class="col-c">
+        <div class="ph ph-c"><img src="img/alumna-hero.jpg" alt="Alumna de Academia Hellins" width="640" height="640" fetchpriority="high"></div>
+        <div class="float f1"><span class="tile c-blue"><svg><use href="#i-check"/></svg></span><span><b>B2 First aprobado</b>Convocatoria de junio</span></div>
+      </div>
+      <div class="col-r">
+        <div class="ph ph-s"><img src="img/alumno-adulto.jpg" alt="Alumno adulto de inglés" width="640" height="640"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMAS ================= -->
+<section class="section alt" id="cursos">
+  <div class="wrap">
+    <div class="head-row">
+      <h2 class="h2 split" data-split>Elige tu <span class="hl">programa<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+      <a class="btn" href="#precios">Ver precios</a>
+    </div>
+    <div class="grid-5">
+      <a class="prog c-blue" href="#contacto" data-rv>
+        <span class="tile"><svg><use href="#i-block"/></svg></span>
+        <h3 class="h3">Infantil</h3><span class="age">1–5 años</span>
+        <p>Baby English e Infant English con phonics y cuentacuentos, en grupos de máximo 6.</p>
+        <figure><img src="img/nino-1.jpg" alt="" loading="lazy" width="640" height="640"></figure>
+      </a>
+      <a class="prog c-lime" href="#contacto" data-rv style="--d:.06s">
+        <span class="tile"><svg><use href="#i-book"/></svg></span>
+        <h3 class="h3">Primaria y E.S.O.</h3><span class="age">6–16 años</span>
+        <p>Inglés por niveles, apoyo al bilingüismo (Science, Arts…), Young Learners y speaking club los viernes.</p>
+        <figure><img src="img/nino-2.jpg" alt="" loading="lazy" width="640" height="640"></figure>
+      </a>
+      <a class="prog c-pink" href="#contacto" data-rv style="--d:.12s">
+        <span class="tile"><svg><use href="#i-award"/></svg></span>
+        <h3 class="h3">Exámenes oficiales</h3><span class="age">Cambridge y TOEIC</span>
+        <p>KET, PET, First, Advanced, TOEIC y EvAU, con simulacros reales cada mes.</p>
+        <figure><img src="img/alumna-hero.jpg" alt="" loading="lazy" width="640" height="640"></figure>
+      </a>
+      <a class="prog c-peach" href="#contacto" data-rv style="--d:.18s">
+        <span class="tile"><svg><use href="#i-pencil"/></svg></span>
+        <h3 class="h3">Refuerzo escolar</h3><span class="age">Primaria a Bachillerato</span>
+        <p>Todas las materias, de Mates y Física a Lengua, con técnicas de estudio incluidas.</p>
+        <figure><img src="img/nina-3.jpg" alt="" loading="lazy" width="640" height="640"></figure>
+      </a>
+      <a class="prog c-sage" href="#contacto" data-rv style="--d:.24s">
+        <span class="tile"><svg><use href="#i-globe"/></svg></span>
+        <h3 class="h3">Adultos y empresas</h3><span class="age">A1 → C1</span>
+        <p>Grupos por nivel, conversación de mañana o tarde, Business English y clases particulares.</p>
+        <figure><img src="img/alumno-adulto.jpg" alt="" loading="lazy" width="640" height="640"></figure>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS / CIFRAS ================= -->
+<section class="section" id="nosotros">
+  <div class="wrap">
+    <div class="statement">
+      <p class="h2s" data-rv>15 años enseñando idiomas en Móstoles, con grupos pequeños y <em>un método para cada edad</em></p>
+      <a class="btn ghost" href="#metodo" data-rv style="--d:.1s">Conocer el método</a>
+    </div>
+    <div class="about-grid">
+      <div class="stats" data-rv>
+        <div class="stat"><strong data-count="1200" data-suffix="+">1200+</strong><span>alumnos han aprendido con nosotros</span></div>
+        <div class="stat"><strong data-count="94" data-suffix="%">94%</strong><span>de aprobados en exámenes Cambridge</span></div>
+        <div class="stat" style="margin-bottom:40px"><strong data-count="15" data-suffix=" años">15 años</strong><span>enseñando idiomas en Móstoles</span></div>
+        <span class="pill-dark">Profesores nativos y titulados</span>
+      </div>
+      <div class="about-img" data-rv style="--d:.12s"><img src="img/fachada.jpg" alt="Fachada de Academia Hellins: Te hacemos bilingüe desde 1 año" loading="lazy" width="1800" height="681"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CÓMO EMPEZAR ================= -->
+<section class="section" style="padding-top:40px">
+  <div class="wrap">
+    <div class="steps-grid">
+      <div class="steps-left">
+        <h2 class="h2 split" data-split>Empieza esta <span class="hl">semana<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+        <p class="lead" data-rv>Tres pasos desde que nos llamas hasta tu primera clase en el grupo que te encaja.</p>
+        <div class="steps-img" data-rv style="--d:.1s"><img src="img/nina-3.jpg" alt="Alumna de Primaria en Academia Hellins" loading="lazy" width="640" height="640"></div>
+      </div>
+      <div class="steps">
+        <article class="step" data-rv>
+          <span class="tile c-blue">01</span>
+          <div><h3>Nos dejas tu teléfono <i>— te llamamos en menos de 24 h</i></h3>
+          <p>Rellena el formulario o llámanos al 91 071 23 98 y buscamos juntos el mejor horario.</p></div>
+        </article>
+        <article class="step" data-rv style="--d:.1s">
+          <span class="tile c-lime">02</span>
+          <div><h3>Prueba de nivel <i>— gratis, unos 30 minutos</i></h3>
+          <p>Oral y escrita. Con el resultado te recomendamos grupo y objetivo.</p></div>
+        </article>
+        <article class="step" data-rv style="--d:.2s">
+          <span class="tile c-pink">03</span>
+          <div><h3>Clase de prueba <i>— sin compromiso</i></h3>
+          <p>Pruebas una clase en tu grupo. Si te encaja, te quedas y pagas mes a mes, sin permanencia.</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="perks" id="porque" data-rv>
+      <div class="perk"><svg><use href="#i-users"/></svg><div><b>Grupos de máximo 8</b>Todos hablan en cada clase y el profesor conoce el ritmo de cada alumno.</div></div>
+      <div class="perk"><svg><use href="#i-cap"/></svg><div><b>Profesores titulados</b>Equipo bilingüe con experiencia en colegios y exámenes oficiales.</div></div>
+      <div class="perk"><svg><use href="#i-cal"/></svg><div><b>Horarios flexibles</b>Mañanas y tardes de lunes a viernes. Cambia de grupo si cambia tu horario.</div></div>
+      <div class="perk"><svg><use href="#i-unlock"/></svg><div><b>Sin permanencia</b>Matrícula de 30 € con el material del primer trimestre. Pagas mes a mes.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROFESORES ================= -->
+<section class="section team" id="profesores">
+  <div class="wrap">
+    <h2 class="h2 split center" data-split>Nuestros <span class="hl">profesores<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+    <div class="grid-4">
+      <article class="mate green" data-rv>
+        <div><h3 class="h3">Laura Hellín</h3><span class="role">Directora · C2</span></div>
+        <figure><img src="img/profe-ana.jpg" alt="Laura Hellín" loading="lazy" width="640" height="640"></figure>
+        <p>«Cada alumno aprende a su ritmo; nuestro trabajo es encontrarlo.»</p>
+      </article>
+      <article class="mate" style="--c:var(--lime);--d:.06s" data-rv>
+        <div><h3 class="h3">James Carter</h3><span class="role">Profesor nativo · UK</span></div>
+        <figure><img src="img/profe-james.jpg" alt="James Carter" loading="lazy" width="640" height="640"></figure>
+        <p>«Speaking first: si hablas desde el primer día, el resto llega solo.»</p>
+      </article>
+      <article class="mate" style="--c:var(--pink);--d:.12s" data-rv>
+        <div><h3 class="h3">Marta Ruiz</h3><span class="role">Infantil y Primaria</span></div>
+        <figure><img src="img/profe-marta.jpg" alt="Marta Ruiz" loading="lazy" width="640" height="640"></figure>
+        <p>«Con los peques, el inglés se canta, se juega y se vive.»</p>
+      </article>
+      <article class="mate" style="--c:var(--peach);--d:.18s" data-rv>
+        <div><h3 class="h3">David López</h3><span class="role">Exámenes y Bachillerato</span></div>
+        <figure><img src="img/profe-david.jpg" alt="David López" loading="lazy" width="640" height="640"></figure>
+        <p>«Un buen simulacro vale más que diez fichas de gramática.»</p>
+      </article>
+    </div>
+    <p class="more">¿Quieres conocerlos en persona? <a href="#contacto">Reserva tu clase de prueba <svg><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+
+<!-- ================= EXÁMENES ================= -->
+<section class="section" id="examenes">
+  <div class="wrap">
+    <div class="lv-head">
+      <div>
+        <span class="badge" data-rv>Exámenes oficiales</span>
+        <h2 class="h2 split" data-split>Tu certificado <span class="hl neg">oficial<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+      </div>
+      <p class="lead" data-rv>Elegimos contigo el examen, gestionamos la inscripción y hacemos simulacros en condiciones reales para que el día de la prueba no haya sorpresas.</p>
+    </div>
+    <div class="grid-2">
+      <a class="lv" href="#contacto" data-rv><span class="tile c-blue">YL</span><div><h3>Young Learners</h3><p>Starters, Movers y Flyers para Primaria.</p></div><span class="go"><svg><use href="#i-arrow"/></svg></span></a>
+      <a class="lv" href="#contacto" data-rv style="--d:.06s"><span class="tile c-lime">B1</span><div><h3>KET y PET</h3><p>A2 Key y B1 Preliminary.</p></div><span class="go"><svg><use href="#i-arrow"/></svg></span></a>
+      <a class="lv" href="#contacto" data-rv style="--d:.12s"><span class="tile c-pink">C1</span><div><h3>First y Advanced</h3><p>B2 First y C1 Advanced, con simulacro cada mes.</p></div><span class="go"><svg><use href="#i-arrow"/></svg></span></a>
+      <a class="lv" href="#contacto" data-rv style="--d:.18s"><span class="tile c-peach">T</span><div><h3>TOEIC y EvAU</h3><p>Listening &amp; Reading, e inglés de Selectividad.</p></div><span class="go"><svg><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MÉTODO ================= -->
+<section class="section method" id="metodo">
+  <div class="wrap method-grid">
+    <div class="method-img" data-rv><img src="img/nino-1.jpg" alt="Alumno de Baby English" loading="lazy" width="640" height="640"></div>
+    <div class="method-copy">
+      <span class="badge" data-rv>Desde 1 año</span>
+      <h2 class="h2 split" data-split>Nuestro método <span class="hl">Learn &amp; Play<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+      <p class="lead" data-rv>Convierte el inglés en parte del día a día: las clases se dan en inglés y se apoyan en juegos, canciones y situaciones reales.</p>
+      <ul class="chips" data-rv style="--d:.08s">
+        <li>Inmersión desde el primer día</li>
+        <li>Speaking, listening, reading y writing</li>
+        <li>Informe trimestral a las familias</li>
+        <li>Examen oficial o prueba de nivel</li>
+      </ul>
+      <a class="btn" href="#contacto" data-rv style="--d:.14s">Apúntate a una clase de prueba</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPINIONES ================= -->
+<section class="section" id="opiniones">
+  <div class="wrap">
+    <h2 class="h2 split center" data-split>Lo que dicen <span class="hl">las familias<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+    <div class="ops">
+      <figure class="op" style="--c:var(--blue)" data-rv>
+        <span class="stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <blockquote>“Mi hija empezó con 2 años y hoy, con 7, entiende los dibujos en inglés sin subtítulos.”</blockquote>
+        <footer><img src="img/opinion-1.jpg" alt="" loading="lazy" width="52" height="52"><span><b>Cristina M.</b><small>Madre de Lucía · Baby English</small></span></footer>
+      </figure>
+      <figure class="op" style="--c:var(--pink);--d:.08s" data-rv>
+        <span class="stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <blockquote>“Con el refuerzo de matemáticas y las técnicas de estudio, Hugo pasó de suspender a sacar notables.”</blockquote>
+        <footer><img src="img/opinion-2.jpg" alt="" loading="lazy" width="52" height="52"><span><b>Javier P.</b><small>Padre de Hugo · Refuerzo ESO</small></span></footer>
+      </figure>
+      <figure class="op" style="--c:var(--peach);--d:.16s" data-rv>
+        <span class="stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <blockquote>“Aprobé el First a la primera. Los simulacros de cada mes me quitaron los nervios del examen.”</blockquote>
+        <footer><img src="img/opinion-3.jpg" alt="" loading="lazy" width="52" height="52"><span><b>Sara G.</b><small>Alumna · B2 First</small></span></footer>
+      </figure>
+      <figure class="op" style="--c:var(--lime);--d:.24s" data-rv>
+        <span class="stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <blockquote>“Necesitaba el TOEIC para un cambio de trabajo. Grupo de mañana, muy práctico y con mucha conversación.”</blockquote>
+        <footer><img src="img/alumno-adulto.jpg" alt="" loading="lazy" width="52" height="52"><span><b>Pablo R.</b><small>Alumno adulto · TOEIC</small></span></footer>
+      </figure>
+    </div>
+    <div class="rating" data-rv><span class="btn"><span class="stars-i" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>Más de 1200 alumnos en 15 años</span></div>
+  </div>
+</section>
+
+<!-- ================= PRECIOS ================= -->
+<section class="section alt" id="precios">
+  <div class="wrap">
+    <div class="head-row">
+      <h2 class="h2 split" data-split>Precios <span class="hl">claros<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+      <p class="lead" data-rv>Pagas mes a mes. Sin permanencia.</p>
+    </div>
+    <div class="plans">
+      <article class="plan" data-rv>
+        <div class="top"><span class="name">Inglés de 1 a 16 años</span></div>
+        <div class="price"><strong>55 €</strong>/ mes</div>
+        <p class="desc">Infantil, Primaria y E.S.O. en grupos pequeños.</p>
+        <ul>
+          <li><svg><use href="#i-check"/></svg>Baby e Infant English, máx. 6</li>
+          <li><svg><use href="#i-check"/></svg>Inglés por niveles de 6 a 16 años</li>
+          <li><svg><use href="#i-check"/></svg>Apoyo al bilingüismo</li>
+          <li><svg><use href="#i-check"/></svg>Speaking club los viernes</li>
+        </ul>
+        <a class="btn ghost" href="#contacto">Reservar clase gratis</a>
+      </article>
+      <article class="plan feat" data-rv style="--d:.08s">
+        <div class="top"><span class="name">Exámenes oficiales</span><span class="tag">Simulacro mensual</span></div>
+        <div class="price"><strong>75 €</strong>/ mes</div>
+        <p class="desc">Cambridge, TOEIC y EvAU con la inscripción gestionada.</p>
+        <ul>
+          <li><svg><use href="#i-check"/></svg>KET y PET (A2 · B1)</li>
+          <li><svg><use href="#i-check"/></svg>First (B2) y Advanced (C1)</li>
+          <li><svg><use href="#i-check"/></svg>TOEIC y EvAU</li>
+          <li><svg><use href="#i-check"/></svg>Simulacros en condiciones reales</li>
+        </ul>
+        <a class="btn" href="#contacto">Preparar mi examen</a>
+      </article>
+      <article class="plan" data-rv style="--d:.16s">
+        <div class="top"><span class="name">Adultos y empresas</span></div>
+        <div class="price"><strong>65 €</strong>/ mes</div>
+        <p class="desc">Grupos de mañana o tarde, o clases a medida.</p>
+        <ul>
+          <li><svg><use href="#i-check"/></svg>Grupos por nivel, de A1 a C1</li>
+          <li><svg><use href="#i-check"/></svg>Conversación de mañana o tarde</li>
+          <li><svg><use href="#i-check"/></svg>Business English para empresas</li>
+          <li><svg><use href="#i-check"/></svg>Clases particulares a medida</li>
+        </ul>
+        <a class="btn ghost" href="#contacto">Reservar clase gratis</a>
+      </article>
+    </div>
+    <p class="plans-note" data-rv><b>Refuerzo escolar de Primaria a Bachillerato: 60 € / mes.</b> Matrícula de 30 € con el material del primer trimestre incluido.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <h2 class="h2 split center" data-split>Preguntas <span class="hl">frecuentes<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+    <div class="faq-list" id="faq-list">
+      <div class="qa" data-open="true" data-rv><button aria-expanded="true" aria-controls="a1" id="q1">¿Desde qué edad pueden empezar?<span class="tile c-blue"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button><div class="ans" id="a1" role="region" aria-labelledby="q1"><div><p>Desde 1 año. En Baby English aprenden con canciones, juegos y rutinas, siempre en inglés y en grupos muy pequeños.</p></div></div></div>
+      <div class="qa" data-open="false" data-rv style="--d:.05s"><button aria-expanded="false" aria-controls="a2" id="q2">¿Cómo sé qué nivel tengo?<span class="tile c-blue"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button><div class="ans" id="a2" role="region" aria-labelledby="q2"><div><p>Hacemos una prueba de nivel gratuita, oral y escrita, de unos 30 minutos. Con el resultado te recomendamos grupo y objetivo.</p></div></div></div>
+      <div class="qa" data-open="false" data-rv style="--d:.1s"><button aria-expanded="false" aria-controls="a3" id="q3">¿Qué exámenes oficiales preparáis?<span class="tile c-blue"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button><div class="ans" id="a3" role="region" aria-labelledby="q3"><div><p>Cambridge (Young Learners, KET, PET, First y Advanced), TOEIC y el inglés de la EvAU. También gestionamos la inscripción.</p></div></div></div>
+      <div class="qa" data-open="false" data-rv style="--d:.15s"><button aria-expanded="false" aria-controls="a4" id="q4">¿Dais refuerzo de otras asignaturas?<span class="tile c-blue"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button><div class="ans" id="a4" role="region" aria-labelledby="q4"><div><p>Sí, todas las materias de Primaria, E.S.O. y Bachillerato, junto con técnicas de estudio y organización.</p></div></div></div>
+      <div class="qa" data-open="false" data-rv style="--d:.2s"><button aria-expanded="false" aria-controls="a5" id="q5">¿Hay matrícula o permanencia?<span class="tile c-blue"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button><div class="ans" id="a5" role="region" aria-labelledby="q5"><div><p>La matrícula es de 30 € e incluye el material del primer trimestre. No hay permanencia: pagas mes a mes.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA / CONTACTO ================= -->
+<section class="section cta" id="contacto">
+  <div class="cta-lines" aria-hidden="true">
+    <i style="left:0;top:90px;width:43%;height:110%"></i>
+    <i style="left:16%;top:60px;width:110px;height:110px;transform:rotate(45deg)"></i>
+    <i style="right:0;top:120px;width:30%;height:110%"></i>
+  </div>
+  <div class="wrap cta-in">
+    <span class="badge white" data-rv>10% en la matrícula</span>
+    <h2 class="h2 split center" data-split>Pide tu clase de prueba <span class="hl">gratis<svg class="swoosh" viewBox="0 0 220 46" aria-hidden="true"><path pathLength="1" d="M6 30C58 13 136 6 214 22"/></svg><svg class="spark" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 14 22M20 18V4M26 24l10-8"/></svg></span></h2>
+    <p class="lead" data-rv>Déjanos tu teléfono y te llamamos en menos de 24 horas laborables para buscar el mejor horario.</p>
+    <form class="book" id="book" novalidate data-rv style="--d:.08s">
+      <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="nombre" autocomplete="name" required></div>
+      <div class="field"><label for="f-tel">Teléfono</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9 +]{9,}" required></div>
+      <div class="field"><label for="f-int">Me interesa</label>
+        <select id="f-int" name="interes">
+          <option>Inglés infantil (1–5 años)</option>
+          <option>Inglés Primaria y E.S.O.</option>
+          <option>Exámenes oficiales</option>
+          <option>Refuerzo escolar</option>
+          <option>Inglés para adultos</option>
+        </select></div>
+      <button class="btn" type="submit">Reservar clase gratis</button>
+    </form>
+    <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+    <p class="form-note">Al enviar aceptas que te llamemos para informarte sobre los cursos.</p>
+    <div class="contact-row" data-rv>
+      <a href="tel:+34910712398"><svg><use href="#i-phone"/></svg>91 071 23 98</a>
+      <a href="https://wa.me/34695905243" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>WhatsApp 695 90 52 43</a>
+      <span><svg><use href="#i-clock"/></svg>Secretaría L–V · 10–13:30 y 16–21 h</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#inicio"><img src="img/logo.jpg" alt="" width="46" height="46" loading="lazy"><span><b>Academia Hellins</b><small>Te hacemos bilingüe desde 1 año</small></span></a>
+        <div class="foot-info">
+          <a href="tel:+34910712398">91 071 23 98</a>
+          <span>Secretaría: lunes a viernes, 10–13:30 y 16–21 h</span>
+          <span>Móstoles, Madrid</span>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <nav class="foot-links" aria-label="Pie">
+          <a href="#cursos">Cursos</a><a href="#precios">Precios</a>
+          <a href="#metodo">Método</a><a href="#opiniones">Opiniones</a>
+          <a href="#profesores">Profesores</a><a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+      <div>
+        <h4>¿Prefieres llamarnos?</h4>
+        <a class="big-tel" href="tel:+34910712398">91 071 23 98</a><br>
+        <a class="btn" href="https://wa.me/34695905243" target="_blank" rel="noopener"><svg style="stroke:currentColor;fill:none;stroke-width:1.8"><use href="#i-chat"/></svg>WhatsApp 695 90 52 43</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© <span id="year">2026</span> Academia Hellins · Móstoles</span>
+      <nav aria-label="Legal"><a href="#">Aviso legal</a><i></i><a href="#">Privacidad</a><i></i><a href="#">Cookies</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Split headings into words (keeps the highlighted word intact) */
+  document.querySelectorAll('[data-split]').forEach(h => {
+    let i = 0;
+    [...h.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/\s+/).filter(Boolean).forEach(word => {
+          const s = document.createElement('span');
+          s.className = 'w'; s.textContent = word; s.style.setProperty('--i', i++);
+          frag.appendChild(s);
+        });
+        h.replaceChild(frag, n);
+      } else if (n.classList && n.classList.contains('hl')) {
+        n.classList.add('w'); n.style.setProperty('--i', i++);
+      }
+    });
+  });
+
+  /* Hero load sequence */
+  const hero = document.querySelector('.hero');
+  const start = () => requestAnimationFrame(() => {
+    hero.classList.add('loaded');
+    hero.querySelectorAll('[data-auto]').forEach(el => el.classList.add('in'));
+  });
+  (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve()).then(start);
+
+  /* Count-up */
+  function count(el){
+    if (reduce) return;
+    const end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
+    (function tick(t){
+      const k = Math.min(1, (t - t0) / 1400);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + suf;
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  /* Reveal on scroll */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(count);
+    io.unobserve(e.target);
+  }), {threshold: .18, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('[data-rv], [data-split]:not([data-auto])').forEach(el => io.observe(el));
+
+  /* Wavy ticker: text flows along the band */
+  const tp = document.getElementById('tp');
+  if (tp && !reduce) {
+    const base = tp.textContent;
+    tp.textContent = base + base + base;
+    let unit = 0, off = 0, last = performance.now(), visible = true;
+    const measure = () => { const t = tp.parentNode; unit = t.getComputedTextLength() / 3; };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(measure); measure();
+    new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(tp.closest('svg'));
+    (function loop(t){
+      const dt = Math.min(64, t - last); last = t;
+      if (visible && unit) { off = (off - dt * 0.06) % unit; tp.setAttribute('startOffset', off); }
+      requestAnimationFrame(loop);
+    })(last);
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll('.qa button').forEach(b => b.addEventListener('click', () => {
+    const qa = b.closest('.qa'), open = qa.dataset.open !== 'true';
+    document.querySelectorAll('.qa').forEach(o => { o.dataset.open = 'false'; o.querySelector('button').setAttribute('aria-expanded', 'false'); });
+    qa.dataset.open = open; b.setAttribute('aria-expanded', open);
+  }));
+
+  /* Nav: scrolled state, mobile menu, active link */
+  const nav = document.getElementById('nav'), burger = document.getElementById('burger'), links = document.getElementById('links');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), {passive: true});
+  burger.addEventListener('click', () => burger.setAttribute('aria-expanded', links.classList.toggle('open')));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }));
+  const map = [...links.querySelectorAll('a')].map(a => [a, document.querySelector(a.getAttribute('href'))]).filter(x => x[1]);
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) map.forEach(([a, s]) => a.classList.toggle('on', s === e.target));
+  }), {rootMargin: '-45% 0px -50% 0px'});
+  map.forEach(([, s]) => spy.observe(s));
+
+  /* Form (demo: no backend yet) */
+  const form = document.getElementById('book'), msg = document.getElementById('form-msg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    msg.textContent = form.checkValidity()
+      ? 'Formulario de demostración: todavía no envía datos. Llama al 91 071 23 98 para reservar.'
+      : 'Escribe tu nombre y un teléfono para que podamos llamarte.';
+  });
+})();
+</script>
+</body>
+</html>
